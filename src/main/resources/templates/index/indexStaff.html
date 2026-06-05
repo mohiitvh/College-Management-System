@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Staff Dashboard | Apna College</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+:root{
+  --primary:#071952;
+  --secondary:#0d6efd;
+  --light:#f4f7ff;
+  --white:#ffffff;
+  --dark:#111827;
+  --text:#64748b;
+  --gradient:linear-gradient(135deg,#0d6efd,#6610f2);
+  --shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+body{
+  background:var(--light);
+  overflow-x:hidden;
+}
+
+.sidebar{
+  width:280px;
+  height:100vh;
+  background:var(--primary);
+  position:fixed;
+  top:0;
+  left:0;
+  padding:25px;
+  overflow-y:auto;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:40px;
+}
+
+.logo-icon{
+  width:60px;
+  height:60px;
+  border-radius:18px;
+  background:var(--gradient);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  font-size:24px;
+  font-weight:700;
+}
+
+.logo-text h2{
+  color:white;
+  font-size:24px;
+}
+
+.logo-text p{
+  color:#cbd5e1;
+  font-size:13px;
+}
+
+.menu{
+  list-style:none;
+}
+
+.menu li{
+  margin-bottom:12px;
+}
+
+.menu li a{
+  text-decoration:none;
+  color:#dbeafe;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:15px 18px;
+  border-radius:15px;
+  transition:0.3s;
+  font-size:15px;
+  font-weight:500;
+}
+
+.menu li a:hover,
+.menu li a.active{
+  background:rgba(255,255,255,0.12);
+  color:white;
+  transform:translateX(5px);
+}
+
+.menu li a i{
+  width:22px;
+  text-align:center;
+}
+
+.main{
+  margin-left:280px;
+  padding:30px;
+}
+
+
+.topbar{
+  background:white;
+  border-radius:25px;
+  padding:20px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:var(--shadow);
+  margin-bottom:30px;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.topbar h1{
+  color:var(--primary);
+  font-size:30px;
+}
+
+.topbar p{
+  color:var(--text);
+  margin-top:5px;
+}
+
+.profile{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.profile img{
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.profile h4{
+  color:var(--primary);
+}
+
+.profile span{
+  color:var(--text);
+  font-size:14px;
+}
+
+.welcome{
+  background:var(--gradient);
+  color:white;
+  border-radius:30px;
+  padding:50px;
+  position:relative;
+  overflow:hidden;
+  margin-bottom:35px;
+}
+
+.welcome::before{
+  content:'';
+  position:absolute;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.08);
+  top:-100px;
+  right:-80px;
+}
+
+.welcome h2{
+  font-size:42px;
+  margin-bottom:15px;
+  position:relative;
+  z-index:2;
+}
+
+.welcome p{
+  line-height:1.9;
+  color:#e2e8f0;
+  max-width:700px;
+  position:relative;
+  z-index:2;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  margin-bottom:35px;
+}
+
+.stat-card{
+  background:white;
+  padding:30px;
+  border-radius:25px;
+  box-shadow:var(--shadow);
+  transition:0.3s;
+  text-align:center;
+}
+
+.stat-card:hover{
+  transform:translateY(-8px);
+}
+
+.stat-card i{
+  width:70px;
+  height:70px;
+  border-radius:20px;
+  background:var(--gradient);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:28px;
+  margin:auto;
+  margin-bottom:20px;
+}
+
+.stat-card h2{
+  color:var(--primary);
+  margin-bottom:10px;
+  font-size:34px;
+}
+
+.stat-card p{
+  color:var(--text);
+}
+
+.dashboard-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+.dashboard-card{
+  background:white;
+  padding:35px;
+  border-radius:25px;
+  box-shadow:var(--shadow);
+  transition:0.4s;
+  position:relative;
+  overflow:hidden;
+}
+
+.dashboard-card:hover{
+  transform:translateY(-10px);
+}
+
+.dashboard-card::before{
+  content:'';
+  position:absolute;
+  width:120px;
+  height:120px;
+  background:rgba(13,110,253,0.07);
+  border-radius:50%;
+  top:-40px;
+  right:-40px;
+}
+
+.dashboard-card i{
+  width:75px;
+  height:75px;
+  border-radius:20px;
+  background:var(--gradient);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  font-size:30px;
+  margin-bottom:25px;
+  position:relative;
+  z-index:2;
+}
+
+.dashboard-card h3{
+  color:var(--primary);
+  margin-bottom:15px;
+  position:relative;
+  z-index:2;
+}
+
+.dashboard-card p{
+  color:var(--text);
+  line-height:1.8;
+  margin-bottom:25px;
+  position:relative;
+  z-index:2;
+}
+
+.dashboard-card a{
+  text-decoration:none;
+  background:var(--gradient);
+  color:white;
+  padding:12px 22px;
+  border-radius:40px;
+  display:inline-block;
+  font-size:14px;
+  font-weight:600;
+  position:relative;
+  z-index:2;
+  transition:0.3s;
+}
+
+.dashboard-card a:hover{
+  transform:translateY(-3px);
+}
+
+.table-box{
+  background:white;
+  padding:30px;
+  border-radius:25px;
+  margin-top:35px;
+  box-shadow:var(--shadow);
+  overflow-x:auto;
+}
+
+.table-box h3{
+  margin-bottom:20px;
+  color:var(--primary);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+table th{
+  background:#eef4ff;
+  color:var(--primary);
+  padding:16px;
+  text-align:left;
+}
+
+table td{
+  padding:16px;
+  border-bottom:1px solid #eee;
+  color:var(--text);
+}
+
+.status{
+  padding:8px 16px;
+  border-radius:30px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.approved{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.pending{
+  background:#fef3c7;
+  color:#92400e;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+  margin-top:40px;
+  text-align:center;
+  color:var(--text);
+  font-size:14px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:991px){
+
+  .sidebar{
+    width:100%;
+    height:auto;
+    position:relative;
+  }
+
+  .main{
+    margin-left:0;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .topbar{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .welcome{
+    padding:35px;
+  }
+
+  .welcome h2{
+    font-size:32px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+  <div class="logo">
+
+    <div class="logo-icon">
+      AC
+    </div>
+
+    <div class="logo-text">
+      <h2>Apna College</h2>
+      <p>Staff Dashboard</p>
+    </div>
+
+  </div>
+
+  <ul class="menu">
+
+    <li>
+      <a href="#" class="active">
+        <i class="fa-solid fa-gauge"></i>
+        Dashboard
+      </a>
+    </li>
+
+    <li>
+      <a href="#">
+        <i class="fa-solid fa-calendar-plus"></i>
+        Apply Leave
+      </a>
+    </li>
+
+    <li>
+      <a href="#">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        Leave History
+      </a>
+    </li>
+
+    <li>
+      <a href="#">
+        <i class="fa-solid fa-user"></i>
+        View Profile
+      </a>
+    </li>
+
+    <li>
+		<a th:href="@{/idStaff}">
+		    <i class="fa-solid fa-id-card"></i>
+		    Download ID Card
+		</a>
+    </li>
+
+    <li>
+      <a href="#">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Logout
+      </a>
+    </li>
+
+  </ul>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+  <!-- TOPBAR -->
+
+  <div class="topbar">
+
+    <div>
+      <h1>Staff Dashboard</h1>
+      <p>Manage leave requests and profile details.</p>
+    </div>
+
+    <div class="profile">
+
+      <img src="https://randomuser.me/api/portraits/women/44.jpg">
+
+      <div>
+        <h4>Priya Sharma</h4>
+        <span>Assistant Professor</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- WELCOME -->
+
+  <div class="welcome">
+
+    <h2>Welcome To Staff ERP Portal</h2>
+
+    <p>
+      Access leave management, profile details and ID card from one smart dashboard.
+    </p>
+
+  </div>
+
+  <!-- STATS -->
+
+  <div class="stats">
+
+    <div class="stat-card">
+      <i class="fa-solid fa-calendar-check"></i>
+      <h2>12</h2>
+      <p>Total Leaves</p>
+    </div>
+
+    <div class="stat-card">
+      <i class="fa-solid fa-circle-check"></i>
+      <h2>10</h2>
+      <p>Approved Leaves</p>
+    </div>
+
+    <div class="stat-card">
+      <i class="fa-solid fa-hourglass-half"></i>
+      <h2>2</h2>
+      <p>Pending Leaves</p>
+    </div>
+
+    <div class="stat-card">
+      <i class="fa-solid fa-user-group"></i>
+      <h2>150</h2>
+      <p>Total Students</p>
+    </div>
+
+  </div>
+
+  <!-- DASHBOARD CARDS -->
+
+  <div class="dashboard-grid">
+
+    <div class="dashboard-card">
+
+      <i class="fa-solid fa-calendar-plus"></i>
+
+      <h3>Apply Leave</h3>
+
+      <p>
+        Submit leave application online for approval.
+      </p>
+
+      <a href="#">Apply Now</a>
+
+    </div>
+
+    <div class="dashboard-card">
+
+      <i class="fa-solid fa-clock-rotate-left"></i>
+
+      <h3>Leave History</h3>
+
+      <p>
+        View approved and pending leave records.
+      </p>
+
+      <a href="#">View History</a>
+
+    </div>
+
+    <div class="dashboard-card">
+
+      <i class="fa-solid fa-user"></i>
+
+      <h3>View Profile</h3>
+
+      <p>
+        View and update staff profile information.
+      </p>
+
+      <a href="#">Open Profile</a>
+
+    </div>
+
+    <div class="dashboard-card">
+
+      <i class="fa-solid fa-id-card"></i>
+
+      <h3>Download ID Card</h3>
+
+      <p>
+        Download digital employee ID card instantly.
+      </p>
+      <a th:href="@{/idStaff}">Download ID</a>
+	  
+    </div>
+
+  </div>
+
+  <!-- TABLE -->
+
+  <div class="table-box">
+
+    <h3>Recent Leave Applications</h3>
+
+    <table>
+
+      <tr>
+        <th>Leave Type</th>
+        <th>Date</th>
+        <th>Days</th>
+        <th>Status</th>
+      </tr>
+
+      <tr>
+        <td>Medical Leave</td>
+        <td>25 May 2026</td>
+        <td>2 Days</td>
+        <td><span class="status approved">Approved</span></td>
+      </tr>
+
+      <tr>
+        <td>Casual Leave</td>
+        <td>18 May 2026</td>
+        <td>1 Day</td>
+        <td><span class="status pending">Pending</span></td>
+      </tr>
+
+    </table>
+
+  </div>
+
+  <!-- FOOTER -->
+
+  <div class="footer">
+    © 2026 Apna College ERP | Staff Dashboard
+  </div>
+
+</div>
+
+</body>
+</html>

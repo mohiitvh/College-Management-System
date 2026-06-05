@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Apna College</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:Poppins;
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+}
+
+/* HEADER */
+.header{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    padding:20px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+}
+
+.header img{
+    height:60px;
+    border-radius:10px;
+}
+
+/* CONTENT */
+.container{
+    max-width:900px;
+    margin:40px auto;
+    padding:20px;
+}
+
+.card{
+    background:rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+h2{
+    color:#38bdf8;
+}
+
+p, li{
+    line-height:1.7;
+    color:#e2e8f0;
+}
+
+/* BACK BUTTON */
+.back-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:10px 18px;
+    background:#38bdf8;
+    color:black;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+}
+.back-btn:hover{
+    background:#0ea5e9;
+}
+</style>
+
+</head>
+<body>
+  <div class="header">
+    <img th:src="@{/images/apnacollegLogo.png}" alt="logo">
+    <h2>Apna College</h2>
+</div>	<div class="container">
+	<div class="card">
+
+	<h2>Seminar & Workshop</h2>
+	<p>Regular skill development programs and events.</p>
+
+	<a th:href="@{/}" class="back-btn">⬅ Back</a>
+
+	</div>
+	</div>
+	</body></html>

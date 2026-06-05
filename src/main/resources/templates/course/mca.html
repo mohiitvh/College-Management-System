@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MCA Programs | Apna College</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+:root{
+  --primary:#07162f;
+  --secondary:#0d6efd;
+  --light:#f4f7ff;
+  --white:#ffffff;
+  --text:#5b6577;
+  --gradient:linear-gradient(135deg,#0d6efd,#6610f2);
+  --shadow:0 20px 50px rgba(0,0,0,0.08);
+}
+
+body{
+  background:var(--light);
+  color:#111;
+}
+
+/* HERO */
+
+.hero{
+  min-height:70vh;
+  background:
+  linear-gradient(rgba(4,15,40,0.75),rgba(4,15,40,0.75)),
+  url('https://images.pexels.com/photos/1181359/pexels-photo-1181359.jpeg?auto=compress&cs=tinysrgb&w=1600');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px;
+}
+
+.hero-content{
+  max-width:900px;
+  color:white;
+}
+
+.hero-content span{
+  background:rgba(255,255,255,0.15);
+  padding:10px 22px;
+  border-radius:40px;
+  display:inline-block;
+  margin-bottom:25px;
+  font-size:14px;
+}
+
+.hero-content h1{
+  font-size:70px;
+  margin-bottom:20px;
+  font-weight:900;
+}
+
+.hero-content p{
+  font-size:20px;
+  line-height:1.9;
+  color:#ddd;
+}
+
+/* SECTION */
+
+.section{
+  padding:100px 6%;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.section-title h2{
+  font-size:50px;
+  color:var(--primary);
+  margin-bottom:15px;
+}
+
+.section-title p{
+  max-width:800px;
+  margin:auto;
+  color:var(--text);
+  line-height:1.9;
+}
+
+/* COURSE GRID */
+
+.course-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:35px;
+}
+
+/* CARD */
+
+.course-card{
+  background:white;
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:.4s;
+}
+
+.course-card:hover{
+  transform:translateY(-10px);
+}
+
+.course-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.course-content{
+  padding:30px;
+}
+
+.course-content h3{
+  font-size:28px;
+  color:var(--primary);
+  margin-bottom:15px;
+}
+
+.course-content p{
+  color:var(--text);
+  line-height:1.8;
+  margin-bottom:25px;
+}
+
+.details{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:25px;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+.detail-box{
+  background:#eef4ff;
+  padding:12px 18px;
+  border-radius:15px;
+  font-size:14px;
+  font-weight:600;
+  color:#0d6efd;
+}
+
+.btn{
+  display:inline-block;
+  padding:14px 28px;
+  background:var(--gradient);
+  color:white;
+  text-decoration:none;
+  border-radius:50px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:translateY(-4px);
+}
+
+/* BACK BUTTON */
+
+.back-home{
+  text-align:center;
+  margin-top:80px;
+}
+
+.back-home a{
+  display:inline-block;
+  padding:16px 35px;
+  background:#07162f;
+  color:white;
+  text-decoration:none;
+  border-radius:50px;
+  font-weight:600;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .hero-content h1{
+    font-size:42px;
+  }
+
+  .section-title h2{
+    font-size:36px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<span>APNA COLLEGE • MCA PROGRAMS</span>
+
+<h1>MCA Professional Courses</h1>
+
+<p>
+Master advanced software technologies, artificial intelligence,
+cloud computing and enterprise application development.
+</p>
+
+</div>
+
+</section>
+
+<!-- COURSES -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>MCA Specializations</h2>
+
+<p>
+Choose industry-oriented MCA specializations and build your professional career in modern software technologies.
+</p>
+
+</div>
+
+<div class="course-grid">
+
+<!-- ADVANCED JAVA -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>MCA Advanced Java</h3>
+
+<p>
+Spring Boot, Enterprise Applications,
+REST APIs and Backend Development technologies.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+2 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹85,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- AI ENGINEERING -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>MCA AI Engineering</h3>
+
+<p>
+Artificial Intelligence, Machine Learning,
+Deep Learning and Intelligent Systems.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+2 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹95,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- CYBER SECURITY -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>MCA Cyber Security</h3>
+
+<p>
+Ethical Hacking, Network Security,
+Digital Protection and Cyber Defense Systems.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+2 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹90,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- SOFTWARE ARCHITECTURE -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>MCA Software Architecture</h3>
+
+<p>
+Enterprise Software, System Design,
+Scalable Applications and Software Patterns.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+2 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹88,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- CLOUD COMPUTING -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>MCA Cloud Computing</h3>
+
+<p>
+AWS, Cloud Infrastructure,
+DevOps and Distributed Computing Systems.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+2 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹92,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- DATA SCIENCE -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>MCA Data Science</h3>
+
+<p>
+Big Data Analytics, Python,
+Visualization and Intelligent Decision Systems.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+2 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹93,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- BACK -->
+
+<div class="back-home">
+
+<a href="/">
+← Back To Home
+</a>
+
+</div>
+
+</section>
+
+</body>
+</html>

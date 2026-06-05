@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Admin Registration | Apna College</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+background:
+linear-gradient(rgba(0,0,0,.70),rgba(0,0,0,.70)),
+url('https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg?auto=compress&cs=tinysrgb&w=1600');
+background-size:cover;
+background-position:center;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+position:fixed;
+top:20px;
+left:20px;
+padding:12px 22px;
+text-decoration:none;
+background:rgba(255,255,255,.15);
+border:1px solid rgba(255,255,255,.2);
+backdrop-filter:blur(10px);
+border-radius:50px;
+color:#fff;
+font-weight:600;
+}
+
+/* CARD */
+
+.container{
+width:100%;
+max-width:520px;
+padding:40px;
+border-radius:25px;
+background:rgba(255,255,255,.12);
+border:1px solid rgba(255,255,255,.2);
+backdrop-filter:blur(18px);
+box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+.logo{
+text-align:center;
+color:#fff;
+font-size:18px;
+font-weight:700;
+letter-spacing:2px;
+margin-bottom:10px;
+}
+
+h2{
+text-align:center;
+color:#fff;
+font-size:34px;
+margin-bottom:8px;
+}
+
+.subtitle{
+text-align:center;
+color:#ddd;
+margin-bottom:30px;
+font-size:14px;
+}
+
+/* INPUT */
+
+.input-group{
+margin-bottom:18px;
+}
+
+.input-group input{
+width:100%;
+padding:14px;
+border:none;
+outline:none;
+border-radius:12px;
+background:rgba(255,255,255,.15);
+color:#fff;
+font-size:15px;
+}
+
+.input-group input::placeholder{
+color:#ddd;
+}
+
+/* PASSWORD */
+
+.password-box{
+position:relative;
+}
+
+.toggle{
+position:absolute;
+right:15px;
+top:50%;
+transform:translateY(-50%);
+cursor:pointer;
+font-size:13px;
+font-weight:600;
+color:#fff;
+}
+
+/* BUTTON */
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:50px;
+background:linear-gradient(135deg,#dc3545,#ff6b6b);
+color:#fff;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:translateY(-3px);
+}
+
+/* LOGIN LINK */
+
+.link{
+text-align:center;
+margin-top:20px;
+color:#eee;
+}
+
+.link a{
+color:#fff;
+font-weight:700;
+text-decoration:none;
+}
+
+.footer{
+text-align:center;
+margin-top:20px;
+color:#ccc;
+font-size:13px;
+}
+
+@media(max-width:600px){
+
+.container{
+padding:30px 20px;
+}
+
+h2{
+font-size:28px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<a th:href="@{/}" class="back-btn">
+← Back
+</a>
+
+<div class="container">
+
+<div class="logo">
+APNA COLLEGE ERP
+</div>
+
+<h2>Admin Registration</h2>
+
+<p class="subtitle">
+Create System Administrator Account
+</p>
+
+<form th:action="@{/signupAdmin}" method="post">
+
+<div class="input-group">
+<input type="text"
+name="name"
+placeholder="Admin Full Name"
+required>
+</div>
+
+<div class="input-group">
+<input type="email"
+name="email"
+placeholder="Admin Email Address"
+required>
+</div>
+
+<div class="input-group">
+<input type="text"
+name="employeeId"
+placeholder="Admin ID"
+required>
+</div>
+
+<div class="input-group">
+<input type="text"
+name="phone"
+placeholder="Mobile Number"
+required>
+</div>
+
+<div class="input-group">
+
+<div class="password-box">
+
+<input type="password"
+id="adminPass"
+name="password"
+placeholder="Create Password"
+required>
+
+<span class="toggle"
+onclick="togglePassword(this)">
+Show
+</span>
+
+</div>
+
+</div>
+
+<button type="submit">
+Create Admin Account
+</button>
+
+</form>
+
+<div class="link">
+Already have an account?
+<a th:href="@{/loginAdmin}">
+Login Here
+</a>
+</div>
+
+<div class="footer">
+© 2026 Apna College ERP System
+</div>
+
+</div>
+
+<script>
+
+function togglePassword(el){
+
+const pass =
+document.getElementById("adminPass");
+
+if(pass.type==="password"){
+pass.type="text";
+el.innerText="Hide";
+}else{
+pass.type="password";
+el.innerText="Show";
+}
+
+}
+
+</script>
+
+</body>
+</html>

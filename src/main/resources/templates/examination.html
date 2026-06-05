@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Apna College Examination Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f4f7ff;
+}
+
+.hero{
+background:linear-gradient(135deg,#071952,#0d6efd);
+padding:80px 20px;
+text-align:center;
+color:white;
+}
+
+.logo{
+width:100px;
+height:100px;
+background:white;
+border-radius:50%;
+padding:10px;
+object-fit:contain;
+margin:auto;
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:55px;
+font-weight:800;
+}
+
+.hero p{
+margin-top:15px;
+font-size:18px;
+opacity:.9;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:60px 20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+padding:35px;
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+text-align:center;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card i{
+font-size:45px;
+color:#0d6efd;
+margin-bottom:20px;
+}
+
+.card h3{
+color:#071952;
+margin-bottom:15px;
+}
+
+.card p{
+color:#666;
+line-height:1.8;
+margin-bottom:20px;
+}
+
+.btn{
+display:inline-block;
+padding:12px 25px;
+background:#0d6efd;
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-weight:600;
+}
+
+.btn:hover{
+background:#084298;
+}
+
+.footer{
+background:#031126;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:50px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<section class="hero">
+
+<img th:src="@{/images/apnacollegLogo.png}"
+class="logo">
+
+<h1>Examination Portal</h1>
+
+<p>
+Welcome to Apna College Examination Management System
+</p>
+
+</section>
+
+<div class="container">
+
+<div class="grid">
+
+<div class="card">
+<i class="fa-solid fa-file-lines"></i>
+<h3>Exam Form</h3>
+<p>Fill Semester Examination Form Online.</p>
+<a href="#" class="btn">Open</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-calendar-days"></i>
+<h3>Exam Schedule</h3>
+<p>Check Examination Time Table & Schedule.</p>
+<a href="#" class="btn">View</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-square-poll-vertical"></i>
+<h3>Result Portal</h3>
+<p>Check Semester Examination Results.</p>
+<a th:href="@{/result}" class="btn">Result</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-download"></i>
+<h3>Admit Card</h3>
+<p>Download Examination Admit Card.</p>
+<a href="#" class="btn">Download</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-award"></i>
+<h3>Grade Report</h3>
+<p>View Academic Performance & Grades.</p>
+<a href="#" class="btn">View</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-book"></i>
+<h3>Syllabus</h3>
+<p>Download Latest Course Syllabus.</p>
+<a href="#" class="btn">Download</a>
+</div>
+
+</div>
+
+</div>
+
+<footer class="footer">
+© 2026 Apna College Examination Portal | All Rights Reserved
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>B.Sc Programs | Apna College</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+:root{
+--primary:#07162f;
+--secondary:#0d6efd;
+--light:#eef4ff;
+--white:#ffffff;
+--text:#555;
+--gradient:linear-gradient(135deg,#0d6efd,#6610f2);
+--shadow:0 20px 45px rgba(0,0,0,.08);
+}
+
+body{
+background:var(--light);
+}
+
+/* HERO */
+
+.hero{
+height:55vh;
+background:
+linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+url('https://images.pexels.com/photos/2280549/pexels-photo-2280549.jpeg?auto=compress&cs=tinysrgb&w=1600');
+
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+padding:20px;
+}
+
+.hero-content{
+max-width:900px;
+}
+
+.hero-content span{
+background:rgba(255,255,255,.15);
+padding:10px 22px;
+border-radius:40px;
+display:inline-block;
+margin-bottom:25px;
+font-size:14px;
+}
+
+.hero-content h1{
+font-size:70px;
+font-weight:800;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:20px;
+line-height:1.9;
+color:#ddd;
+}
+
+/* SECTION */
+
+.container{
+width:90%;
+max-width:1400px;
+margin:auto;
+padding:80px 0;
+}
+
+.title{
+text-align:center;
+margin-bottom:60px;
+}
+
+.title h2{
+font-size:50px;
+color:var(--primary);
+margin-bottom:15px;
+}
+
+.title p{
+color:var(--text);
+font-size:17px;
+line-height:1.9;
+max-width:850px;
+margin:auto;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:35px;
+}
+
+/* CARD */
+
+.card{
+background:#fff;
+border-radius:30px;
+overflow:hidden;
+box-shadow:var(--shadow);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-12px);
+}
+
+.card img{
+width:100%;
+height:230px;
+object-fit:cover;
+}
+
+.content{
+padding:30px;
+}
+
+.content h3{
+font-size:30px;
+color:var(--primary);
+margin-bottom:15px;
+}
+
+.content p{
+line-height:1.8;
+color:var(--text);
+margin-bottom:25px;
+}
+
+.info{
+display:flex;
+justify-content:space-between;
+margin-bottom:25px;
+font-weight:600;
+color:var(--primary);
+flex-wrap:wrap;
+gap:12px;
+}
+
+.info span{
+background:#eef4ff;
+padding:12px 18px;
+border-radius:15px;
+font-size:14px;
+}
+
+/* BUTTON */
+
+.btn{
+display:inline-block;
+padding:14px 28px;
+background:var(--gradient);
+color:white;
+text-decoration:none;
+border-radius:50px;
+font-weight:600;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-4px);
+}
+
+/* BACK BUTTON */
+
+.back{
+text-align:center;
+margin-top:70px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:45px;
+}
+
+.title h2{
+font-size:38px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<div class="hero-content">
+
+<span>APNA COLLEGE • B.SC PROGRAMS</span>
+
+<h1>B.Sc Programs</h1>
+
+<p>
+Explore science, research and technology
+with advanced practical learning.
+</p>
+
+</div>
+
+</div>
+
+<!-- SECTION -->
+
+<div class="container">
+
+<div class="title">
+
+<h2>B.Sc Specializations</h2>
+
+<p>
+Build your future in science and innovation
+with industry-focused practical education programs.
+</p>
+
+</div>
+
+<div class="grid">
+
+<!-- PHYSICS -->
+
+<div class="card">
+
+<img src="https://images.pexels.com/photos/60582/newton-s-cradle-balls-sphere-action-60582.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="content">
+
+<h3>Physics</h3>
+
+<p>
+Quantum mechanics, electronics,
+energy systems and applied physics concepts.
+</p>
+
+<div class="info">
+
+<span>
+<i class="fa-solid fa-clock"></i>
+3 Years
+</span>
+
+<span>
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹45,000/Yr
+</span>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- CHEMISTRY -->
+
+<div class="card">
+
+<img src="https://images.pexels.com/photos/2280547/pexels-photo-2280547.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="content">
+
+<h3>Chemistry</h3>
+
+<p>
+Organic chemistry, laboratory research
+and industrial chemical applications.
+</p>
+
+<div class="info">
+
+<span>
+<i class="fa-solid fa-clock"></i>
+3 Years
+</span>
+
+<span>
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹48,000/Yr
+</span>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- BIOTECHNOLOGY -->
+
+<div class="card">
+
+<img src="https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="content">
+
+<h3>Biotechnology</h3>
+
+<p>
+Genetics, microbiology, biomedical science
+and biotechnology research systems.
+</p>
+
+<div class="info">
+
+<span>
+<i class="fa-solid fa-clock"></i>
+3 Years
+</span>
+
+<span>
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹52,000/Yr
+</span>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- COMPUTER SCIENCE -->
+
+<div class="card">
+
+<img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="content">
+
+<h3>Computer Science</h3>
+
+<p>
+Programming, databases, operating systems
+and software development technologies.
+</p>
+
+<div class="info">
+
+<span>
+<i class="fa-solid fa-clock"></i>
+3 Years
+</span>
+
+<span>
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹55,000/Yr
+</span>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- MATHEMATICS -->
+
+<div class="card">
+
+<img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="content">
+
+<h3>Mathematics</h3>
+
+<p>
+Statistics, algebra, analytics
+and advanced mathematical problem solving.
+</p>
+
+<div class="info">
+
+<span>
+<i class="fa-solid fa-clock"></i>
+3 Years
+</span>
+
+<span>
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹46,000/Yr
+</span>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- INFORMATION TECHNOLOGY -->
+
+<div class="card">
+
+<img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="content">
+
+<h3>Information Technology</h3>
+
+<p>
+Networking, cybersecurity,
+software applications and cloud technologies.
+</p>
+
+<div class="info">
+
+<span>
+<i class="fa-solid fa-clock"></i>
+3 Years
+</span>
+
+<span>
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹58,000/Yr
+</span>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- BACK BUTTON -->
+
+<div class="back">
+
+<a href="/" class="btn">
+← Back To Home
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>

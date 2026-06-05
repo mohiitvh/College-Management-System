@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Admission Details</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+    min-height:100vh;
+    padding:40px;
+}
+
+/* HEADER */
+.header{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.header img{
+    height:60px;
+    margin-bottom:10px;
+}
+
+.header h1{
+    font-size:28px;
+    color:#38bdf8;
+}
+
+/* CARD */
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.card{
+    background:rgba(255,255,255,0.06);
+    backdrop-filter:blur(20px);
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* SECTION */
+.section{
+    margin-top:25px;
+    padding:20px;
+    border-radius:15px;
+    background:rgba(255,255,255,0.05);
+}
+
+.section h2{
+    font-size:18px;
+    margin-bottom:15px;
+    color:#38bdf8;
+    border-left:4px solid #38bdf8;
+    padding-left:10px;
+}
+
+/* ROW */
+.row{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.row span:first-child{
+    opacity:0.7;
+}
+
+.row span:last-child{
+    font-weight:600;
+    color:#e2e8f0;
+}
+
+/* BACK BUTTON */
+.back{
+    display:inline-block;
+    margin-top:25px;
+    padding:12px 20px;
+    background:#38bdf8;
+    color:black;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:600;
+}
+.back:hover{
+    background:#0ea5e9;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+    <img th:src="@{/images/apnacollegLogo.png}" alt="logo">
+    <h1>APNA COLLEGE</h1>
+    <p>Admission Details</p>
+</div>
+
+<div class="card">
+
+<!-- PERSONAL -->
+<div class="section">
+<h2>Personal Details</h2>
+
+<div class="row"><span>Name</span><span th:text="${admission.fullName}"></span></div>
+<div class="row"><span>DOB</span><span th:text="${admission.dateOfBirth}"></span></div>
+<div class="row"><span>Gender</span><span th:text="${admission.gender}"></span></div>
+<div class="row"><span>Category</span><span th:text="${admission.category}"></span></div>
+<div class="row">
+    <span>Nationality</span>
+    <span th:text="${admission.nationality}"></span>
+</div>
+<div class="row"><span>Aadhaar</span><span th:text="${admission.aadhaarNumber}"></span></div>
+</div>
+
+<!-- GUARDIAN -->
+<div class="section">
+<h2>Guardian Details</h2>
+
+<div class="row"><span>Father</span><span th:text="${admission.fatherName}"></span></div>
+<div class="row">
+    <span>Father Occupation</span>
+    <span th:text="${admission.fatheroccupation}"></span>
+</div>
+<div class="row"><span>Mother</span><span th:text="${admission.motherName}"></span></div>
+<div class="row">
+    <span>Mother Occupation</span>
+    <span th:text="${admission.motheroccupation}"></span>
+</div>
+<div class="row"><span>Guardian</span><span th:text="${admission.guardianName}"></span></div>
+<div class="row"><span>Income</span><span th:text="${admission.annualIncome}"></span></div>
+</div>
+
+<div class="section">
+<h2>Other Details</h2>
+
+<div class="row">
+<span>Blood Group</span>
+<span th:text="${admission.bloodGroup}"></span>
+</div>
+
+<div class="row">
+<span>Disability Status</span>
+<span th:text="${admission.disabilityStatus}"></span>
+</div>
+
+<div class="row">
+<span>Disability Details</span>
+<span th:text="${admission.disabilityDetails}"></span>
+</div>
+
+<div class="row">
+<span>Emergency Contact</span>
+<span th:text="${admission.emergencyContact}"></span>
+</div>
+
+</div>
+<!-- CONTACT -->
+<div class="section">
+<h2>Contact Details</h2>
+
+<div class="row"><span>Mobile</span><span th:text="${admission.mobileNumber}"></span></div>
+<div class="row"><span>Email</span><span th:text="${admission.emailId}"></span></div>
+<div class="row"><span>Guardian Mobile</span><span th:text="${admission.guardianMobile}"></span></div>
+<div class="row"><span>Address</span><span th:text="${admission.currentAddress}"></span></div>
+</div>
+
+<!-- ACADEMIC -->
+<div class="section">
+<h2>Academic Details</h2>
+
+<div class="row"><span>School</span><span th:text="${admission.previousSchoolCollege}"></span></div>
+<div class="row"><span>Board</span><span th:text="${admission.boardUniversity}"></span></div>
+<div class="row"><span>Course</span><span th:text="${admission.lastPassedCourse}"></span></div>
+<div class="row"><span>Passing Year</span><span th:text="${admission.passingYear}"></span></div>
+<div class="row"><span>Marks</span><span th:text="${admission.marksPercentageCgpa}"></span></div>
+<div class="row">
+<span>Roll No</span>
+<span th:text="${admission.rollRegistrationNumber}"></span>
+</div>
+</div>
+
+<!-- ADMISSION -->
+<div class="section">
+<h2>Admission Info</h2>
+
+<div class="row"><span>UG/PG</span><span th:text="${admission.ug_pg}"></span></div>
+<div class="row"><span>Course</span><span th:text="${admission.selectedCourse}"></span></div>
+<div class="row"><span>Branch</span><span th:text="${admission.branchSpecialization}"></span></div>
+<div class="row"><span>Session</span><span th:text="${admission.sessionBatch}"></span></div>
+</div>
+<div class="section">
+<h2>Login Details</h2>
+
+<div class="row">
+<span>Username</span>
+<span th:text="${admission.username}"></span>
+</div>
+
+</div>
+<div class="section">
+    <h2>Declaration</h2>
+
+    <div class="row">
+        <span>Declaration</span>
+        <span th:text="${admission.declarationCheckbox}"></span>
+    </div>
+
+    <div class="row">
+        <span>Terms Accepted</span>
+        <span th:text="${admission.termsConditions}"></span>
+    </div>
+</div>
+
+<div style="display:flex;gap:15px;margin-top:25px;">
+
+    <a th:href="@{/}" class="back">
+        ← Back to Home
+    </a>
+
+    <a th:href="@{/indexStudent}" class="back">
+        Save
+    </a>
+
+</div>
+
+</body>
+</html>

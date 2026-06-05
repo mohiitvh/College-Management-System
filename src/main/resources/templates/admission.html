@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>APNA COLLEGE Admission Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+    min-height:100vh;
+    padding:40px;
+}
+
+.container{
+    max-width:1300px;
+    margin:auto;
+}
+
+.card{
+    background:#fff;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+
+.header{
+    background:linear-gradient(135deg,#1e3a8a,#2563eb);
+    color:white;
+    text-align:center;
+    padding:35px;
+}
+
+.header h1{
+    font-size:35px;
+    font-weight:700;
+}
+
+.header p{
+    opacity:.9;
+}
+
+.form-body{
+    padding:40px;
+}
+
+.section{
+    margin-bottom:40px;
+}
+
+.section-title{
+    font-size:22px;
+    font-weight:600;
+    color:#1e3a8a;
+    margin-bottom:20px;
+    border-left:5px solid #2563eb;
+    padding-left:12px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #d1d5db;
+    border-radius:12px;
+    outline:none;
+    transition:.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 10px rgba(37,99,235,.2);
+}
+
+textarea{
+    min-height:100px;
+    resize:none;
+}
+
+.upload-box{
+    border:2px dashed #2563eb;
+    border-radius:15px;
+    padding:15px;
+    background:#f8fafc;
+}
+
+label{
+    font-weight:500;
+    color:#374151;
+    margin-bottom:6px;
+    display:block;
+}
+
+.submit-btn{
+    width:100%;
+    padding:16px;
+    background:linear-gradient(135deg,#2563eb,#1e40af);
+    color:white;
+    border:none;
+    border-radius:15px;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.submit-btn:hover{
+    transform:translateY(-3px);
+}
+
+.photo-preview{
+    width:150px;
+    height:150px;
+    border-radius:15px;
+    border:2px dashed #2563eb;
+    object-fit:cover;
+}
+
+@media(max-width:768px){
+    body{
+        padding:15px;
+    }
+
+    .form-body{
+        padding:20px;
+    }
+	.declaration-box{
+	    background:#f8fafc;
+	    padding:25px;
+	    border-radius:15px;
+	    border:1px solid #dbeafe;
+	}
+
+	.checkbox-row{
+	    display:flex;
+	    align-items:flex-start;
+	    gap:12px;
+	    margin-bottom:18px;
+	    cursor:pointer;
+	    line-height:1.6;
+	}
+
+	.checkbox-row:last-child{
+	    margin-bottom:0;
+	}
+
+	.checkbox-row input[type="checkbox"]{
+	    width:20px;
+	    height:20px;
+	    margin-top:3px;
+	    flex-shrink:0;
+	    cursor:pointer;
+	}
+
+	.checkbox-row span{
+	    color:#374151;
+	    font-size:15px;
+	}
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<div class="header">
+    <h1>APNA COLLEGE</h1>
+    <p>Online Admission Portal 2026-27</p>
+</div>
+
+<div class="form-body">
+
+	<form th:action="@{/admission/save}"
+	      method="post"
+	      enctype="multipart/form-data">
+    <!-- PERSONAL DETAILS -->
+    <div class="section">
+
+        <div class="section-title">
+            Personal Details
+        </div>
+
+        <div class="grid">
+
+			<input type="text"
+			       name="fullName"
+			       required>
+
+            <input type="date" name="dateOfBirth" required>
+
+            <select name="gender">
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+
+            <select name="category">
+               <option value="">Select Category</option>
+                <option>General</option>
+                <option>OBC</option>
+                <option>SC</option>
+                <option>ST</option>
+                <option>EWS</option>
+            </select>
+
+            <input type="text" name="nationality" placeholder="Nationality" required>
+
+			<input type="text"
+			       name="aadhaarNumber"
+			       maxlength="12"
+			       pattern="[0-9]{12}"
+			       placeholder="Aadhaar Number"required>
+
+        </div>
+
+    </div>
+
+    <!-- GUARDIAN DETAILS -->
+    <div class="section">
+
+        <div class="section-title">
+            Guardian Details
+        </div>
+
+        <div class="grid">
+
+            <input type="text" name="fatherName" placeholder="Father Name">
+
+            <input type="text" name="fatheroccupation" placeholder="Father Occupation">
+
+            <input type="text" name="motherName" placeholder="Mother Name">
+
+            <input type="text" name="motheroccupation" placeholder="Mother Occupation">
+
+            <input type="text" name="guardianName" placeholder="Guardian Name">
+
+            <input type="number" name="annualIncome" placeholder="Annual Income">
+
+        </div>
+
+    </div>
+	
+	<!-- =========================
+	     OTHER DETAILS
+	========================= -->
+	<div class="section">
+
+	    <div class="section-title">
+	        Other Details
+	    </div>
+
+	    <div class="grid">
+
+	        <select name="bloodGroup">
+	            <option value="">Select Blood Group</option>
+	            <option>A+</option>
+	            <option>A-</option>
+	            <option>B+</option>
+	            <option>B-</option>
+	            <option>AB+</option>
+	            <option>AB-</option>
+	            <option>O+</option>
+	            <option>O-</option>
+	        </select>
+
+	        <select name="disabilityStatus">
+	            <option value="">Disability Status</option>
+	            <option>No</option>
+	            <option>Yes</option>
+	        </select>
+
+	        <input type="text"
+	               name="emergencyContact"
+	               placeholder="Emergency Contact">
+
+	        <textarea class="full"
+	                  name="disabilityDetails"
+	                  placeholder="If disability Yes, specify details"></textarea>
+
+	    </div>
+
+	</div>
+
+
+	<!-- =========================
+	     CONTACT DETAILS
+	========================= -->
+	<div class="section">
+
+	    <div class="section-title">
+	        Contact Details
+	    </div>
+
+	    <div class="grid">
+
+			<input type="tel"
+			       name="mobileNumber"
+			       pattern="[0-9]{10}"
+			       maxlength="10"
+			       placeholder="Mobile Number"
+			       required>
+
+	        <input type="email"
+	               name="emailId"
+	               placeholder="Email Address"
+	               required>
+
+				   <input type="text"
+				          name="guardianMobile"
+				          pattern="[0-9]{10}"
+				          maxlength="10"
+				          placeholder="Guardian Mobile Number"
+				          required>
+	        
+
+	        <textarea class="full"
+	                  name="currentAddress"
+	                  placeholder="Current Address"></textarea>
+
+	        <textarea class="full"
+	                  name="permanentAddress"
+	                  placeholder="Permanent Address"></textarea>
+
+	    </div>
+
+	</div>
+
+
+	<!-- =========================
+	     PREVIOUS ACADEMIC DETAILS
+	========================= -->
+	<div class="section">
+
+	    <div class="section-title">
+	        Previous Academic Details
+	    </div>
+
+	    <div class="grid">
+
+	        <input type="text"
+	               name="previousSchoolCollege"
+	               placeholder="Previous School / College">
+
+	        <input type="text"
+	               name="boardUniversity"
+	               placeholder="Board / University">
+
+	        <input type="text"
+	               name="lastPassedCourse"
+	               placeholder="Last Passed Course">
+
+	        <input type="text"
+	               name="rollRegistrationNumber"
+	               placeholder="Roll / Registration Number">
+
+				   <input type="number"
+				          name="passingYear"
+				          min="2000"
+				          max="2030">
+
+	        <input type="text"
+	               name="marksPercentageCgpa"
+	               placeholder="Percentage / CGPA">
+				   
+				   <!-- Academic Marksheet -->
+				   	        <input type="file" name="marksheetUploadFile">
+	    </div>
+
+	</div>
+
+    <!-- ADMISSION DETAILS -->
+    <div class="section">
+
+        <div class="section-title">
+            Admission Details
+        </div>
+
+        <div class="grid">
+
+            <select id="ugpg"
+                    name="ug_pg"
+                    onchange="loadCourses()">
+
+                <option value="">Select Level</option>
+                <option value="UG">UG</option>
+                <option value="PG">PG</option>
+
+            </select>
+
+            <select id="course"
+                    name="selectedCourse">
+
+                <option value="">
+                    Select Course
+                </option>
+
+            </select>
+
+            <input type="text"
+                   name="branchSpecialization"
+                   placeholder="Branch / Specialization">
+
+            <input type="text"
+                   name="sessionBatch"
+                   placeholder="Session (2026-27)">
+
+        </div>
+
+    </div>
+
+  
+	<!-- =========================
+	     DOCUMENT UPLOADS
+	========================= -->
+
+	<div class="section">
+
+	    <div class="section-title">
+	        Document Uploads
+	    </div>
+
+	    <div class="grid">
+
+	        <!-- Passport Photo -->
+			<input type="file" name="passportPhotoFile">
+			<input type="file" name="signatureFile">
+			<input type="file" name="aadhaarCardFile">
+			<input type="file" name="class10MarksheetFile">
+			<input type="file" name="class12MarksheetFile">
+			<input type="file" name="migrationCertificateFile">
+			<input type="file" name="categoryCertificateFile">
+			
+	    </div>
+
+	</div>
+	<!-- =========================
+	     LOGIN DETAILS
+	========================= -->
+	<div class="section">
+
+	    <div class="section-title">
+	        Login Details
+	    </div>
+
+	    <div class="grid">
+
+	        <input type="text"
+	               name="username"
+	               placeholder="Username"
+	               required>
+
+	        <input type="password"
+	               name="password"
+	               placeholder="Password"
+	               required>
+
+	        <input type="password"
+	               name="confirmPassword"
+	               placeholder="Confirm Password"
+	               required>
+
+	    </div>
+
+	</div>
+
+
+	<!-- =========================
+	     DECLARATION
+	========================= -->
+	<!-- DECLARATION -->
+	<div class="section">
+
+	    <div class="section-title">
+	        Declaration
+	    </div>
+
+	    <div class="declaration-box">
+
+	        <label class="checkbox-row">
+	            <input type="checkbox"
+	                   name="declarationCheckbox"
+	                   required>
+
+	            <span>
+	                I hereby declare that all information provided by me is true and correct.
+	            </span>
+	        </label>
+
+	        <label class="checkbox-row">
+	            <input type="checkbox"
+	                   name="termsConditions"
+	                   required>
+
+	            <span>
+	                I agree to the Terms & Conditions of APNA COLLEGE.
+	            </span>
+	        </label>
+
+	    </div>
+
+	</div>
+
+	<button type="submit" class="submit-btn">
+	    Submit Admission Form
+	</button>
+    
+</form>
+
+</div>
+</div>
+</div>
+
+<script>
+
+function previewPassport(event){
+
+    let file = event.target.files[0];
+
+    if(file.size > 2 * 1024 * 1024){
+        alert("Passport Photo must be less than 2 MB");
+        event.target.value="";
+        return;
+    }
+
+    let preview =
+        document.getElementById("passportPreview");
+
+    preview.src =
+        URL.createObjectURL(file);
+
+    preview.style.display = "block";
+}
+
+
+function previewSignature(event){
+
+    let file = event.target.files[0];
+
+    if(file.size > 2 * 1024 * 1024){
+        alert("Signature must be less than 2 MB");
+        event.target.value="";
+        return;
+    }
+
+    let preview =
+        document.getElementById("signaturePreview");
+
+    preview.src =
+        URL.createObjectURL(file);
+
+    preview.style.display = "block";
+}
+
+
+function loadCourses(){
+
+    let level =
+        document.getElementById("ugpg").value;
+
+    let course =
+        document.getElementById("course");
+
+    course.innerHTML =
+        '<option value="">Select Course</option>';
+
+    if(level === "UG"){
+
+        let ug = [
+            "B.Tech",
+            "BCA",
+            "BBA",
+            "B.Sc",
+            "BA",
+            "B.Com",
+            "Diploma"
+        ];
+
+        ug.forEach(function(c){
+
+            course.innerHTML +=
+            `<option value="${c}">
+                ${c}
+            </option>`;
+        });
+    }
+
+    if(level === "PG"){
+
+        let pg = [
+            "MA",
+            "M.Sc",
+            "MCA",
+            "M.Tech",
+            "M.Com",
+            "MBA"
+        ];
+
+        pg.forEach(function(c){
+
+            course.innerHTML +=
+            `<option value="${c}">
+                ${c}
+            </option>`;
+        });
+    }
+}
+
+
+/* Password Match Validation */
+
+document.querySelector("form")
+.addEventListener("submit", function(e){
+
+    let p =
+    document.querySelector('[name="password"]').value;
+
+    let cp =
+    document.querySelector('[name="confirmPassword"]').value;
+
+    if(p !== cp){
+
+        alert("Password and Confirm Password must match");
+
+        e.preventDefault();
+
+        return;
+    }
+});
+
+</script>
+</body>
+</html>
+
+
+
+<!-- This is a comment 
+<input type="file" name="passportPhotoFile" accept="image/*">
+
+<input type="file" name="signatureFile" accept="image/*">
+
+<input type="file" name="aadhaarCardFile" accept=".pdf">
+
+<input type="file" name="class10MarksheetFile" accept=".pdf">
+
+<input type="file" name="class12MarksheetFile" accept=".pdf">
+
+<input type="file" name="migrationCertificateFile" accept=".pdf">
+
+<input type="file" name="categoryCertificateFile" accept=".pdf">
+
+
+
+-->

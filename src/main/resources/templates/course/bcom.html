@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>B.Com Programs | Apna College</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+:root{
+  --primary:#07162f;
+  --secondary:#0d6efd;
+  --light:#f4f7ff;
+  --gradient:linear-gradient(135deg,#0d6efd,#6610f2);
+  --shadow:0 20px 50px rgba(0,0,0,0.08);
+  --text:#5b6577;
+}
+
+body{
+  background:var(--light);
+  color:#111;
+}
+
+/* HERO */
+
+.hero{
+  min-height:70vh;
+
+  background:
+  linear-gradient(rgba(4,15,40,.75),rgba(4,15,40,.75)),
+  url('https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1600');
+
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  padding:40px;
+}
+
+.hero-content{
+  max-width:900px;
+  color:#fff;
+}
+
+.hero-content span{
+  background:rgba(255,255,255,.15);
+  padding:10px 22px;
+  border-radius:40px;
+  display:inline-block;
+  margin-bottom:25px;
+  font-size:14px;
+}
+
+.hero-content h1{
+  font-size:70px;
+  font-weight:900;
+  margin-bottom:20px;
+}
+
+.hero-content p{
+  font-size:20px;
+  line-height:1.9;
+  color:#ddd;
+}
+
+/* SECTION */
+
+.section{
+  padding:100px 6%;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.section-title h2{
+  font-size:50px;
+  color:var(--primary);
+  margin-bottom:15px;
+}
+
+.section-title p{
+  max-width:800px;
+  margin:auto;
+  color:var(--text);
+  line-height:1.9;
+}
+
+/* COURSE GRID */
+
+.course-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:35px;
+}
+
+/* CARD */
+
+.course-card{
+  background:#fff;
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:.4s;
+}
+
+.course-card:hover{
+  transform:translateY(-10px);
+}
+
+.course-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.course-content{
+  padding:30px;
+}
+
+.course-content h3{
+  font-size:28px;
+  color:var(--primary);
+  margin-bottom:15px;
+}
+
+.course-content p{
+  color:var(--text);
+  line-height:1.8;
+  margin-bottom:25px;
+}
+
+/* DETAILS */
+
+.details{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
+}
+
+.detail-box{
+  background:#eef4ff;
+  padding:12px 18px;
+  border-radius:15px;
+  color:#0d6efd;
+  font-weight:600;
+  font-size:14px;
+}
+
+/* BUTTON */
+
+.btn{
+  display:inline-block;
+  padding:14px 28px;
+  background:var(--gradient);
+  color:#fff;
+  text-decoration:none;
+  border-radius:50px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:translateY(-4px);
+}
+
+/* BACK BUTTON */
+
+.back-home{
+  text-align:center;
+  margin-top:80px;
+}
+
+.back-home a{
+  display:inline-block;
+  padding:16px 35px;
+  background:#07162f;
+  color:#fff;
+  text-decoration:none;
+  border-radius:50px;
+  font-weight:600;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .hero-content h1{
+    font-size:42px;
+  }
+
+  .section-title h2{
+    font-size:36px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<span>APNA COLLEGE • B.COM PROGRAMS</span>
+
+<h1>B.Com Commerce Courses</h1>
+
+<p>
+Learn accounting, finance, taxation and business management
+with practical commerce education and industry exposure.
+</p>
+
+</div>
+
+</section>
+
+<!-- COURSES -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>B.Com Specializations</h2>
+
+<p>
+Build your career in banking, finance, taxation and accounting
+with professional commerce programs.
+</p>
+
+</div>
+
+<div class="course-grid">
+
+<!-- ACCOUNTING -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/669365/pexels-photo-669365.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>B.Com Accounting</h3>
+
+<p>
+Advanced accounting, auditing,
+financial reporting and business finance systems.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+3 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹45,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- BANKING -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/210607/pexels-photo-210607.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>B.Com Banking</h3>
+
+<p>
+Learn banking operations,
+investment systems and financial services management.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+3 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹50,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- TAXATION -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/4386321/pexels-photo-4386321.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>B.Com Taxation</h3>
+
+<p>
+GST, income tax,
+corporate taxation and financial compliance training.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+3 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹48,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- FINANCE -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>B.Com Finance</h3>
+
+<p>
+Corporate finance,
+investment analysis and financial planning systems.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+3 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹52,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- BUSINESS MANAGEMENT -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>B.Com Business Management</h3>
+
+<p>
+Business operations,
+management skills and entrepreneurship development.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+3 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹55,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- E-COMMERCE -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>B.Com E-Commerce</h3>
+
+<p>
+Digital business,
+online marketing and e-commerce platform management.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+3 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹58,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- BACK BUTTON -->
+
+<div class="back-home">
+
+<a href="/">
+← Back To Home
+</a>
+
+</div>
+
+</section>
+
+</body>
+</html>

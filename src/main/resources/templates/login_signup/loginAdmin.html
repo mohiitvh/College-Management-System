@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Admin Login | Apna College</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:
+linear-gradient(rgba(5,15,40,.75),rgba(5,15,40,.75)),
+url('https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=1600');
+background-size:cover;
+background-position:center;
+padding:20px;
+}
+
+.login-card{
+width:100%;
+max-width:430px;
+padding:40px;
+border-radius:25px;
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.2);
+box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+
+.logo{
+text-align:center;
+margin-bottom:10px;
+font-size:18px;
+font-weight:700;
+color:#fff;
+letter-spacing:2px;
+}
+
+h2{
+text-align:center;
+color:#fff;
+font-size:34px;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+color:#d9d9d9;
+font-size:14px;
+margin-bottom:30px;
+}
+
+.input-group{
+margin-bottom:20px;
+}
+
+.input-group label{
+display:block;
+margin-bottom:8px;
+color:#fff;
+font-size:14px;
+}
+
+.input-group input{
+width:100%;
+padding:14px;
+border:none;
+outline:none;
+border-radius:12px;
+font-size:15px;
+background:rgba(255,255,255,0.15);
+color:#fff;
+}
+
+.input-group input::placeholder{
+color:#ddd;
+}
+
+.password-box{
+position:relative;
+}
+
+.toggle{
+position:absolute;
+right:15px;
+top:50%;
+transform:translateY(-50%);
+cursor:pointer;
+color:#fff;
+font-size:13px;
+font-weight:600;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:50px;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+background:linear-gradient(135deg,#0d6efd,#6610f2);
+color:#fff;
+transition:.3s;
+}
+
+button:hover{
+transform:translateY(-3px);
+}
+
+.footer{
+margin-top:20px;
+text-align:center;
+color:#eee;
+font-size:13px;
+}
+
+.footer a{
+color:#fff;
+text-decoration:none;
+font-weight:600;
+}
+
+@media(max-width:500px){
+
+.login-card{
+padding:30px 20px;
+}
+
+h2{
+font-size:28px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="login-card">
+
+<div class="logo">
+APNA COLLEGE
+</div>
+
+<h2>Admin Login</h2>
+
+<p class="subtitle">
+Access College ERP Dashboard
+</p>
+
+<form th:action="@{/loginAdmin}" method="post">
+
+<div class="input-group">
+<label>Email Address</label>
+<input type="email"
+name="email"
+placeholder="Enter Admin Email"
+required>
+</div>
+
+<div class="input-group">
+
+<label>Password</label>
+
+<div class="password-box">
+
+<input type="password"
+id="adminPass"
+name="password"
+placeholder="Enter Password"
+required>
+
+<span class="toggle"
+onclick="togglePassword(this)">
+Show
+</span>
+
+</div>
+
+</div>
+
+<button type="submit">
+Login To Dashboard
+</button>
+
+</form>
+
+<div class="footer" style="margin-top:20px;">
+    Don't have an account?
+    <a th:href="@{/signupAdmin}">
+       Create Account
+    </a>
+</div>
+
+<div class="footer">
+    © 2026 Apna College ERP System
+</div>
+
+
+</div>
+
+<script>
+
+function togglePassword(el){
+
+const pass =
+document.getElementById("adminPass");
+
+if(pass.type==="password"){
+pass.type="text";
+el.innerText="Hide";
+}
+else{
+pass.type="password";
+el.innerText="Show";
+}
+
+}
+
+</script>
+
+</body>
+</html>
+

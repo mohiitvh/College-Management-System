@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Diploma Programs | Apna College</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+:root{
+  --primary:#07162f;
+  --secondary:#0d6efd;
+  --light:#f4f7ff;
+  --white:#ffffff;
+  --text:#5b6577;
+  --gradient:linear-gradient(135deg,#0d6efd,#6610f2);
+  --shadow:0 20px 50px rgba(0,0,0,0.08);
+}
+
+body{
+  background:var(--light);
+  color:#111;
+}
+
+/* HERO */
+
+.hero{
+  min-height:70vh;
+
+  background:
+  linear-gradient(rgba(4,15,40,.75),rgba(4,15,40,.75)),
+  url('https://images.pexels.com/photos/159740/library-la-trobe-study-students-159740.jpeg?auto=compress&cs=tinysrgb&w=1600');
+
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+
+  padding:40px;
+}
+
+.hero-content{
+  max-width:900px;
+  color:#fff;
+}
+
+.hero-content span{
+  background:rgba(255,255,255,.15);
+  padding:10px 22px;
+  border-radius:40px;
+  display:inline-block;
+  margin-bottom:25px;
+  font-size:14px;
+}
+
+.hero-content h1{
+  font-size:70px;
+  margin-bottom:20px;
+  font-weight:900;
+}
+
+.hero-content p{
+  font-size:20px;
+  line-height:1.9;
+  color:#ddd;
+}
+
+/* SECTION */
+
+.section{
+  padding:100px 6%;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.section-title h2{
+  font-size:50px;
+  color:var(--primary);
+  margin-bottom:15px;
+}
+
+.section-title p{
+  max-width:800px;
+  margin:auto;
+  color:var(--text);
+  line-height:1.9;
+}
+
+/* COURSE GRID */
+
+.course-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:35px;
+}
+
+/* CARD */
+
+.course-card{
+  background:#fff;
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:.4s;
+}
+
+.course-card:hover{
+  transform:translateY(-10px);
+}
+
+.course-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.course-content{
+  padding:30px;
+}
+
+.course-content h3{
+  font-size:28px;
+  color:var(--primary);
+  margin-bottom:15px;
+}
+
+.course-content p{
+  color:var(--text);
+  line-height:1.8;
+  margin-bottom:25px;
+}
+
+/* DETAILS */
+
+.details{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:25px;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+.detail-box{
+  background:#eef4ff;
+  padding:12px 18px;
+  border-radius:15px;
+  font-size:14px;
+  font-weight:600;
+  color:#0d6efd;
+}
+
+/* BUTTON */
+
+.btn{
+  display:inline-block;
+  padding:14px 28px;
+  background:var(--gradient);
+  color:#fff;
+  text-decoration:none;
+  border-radius:50px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:translateY(-4px);
+}
+
+/* BACK BUTTON */
+
+.back-home{
+  text-align:center;
+  margin-top:80px;
+}
+
+.back-home a{
+  display:inline-block;
+  padding:16px 35px;
+  background:#07162f;
+  color:#fff;
+  text-decoration:none;
+  border-radius:50px;
+  font-weight:600;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .hero-content h1{
+    font-size:42px;
+  }
+
+  .section-title h2{
+    font-size:36px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<span>APNA COLLEGE • DIPLOMA PROGRAMS</span>
+
+<h1>Diploma Courses</h1>
+
+<p>
+Industry focused diploma programs with practical training,
+technical education and professional skill development.
+</p>
+
+</div>
+
+</section>
+
+<!-- COURSES -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>Diploma Specializations</h2>
+
+<p>
+Choose your diploma specialization and gain practical
+industry-ready technical skills for your career.
+</p>
+
+</div>
+
+<div class="course-grid">
+
+<!-- COMPUTER SCIENCE -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>Diploma in Computer Science</h3>
+
+<p>
+Programming, software development,
+web design and coding fundamentals.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+3 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹40,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- MECHANICAL -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/159298/gears-cogs-machine-machinery-159298.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>Diploma in Mechanical</h3>
+
+<p>
+Industrial machines, manufacturing,
+automation and robotics systems.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+3 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹38,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- CIVIL -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>Diploma in Civil</h3>
+
+<p>
+Construction technology,
+infrastructure planning and structural design.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+3 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹36,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- ELECTRICAL -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>Diploma in Electrical</h3>
+
+<p>
+Electrical systems,
+power generation and industrial electronics.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+3 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹42,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- ELECTRONICS -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>Diploma in Electronics</h3>
+
+<p>
+Electronic circuits,
+embedded systems and communication technology.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+3 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹41,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+<!-- AUTOMOBILE -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<h3>Diploma in Automobile</h3>
+
+<p>
+Vehicle engineering,
+automobile servicing and modern transport systems.
+</p>
+
+<div class="details">
+
+<div class="detail-box">
+<i class="fa-solid fa-clock"></i>
+3 Years
+</div>
+
+<div class="detail-box">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+₹43,000 / Year
+</div>
+
+</div>
+
+<a href="#" class="btn">
+Apply Now
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- BACK BUTTON -->
+
+<div class="back-home">
+
+<a href="/">
+← Back To Home
+</a>
+
+</div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Apna College Result Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+:root{
+--primary:#071952;
+--secondary:#0d6efd;
+--gradient:linear-gradient(135deg,#0d6efd,#6610f2);
+--light:#f4f7ff;
+--shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+body{
+background:#f4f7ff;
+}
+
+/* HERO */
+
+.hero{
+background:linear-gradient(rgba(7,25,82,.90),rgba(7,25,82,.90));
+padding:80px 20px;
+text-align:center;
+color:white;
+}
+
+.logo{
+width:100px;
+height:100px;
+background:white;
+border-radius:50%;
+padding:10px;
+object-fit:contain;
+margin:auto;
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:60px;
+font-weight:800;
+margin-bottom:15px;
+}
+
+.hero p{
+max-width:800px;
+margin:auto;
+line-height:1.8;
+font-size:18px;
+}
+
+/* FORM */
+
+.result-section{
+padding:70px 20px;
+display:flex;
+justify-content:center;
+}
+
+.result-card{
+width:100%;
+max-width:900px;
+background:white;
+padding:40px;
+border-radius:30px;
+box-shadow:var(--shadow);
+}
+
+.result-card h2{
+text-align:center;
+color:var(--primary);
+margin-bottom:30px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.input-box{
+display:flex;
+flex-direction:column;
+}
+
+.input-box label{
+font-weight:600;
+margin-bottom:8px;
+color:#071952;
+}
+
+.input-box input,
+.input-box select{
+padding:15px;
+border:1px solid #dbe4f0;
+border-radius:15px;
+outline:none;
+font-size:15px;
+}
+
+.input-box input:focus,
+.input-box select:focus{
+border-color:#0d6efd;
+}
+
+.btn{
+width:100%;
+padding:18px;
+margin-top:30px;
+border:none;
+border-radius:50px;
+background:var(--gradient);
+color:white;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+}
+
+/* RESULT */
+
+.result-box{
+display:none;
+margin-top:35px;
+padding:30px;
+background:#f8fbff;
+border-radius:20px;
+border:2px solid #dbeafe;
+}
+
+.result-box h3{
+margin-bottom:20px;
+color:#071952;
+}
+
+.result-row{
+display:flex;
+justify-content:space-between;
+padding:12px 0;
+border-bottom:1px solid #eee;
+}
+
+.pass{
+color:green;
+font-weight:700;
+}
+
+.not-found{
+display:none;
+margin-top:25px;
+padding:20px;
+background:#ffe5e5;
+color:#d60000;
+border-radius:15px;
+font-weight:600;
+text-align:center;
+}
+
+.footer{
+background:#031126;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:50px;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:38px;
+}
+
+.result-card{
+padding:25px;
+}
+
+.result-row{
+flex-direction:column;
+gap:5px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<img th:src="@{/images/apnacollegLogo.png}"
+class="logo">
+
+<h1>Result Portal</h1>
+
+<p>
+Check Semester Examination Result Online Through
+Apna College ERP Portal
+</p>
+
+</section>
+
+<section class="result-section">
+
+<div class="result-card">
+
+<h2>Check Result</h2>
+
+<form id="resultForm">
+
+<div class="form-grid">
+
+<div class="input-box">
+<label>Program Type</label>
+<select id="programType" required>
+<option value="">Select Program</option>
+<option value="UG">UG</option>
+<option value="PG">PG</option>
+</select>
+</div>
+
+<div class="input-box">
+<label>Course</label>
+<select id="course" required>
+<option value="">Select Course</option>
+</select>
+</div>
+
+<div class="input-box">
+<label>Roll Number</label>
+<input type="text"
+id="rollNo"
+placeholder="Enter Roll Number"
+required>
+</div>
+
+<div class="input-box">
+<label>Registration Number</label>
+<input type="text"
+id="regNo"
+placeholder="Enter Registration Number"
+required>
+</div>
+
+</div>
+
+<button type="submit" class="btn">
+<i class="fa-solid fa-magnifying-glass"></i>
+ View Result
+</button>
+
+</form>
+
+<!-- RESULT FOUND -->
+
+<div class="result-box" id="resultBox">
+
+<h3>
+<i class="fa-solid fa-award"></i>
+ Student Result Details
+</h3>
+
+<div class="result-row">
+<span>Name</span>
+<span>Rahul Kumar</span>
+</div>
+
+<div class="result-row">
+<span>Course</span>
+<span>BCA</span>
+</div>
+
+<div class="result-row">
+<span>Semester</span>
+<span>Semester VI</span>
+</div>
+
+<div class="result-row">
+<span>Roll Number</span>
+<span>BCA23001</span>
+</div>
+
+<div class="result-row">
+<span>Registration Number</span>
+<span>AC2023BCA001</span>
+</div>
+
+<div class="result-row">
+<span>Total Marks</span>
+<span>480 / 600</span>
+</div>
+
+<div class="result-row">
+<span>Percentage</span>
+<span>80%</span>
+</div>
+
+<div class="result-row">
+<span>SGPA</span>
+<span>8.2</span>
+</div>
+
+<div class="result-row">
+<span>CGPA</span>
+<span>8.0</span>
+</div>
+
+<div class="result-row">
+<span>Grade</span>
+<span>A+</span>
+</div>
+
+<div class="result-row">
+<span>Status</span>
+<span class="pass">PASS</span>
+</div>
+
+</div>
+
+<!-- RESULT NOT FOUND -->
+
+<div class="not-found" id="notFound">
+❌ Result Not Found. Please Check Roll Number And Registration Number.
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+© 2026 Apna College Result Portal | All Rights Reserved
+</footer>
+
+<script>
+
+const ugCourses = [
+"B.Tech",
+"BCA",
+"BBA",
+"BCS",
+"BA",
+"B.Com",
+"Diploma"
+];
+
+const pgCourses = [
+"MA",
+"MSc",
+"MCA",
+"M.Tech"
+];
+
+const programType =
+document.getElementById("programType");
+
+const course =
+document.getElementById("course");
+
+programType.addEventListener("change",function(){
+
+course.innerHTML =
+'<option value="">Select Course</option>';
+
+let courses=[];
+
+if(this.value==="UG"){
+courses=ugCourses;
+}
+
+if(this.value==="PG"){
+courses=pgCourses;
+}
+
+courses.forEach(c=>{
+
+let option =
+document.createElement("option");
+
+option.value=c;
+option.textContent=c;
+
+course.appendChild(option);
+
+});
+
+});
+
+document.getElementById("resultForm")
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const roll =
+document.getElementById("rollNo").value;
+
+const reg =
+document.getElementById("regNo").value;
+
+const resultBox =
+document.getElementById("resultBox");
+
+const notFound =
+document.getElementById("notFound");
+
+/* Demo Data */
+
+if(
+roll==="BCA23001" &&
+reg==="AC2023BCA001"
+){
+
+resultBox.style.display="block";
+notFound.style.display="none";
+
+}
+else{
+
+resultBox.style.display="none";
+notFound.style.display="block";
+
+}
+
+});
+
+</script>
+
+</body>
+</html>

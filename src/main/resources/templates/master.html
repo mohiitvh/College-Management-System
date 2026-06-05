@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Apna College | Premium Campus Website</title>
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+  scroll-behavior:smooth;
+}
+
+:root{
+  --primary:#07162f;
+  --secondary:#0d6efd;
+  --light:#f4f7ff;
+  --white:#ffffff;
+  --dark:#101828;
+  --text:#5b6577;
+  --gradient:linear-gradient(135deg,#0d6efd,#6610f2);
+  --shadow:0 20px 50px rgba(0,0,0,0.10);
+}
+
+body{
+  background:var(--light);
+  color:var(--dark);
+  overflow-x:hidden;
+}
+
+/* ================= TOPBAR ================= */
+
+.topbar{
+  background:#031126;
+  color:white;
+  padding:12px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.topbar-left{
+  display:flex;
+  gap:25px;
+  flex-wrap:wrap;
+}
+
+.topbar-left span{
+  font-size:14px;
+}
+
+.topbar-right a{
+  color:white;
+  text-decoration:none;
+  margin-left:14px;
+  padding:9px 18px;
+  border-radius:40px;
+  transition:.3s;
+  font-size:14px;
+  border:1px solid rgba(255,255,255,0.2);
+}
+
+.topbar-right a:hover{
+  background:white;
+  color:var(--primary);
+}
+
+/* ================= HEADER ================= */
+
+header{
+  width:100%;
+  position:sticky;
+  top:0;
+  z-index:999;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(14px);
+  box-shadow:0 2px 20px rgba(0,0,0,0.06);
+}
+
+.navbar{
+  width:90%;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 0;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.logo-circle{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:var(--gradient);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  font-size:24px;
+  font-weight:800;
+  box-shadow:0 10px 25px rgba(13,110,253,0.4);
+}
+
+.logo-text h2{
+  color:var(--primary);
+  font-size:30px;
+  font-weight:800;
+}
+
+.logo-text p{
+  color:var(--text);
+  font-size:13px;
+}
+
+/* ================= MENU ================= */
+
+.menu{
+  display:flex;
+  list-style:none;
+  gap:8px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.menu li{
+  position:relative;
+}
+
+.menu li a{
+  text-decoration:none;
+  color:var(--dark);
+  padding:14px 18px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:15px;
+  font-weight:600;
+  border-radius:12px;
+  transition:.3s;
+  white-space:nowrap;
+}
+
+/* REMOVE DROPDOWN ICON */
+
+.menu li a i{
+  display:none;
+}
+
+.menu li a:hover{
+  background:var(--gradient);
+  color:white;
+  box-shadow:0 10px 25px rgba(13,110,253,0.25);
+}
+
+/* ================= DROPDOWN ================= */
+
+.dropdown{
+  position:absolute;
+  top:115%;
+  left:0;
+  width:280px;
+  background:white;
+  border-radius:18px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.12);
+  overflow:hidden;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(12px);
+  transition:.35s ease;
+  z-index:999;
+}
+
+.dropdown a{
+  padding:16px 20px !important;
+  border-bottom:1px solid #f1f1f1;
+  border-radius:0 !important;
+  font-size:14px !important;
+  color:#222 !important;
+  background:white !important;
+}
+
+.dropdown a:hover{
+  background:#f4f7ff !important;
+  color:#0d6efd !important;
+  padding-left:28px !important;
+}
+
+.dropdown a:last-child{
+  border-bottom:none;
+}
+
+.menu li:hover .dropdown{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+.menu{
+  display:flex;
+  list-style:none;
+  gap:8px;
+}
+
+.menu li{
+  position:relative;
+}
+
+.menu li a{
+  text-decoration:none;
+  color:var(--dark);
+  padding:12px 18px;
+  display:block;
+  font-size:15px;
+  font-weight:600;
+  border-radius:12px;
+  transition:.3s;
+}
+
+.menu li a:hover{
+  background:var(--secondary);
+  color:white;
+}
+
+/* ================= DROPDOWN ================= */
+
+.dropdown{
+  position:absolute;
+  top:110%;
+  left:0;
+  width:280px;
+  background:white;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:.3s;
+}
+
+.dropdown a{
+  padding:15px 20px !important;
+  border-bottom:1px solid #eee;
+  border-radius:0 !important;
+  font-size:14px !important;
+}
+
+.menu li:hover .dropdown{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  min-height:100vh;
+  background:
+  linear-gradient(rgba(3,12,32,0.78),rgba(3,12,32,0.78)),
+  url('https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1800');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  padding:0 6%;
+  position:relative;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  width:500px;
+  height:500px;
+  background:rgba(13,110,253,0.15);
+  border-radius:50%;
+  filter:blur(100px);
+  top:-150px;
+  right:-150px;
+}
+
+.hero-content{
+  max-width:780px;
+  color:white;
+  position:relative;
+  z-index:1;
+  animation:fadeUp 1s ease;
+}
+
+.hero-content span{
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.15);
+  padding:12px 24px;
+  border-radius:40px;
+  display:inline-block;
+  margin-bottom:28px;
+  backdrop-filter:blur(10px);
+  font-size:14px;
+}
+
+.hero-content h1{
+  font-size:78px;
+  line-height:1.15;
+  margin-bottom:25px;
+  font-weight:900;
+}
+
+.hero-content p{
+  font-size:19px;
+  line-height:1.9;
+  margin-bottom:38px;
+  color:#e6e6e6;
+}
+
+.hero-btns{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:18px 36px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  border:none;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.btn-primary{
+  background:var(--gradient);
+  color:white;
+  box-shadow:0 15px 35px rgba(13,110,253,0.4);
+}
+
+.btn-primary:hover{
+  transform:translateY(-5px);
+}
+
+.btn-outline{
+  border:2px solid white;
+  color:white;
+  background:transparent;
+}
+
+.btn-outline:hover{
+  background:white;
+  color:var(--primary);
+}
+
+/* ================= STATS ================= */
+
+.stats{
+  width:90%;
+  margin:auto;
+  margin-top:-90px;
+  position:relative;
+  z-index:10;
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:25px;
+}
+
+.stat-card{
+  background:white;
+  padding:40px;
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  text-align:center;
+  transition:.4s;
+}
+
+.stat-card:hover{
+  transform:translateY(-12px);
+}
+
+.stat-card i{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background:var(--gradient);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:auto;
+  margin-bottom:24px;
+  font-size:30px;
+}
+
+.stat-card h2{
+  font-size:42px;
+  color:var(--primary);
+  margin-bottom:10px;
+}
+
+/* ================= SECTION ================= */
+
+section{
+  padding:100px 6%;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.section-title h2{
+  font-size:50px;
+  color:var(--primary);
+  margin-bottom:16px;
+  font-weight:800;
+}
+
+.section-title p{
+  color:var(--text);
+  max-width:760px;
+  margin:auto;
+  line-height:1.9;
+}
+
+/* ================= NOTICE ================= */
+
+.notice-wrapper{
+    display:grid;
+    grid-template-columns:1fr 1fr 380px;
+    gap:30px;
+    align-items:start;
+}
+
+/* PREMIUM LIVE BOARD */
+
+.live-board{
+    position:sticky;
+    top:100px;
+    background:linear-gradient(145deg,#07162f,#10284d);
+    border-radius:30px;
+    overflow:hidden;
+    color:#fff;
+    box-shadow:0 25px 60px rgba(0,0,0,.18);
+}
+
+.live-board-header{
+    background:linear-gradient(135deg,#ff3b30,#ff6b6b);
+    padding:20px;
+    text-align:center;
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.live-board-header span{
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:.3;}
+}
+
+.live-ticker{
+    background:#021022;
+    padding:12px 20px;
+    overflow:hidden;
+    white-space:nowrap;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.live-ticker p{
+    display:inline-block;
+    animation:ticker 18s linear infinite;
+    color:#ffd54f;
+    font-weight:600;
+}
+
+@keyframes ticker{
+    from{
+        transform:translateX(100%);
+    }
+    to{
+        transform:translateX(-100%);
+    }
+}
+
+.notice-scroll{
+    height:500px;
+    overflow:hidden;
+}
+
+.notice-list{
+    animation:scrollUp 25s linear infinite;
+}
+
+.notice-list:hover{
+    animation-play-state:paused;
+}
+
+@keyframes scrollUp{
+    0%{
+        transform:translateY(0);
+    }
+    100%{
+        transform:translateY(-50%);
+    }
+}
+
+.live-card{
+    padding:18px 20px;
+    display:flex;
+    gap:15px;
+    align-items:flex-start;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    transition:.3s;
+}
+
+.live-card:hover{
+    background:rgba(255,255,255,.05);
+}
+
+.notice-icon{
+    width:42px;
+    height:42px;
+    min-width:42px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#0d6efd,#6610f2);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.notice-content h4{
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+.notice-content p{
+    color:#cfd7e6;
+    font-size:13px;
+}
+
+.notice-date{
+    font-size:12px;
+    color:#8fa3c7;
+    margin-top:4px;
+}
+
+@media(max-width:1100px){
+    .notice-wrapper{
+        grid-template-columns:1fr;
+    }
+
+    .live-board{
+        position:relative;
+        top:0;
+    }
+}
+
+/* ================= GALLERY ================= */
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+.gallery img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-radius:28px;
+  transition:.4s;
+  box-shadow:var(--shadow);
+}
+
+.gallery img:hover{
+  transform:scale(1.04);
+}
+
+/* ================= FACILITY ================= */
+
+.facility-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+.facility-card{
+  background:white;
+  border-radius:28px;
+  padding:40px;
+  box-shadow:var(--shadow);
+  transition:.4s;
+  position:relative;
+  overflow:hidden;
+}
+
+.facility-card:hover{
+  transform:translateY(-10px);
+}
+
+.facility-card::before{
+  content:'';
+  position:absolute;
+  width:130px;
+  height:130px;
+  background:rgba(13,110,253,0.08);
+  border-radius:50%;
+  top:-30px;
+  right:-30px;
+}
+
+.facility-card i{
+  width:75px;
+  height:75px;
+  background:var(--gradient);
+  border-radius:22px;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:30px;
+  margin-bottom:25px;
+}
+
+.facility-card h3{
+  margin-bottom:15px;
+  color:var(--primary);
+  font-size:24px;
+}
+
+.facility-card p{
+  color:var(--text);
+  line-height:1.9;
+}
+
+/* ================= QUICK LINKS ================= */
+
+.quick-links{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:25px;
+}
+
+.quick-link{
+  background:var(--gradient);
+  color:white;
+  text-decoration:none;
+  padding:28px;
+  border-radius:24px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  font-weight:600;
+  transition:.4s;
+  box-shadow:0 15px 35px rgba(13,110,253,0.25);
+}
+
+.quick-link:hover{
+  transform:translateY(-8px);
+}
+
+.quick-link i{
+  font-size:26px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:#031126;
+  color:white;
+  padding:90px 6% 30px;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:40px;
+  margin-bottom:40px;
+}
+
+.footer-col h3{
+  margin-bottom:25px;
+  font-size:26px;
+}
+
+.footer-col p{
+  color:#d9d9d9;
+  line-height:1.9;
+  margin-bottom:14px;
+  font-size:15px;
+}
+
+.footer-col a{
+  display:block;
+  color:#d9d9d9;
+  margin-bottom:12px;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.footer-col a:hover{
+  color:white;
+  padding-left:5px;
+}
+
+.social{
+  display:flex;
+  gap:15px;
+  margin-top:20px;
+}
+
+.social a{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.1);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  transition:.3s;
+}
+
+.social a:hover{
+  background:var(--secondary);
+}
+
+.copyright{
+  border-top:1px solid rgba(255,255,255,0.1);
+  text-align:center;
+  padding-top:25px;
+  color:#ccc;
+  font-size:14px;
+}
+
+/* ================= VIDEO POPUP ================= */
+
+.video-popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.92);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+  padding:20px;
+}
+
+.video-popup.active{
+  display:flex;
+}
+
+.video-container{
+  width:90%;
+  max-width:1100px;
+  position:relative;
+}
+
+.video-container video{
+  width:100%;
+  border-radius:25px;
+  box-shadow:0 25px 60px rgba(0,0,0,0.5);
+}
+
+.close-btn{
+  position:absolute;
+  top:-55px;
+  right:0;
+  color:white;
+  font-size:38px;
+  cursor:pointer;
+}
+/* ================= COURSES ================= */
+
+#courses{
+  padding:100px 6%;
+  background:#eef4ff;
+}
+
+.courses-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:35px;
+  margin-top:60px;
+}
+
+.course-card{
+  background:white;
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,0.08);
+  transition:.4s;
+  position:relative;
+}
+
+.course-card:hover{
+  transform:translateY(-12px);
+}
+
+.course-card img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+}
+
+.course-content{
+  padding:30px;
+}
+
+.course-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+  gap:15px;
+}
+
+.course-top h3{
+  font-size:30px;
+  color:var(--primary);
+  font-weight:800;
+}
+
+.course-top span{
+  background:rgba(13,110,253,0.1);
+  color:#0d6efd;
+  padding:8px 16px;
+  border-radius:30px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.course-content p{
+  color:var(--text);
+  line-height:1.9;
+  margin-bottom:30px;
+}
+
+.course-btn{
+  display:inline-block;
+  padding:14px 28px;
+  background:var(--gradient);
+  color:white;
+  text-decoration:none;
+  border-radius:50px;
+  font-weight:600;
+  transition:.3s;
+  box-shadow:0 10px 25px rgba(13,110,253,0.25);
+}
+
+.course-btn:hover{
+  transform:translateY(-4px);
+}
+
+@media(max-width:1100px){
+
+  .courses-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:768px){
+
+  .courses-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+/* ================= RESPONSIVE COURSES ================= */
+
+@media(max-width:1000px){
+
+  .courses-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:768px){
+
+  .courses-grid{
+    grid-template-columns:1fr;
+  }
+
+  .section-title span:first-child{
+    font-size:36px;
+  }
+
+}
+/* ================= ANIMATION ================= */
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1100px){
+
+  .menu{
+    flex-wrap:wrap;
+  }
+
+  .hero-content h1{
+    font-size:56px;
+  }
+
+  .notice-wrapper{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .navbar{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .menu{
+    flex-direction:column;
+    width:100%;
+    margin-top:20px;
+  }
+
+  .dropdown{
+    position:relative;
+    width:100%;
+    display:none;
+    opacity:1;
+    visibility:visible;
+    transform:none;
+  }
+
+  .menu li:hover .dropdown{
+    display:block;
+  }
+
+  .hero{
+    text-align:center;
+  }
+
+  .hero-content h1{
+    font-size:42px;
+  }
+
+  .hero-btns{
+    justify-content:center;
+  }
+
+  .section-title h2{
+    font-size:36px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= TOP BAR ================= -->
+
+<div class="topbar">
+
+  <div class="topbar-left">
+    <span><i class="fa-solid fa-envelope"></i> info@apnacollege.com</span>
+    <span><i class="fa-solid fa-phone"></i> +91 9876543210</span>
+    <span><i class="fa-solid fa-location-dot"></i> Bihar, India</span>
+  </div>
+
+  <div class="topbar-right">
+    <a href="#"><i class="fa-solid fa-user"></i> Web Login</a>
+    <a href="#"><i class="fa-solid fa-graduation-cap"></i> ERP Login</a>
+  </div>
+
+</div>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+
+<div class="logo-circle">
+AC
+</div>
+
+<div class="logo-text">
+<h2>Apna College</h2>
+<p>Official College Website</p>
+</div>
+
+</div>
+
+<!-- ================= MENU ================= -->
+
+<ul class="menu">
+
+<li><a href="#">Home</a></li>
+
+<li>
+<a href="#">About <i class="fa-solid fa-angle-down"></i></a>
+
+<div class="dropdown">
+	<!-- ABOUT MENU -->
+
+	<a th:href="@{/about-college}">About the College</a>
+
+	<a th:href="@{/vision-mission}">Vision & Mission</a>
+
+	<a th:href="@{/faculties}">Faculties</a>
+
+	<a th:href="@{/academic-calendar}">Academic Calendar</a>
+
+	<a th:href="@{/campus-layout}">Campus Layout</a>
+
+	<a th:href="@{/student-support}">Student Support</a>
+
+	<a th:href="@{/internship}">Internship</a>
+
+	<a th:href="@{/scholarship}">Scholarship</a>
+</div>
+</li>
+
+<li>
+<a href="#">Administration <i class="fa-solid fa-angle-down"></i></a>
+
+<div class="dropdown">
+	<a th:href="@{/teaching-staff}">Teaching Staff</a>
+	<a th:href="@{/non-teaching-staff}">Non-Teaching Staff</a>
+	<a th:href="@{/counselling-cell}">Counselling Cell</a>
+	<a th:href="@{/seminar-workshop}">Seminar / Workshop</a>
+	<a th:href="@{/placement-cell}">Placement Cell</a>
+</div>
+</li>
+
+<li>
+<a href="#">Academics <i class="fa-solid fa-angle-down"></i></a>
+
+<div class="dropdown">
+	<a th:href="@{/department}">Department</a>
+	<a th:href="@{/intake-seat}">Intake Seat</a>
+	<a th:href="@{/course-offer}">Course Offer</a>
+	<a th:href="@{/academic-calendar-2}">Academic Calendar</a>
+</div>
+</li>
+
+<li>
+<a href="#">Admission <i class="fa-solid fa-angle-down"></i></a>
+
+<div class="dropdown">
+	<a th:href="@{/apply-admission}">Apply for New Admission</a>
+	<a th:href="@{/guideline}">Guideline</a>
+	<a th:href="@{/registration-process}">Registration Process</a>
+	<a th:href="@{/eligibility-criteria}">Eligibility Criteria</a>
+	<a th:href="@{/fee-structure}">Fee Structure</a>
+</div>
+</li>
+
+<li>
+<a href="#">Facilities <i class="fa-solid fa-angle-down"></i></a>
+
+<div class="dropdown">
+
+<a th:href="@{/facilities/library}">Library</a>
+
+<a th:href="@{/facilities/lab}">Lab</a>
+
+<a th:href="@{/facilities/electricity}">Electricity / Generator</a>
+
+<a th:href="@{/facilities/smart-class}">Smart Classroom</a>
+
+<a th:href="@{/facilities/guest-house}">Guest House</a>
+
+<a th:href="@{/facilities/hostel}">Hostel</a>
+
+<a th:href="@{/facilities/wifi}">Campus Wi-Fi</a>
+
+<a th:href="@{/facilities/parking}">Parking</a>
+
+<a th:href="@{/facilities/health}">Health Care</a>
+
+<a th:href="@{/facilities/boys-room}">Boys Common Room</a>
+
+<a th:href="@{/facilities/girls-room}">Girls Common Room</a>
+
+<a th:href="@{/facilities/cafeteria}">Cafeteria</a>
+
+<a th:href="@{/facilities/seminar}">Seminar Hall</a>
+
+</div>
+</li>
+
+<li>
+<a href="#">Examination <i class="fa-solid fa-angle-down"></i></a>
+
+<div class="dropdown">
+	<a th:href="@{/result}">Result</a>
+	<a th:href="@{/marksheet}">Apply for Marksheet</a>
+	<a th:href="@{/exam-notice}">Examination Notice</a>
+	<a th:href="@{/supporting-staff}">Supporting Staff</a>
+</div>
+</li>
+
+<li>
+<a href="#">Contact <i class="fa-solid fa-angle-down"></i></a>
+
+<div class="dropdown">
+	<a th:href="@{/principal}">Principal</a>
+	<a th:href="@{/college-map}">College Google Map</a>
+	<a th:href="@{/phone}">Phone No</a>
+	<a th:href="@{/email}">Email ID</a>
+</div>
+</li>
+
+</ul>
+
+</div>
+
+</header>
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<span>WELCOME TO APNA COLLEGE</span>
+
+<h1>Build Your Future With Quality Education</h1>
+
+<p>
+Modern smart campus with digital classrooms, advanced labs,
+experienced faculty and placement support for every student.
+</p>
+
+<div class="hero-btns">
+
+<a th:href="@{/admission}" class="btn btn-primary">
+<i class="fa-solid fa-user-graduate"></i>
+New Session Admission
+</a>
+
+<!-- VIDEO BUTTON -->
+
+<button class="btn btn-outline" onclick="openVideo()">
+<i class="fa-solid fa-circle-play"></i>
+Explore Campus
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= STATS ================= -->
+
+<div class="stats">
+
+<div class="stats-grid">
+
+<div class="stat-card">
+<i class="fa-solid fa-users"></i>
+<h2>5000+</h2>
+<p>Students</p>
+</div>
+
+<div class="stat-card">
+<i class="fa-solid fa-book-open"></i>
+<h2>50+</h2>
+<p>Courses</p>
+</div>
+
+<div class="stat-card">
+<i class="fa-solid fa-chalkboard-user"></i>
+<h2>120+</h2>
+<p>Faculty Members</p>
+</div>
+
+<div class="stat-card">
+<i class="fa-solid fa-award"></i>
+<h2>100%</h2>
+<p>Placement Support</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= NOTICE ================= -->
+
+<section>
+
+	<div class="live-board">
+
+	    <div class="live-board-header">
+	        <span>🔴</span> LIVE NOTICE BOARD
+	    </div>
+
+	    <div class="live-ticker">
+	        <p>
+	            Admission Open 2026-27 • Scholarship Form Available • Exam Form Fill-up Started • Placement Drive Registration Open •
+	        </p>
+	    </div>
+
+	    <div class="notice-scroll">
+
+	        <div class="notice-list">
+
+	            <div class="live-card">
+	                <div class="notice-icon">
+	                    <i class="fa-solid fa-graduation-cap"></i>
+	                </div>
+	                <div class="notice-content">
+	                    <h4>Admission Open 2026-27</h4>
+	                    <p>Applications invited for all UG & PG courses.</p>
+	                    <div class="notice-date">03 June 2026</div>
+	                </div>
+	            </div>
+
+	            <div class="live-card">
+	                <div class="notice-icon">
+	                    <i class="fa-solid fa-award"></i>
+	                </div>
+	                <div class="notice-content">
+	                    <h4>Scholarship Form Available</h4>
+	                    <p>Eligible students can apply online.</p>
+	                    <div class="notice-date">02 June 2026</div>
+	                </div>
+	            </div>
+
+	            <div class="live-card">
+	                <div class="notice-icon">
+	                    <i class="fa-solid fa-file-signature"></i>
+	                </div>
+	                <div class="notice-content">
+	                    <h4>Exam Form Fill-up Started</h4>
+	                    <p>Last date without fine: 15 June.</p>
+	                    <div class="notice-date">01 June 2026</div>
+	                </div>
+	            </div>
+
+	            <div class="live-card">
+	                <div class="notice-icon">
+	                    <i class="fa-solid fa-briefcase"></i>
+	                </div>
+	                <div class="notice-content">
+	                    <h4>Placement Drive</h4>
+	                    <p>Top recruiters visiting campus this month.</p>
+	                    <div class="notice-date">31 May 2026</div>
+	                </div>
+	            </div>
+
+	            <div class="live-card">
+	                <div class="notice-icon">
+	                    <i class="fa-solid fa-microchip"></i>
+	                </div>
+	                <div class="notice-content">
+	                    <h4>AI Workshop</h4>
+	                    <p>Free workshop on Artificial Intelligence.</p>
+	                    <div class="notice-date">29 May 2026</div>
+	                </div>
+	            </div>
+
+	            <!-- Duplicate same cards again for seamless infinite scroll -->
+
+	        </div>
+
+	    </div>
+
+	</div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+
+<section>
+
+<div class="section-title">
+
+<h2>College Gallery</h2>
+
+<p>
+Explore our beautiful campus and modern infrastructure.
+</p>
+
+</div>
+
+<div class="gallery">
+
+	<img src="https://images.pexels.com/photos/207684/pexels-photo-207684.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+	<img src="https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+	<img src="https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+	<img src="https://images.pexels.com/photos/159740/library-la-trobe-study-students-159740.jpeg?auto=compress&cs=tinysrgb&w=1200">
+</div>
+
+</section>
+
+<!-- ================= FACILITIES ================= -->
+
+<section>
+
+<div class="section-title">
+
+<h2>Campus Facilities</h2>
+
+<p>
+Smart learning environment with premium facilities for students.
+</p>
+
+</div>
+
+<div class="facility-grid">
+
+<div class="facility-card">
+<i class="fa-solid fa-book"></i>
+<h3>Modern Library</h3>
+<p>
+Large collection of books, journals and digital learning resources.
+</p>
+</div>
+
+<div class="facility-card">
+<i class="fa-solid fa-computer"></i>
+<h3>Advanced Lab</h3>
+<p>
+Fully equipped computer and science laboratories.
+</p>
+</div>
+
+<div class="facility-card">
+<i class="fa-solid fa-wifi"></i>
+<h3>Campus Wi-Fi</h3>
+<p>
+High speed internet access throughout the campus.
+</p>
+</div>
+
+<div class="facility-card">
+<i class="fa-solid fa-hotel"></i>
+<h3>Hostel Facility</h3>
+<p>
+Safe and secure hostel facility for boys and girls.
+</p>
+</div>
+
+<div class="facility-card">
+<i class="fa-solid fa-mug-hot"></i>
+<h3>Cafeteria</h3>
+<p>
+Hygienic and healthy food available inside campus.
+</p>
+</div>
+
+<div class="facility-card">
+<i class="fa-solid fa-chalkboard"></i>
+<h3>Smart Classroom</h3>
+<p>
+Interactive digital smart classrooms with projector system.
+</p>
+</div>
+
+</div>
+
+</section>
+<!-- ================= COURSES SECTION ================= -->
+
+<section id="courses">
+
+<div class="container">
+
+<div class="section-title">
+<h2>Our Premium Courses</h2>
+
+<p>
+Choose your dream course and build your career with practical learning,
+industry projects and placement support.
+</p>
+</div>
+
+<!-- ================= UG COURSES ================= -->
+
+<div class="section-title" style="margin-top:40px;">
+<h2 style="font-size:38px;">UG Courses</h2>
+</div>
+
+<div class="courses-grid">
+
+<!-- BTECH -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<div class="course-top">
+<h3>B.Tech</h3>
+<span>Engineering</span>
+</div>
+
+<p>
+Computer Science, AI, Data Science,
+Mechanical, Civil and modern engineering programs.
+</p>
+
+<a th:href="@{/course/btech}" class="course-btn">View Details</a>
+
+
+</div>
+</div>
+
+<!-- BCA -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<div class="course-top">
+<h3>B.C.A</h3>
+<span>Coding</span>
+</div>
+
+<p>
+Full Stack Development, Cloud Computing,
+Web Design and AI fundamentals.
+</p>
+<a th:href="@{/course/bca}" class="course-btn">View Details</a>
+
+
+</div>
+</div>
+
+<!-- BBA -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<div class="course-top">
+<h3>B.B.A</h3>
+<span>Business</span>
+</div>
+
+<p>
+Marketing, HR Management,
+Finance and Business Analytics.
+</p>
+
+<a th:href="@{/course/bba}" class="course-btn">View Details</a>
+
+</div>
+</div>
+
+<!-- BSC -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<div class="course-top">
+<h3>B.Sc</h3>
+<span>Science</span>
+</div>
+
+<p>
+Physics, Chemistry, Mathematics,
+Biotechnology and Computer Science.
+</p>
+
+<a th:href="@{/course/bsc}" class="course-btn">View Details</a>
+
+</div>
+</div>
+
+<!-- BA -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<div class="course-top">
+<h3>B.A</h3>
+<span>Arts</span>
+</div>
+
+<p>
+English, History, Political Science,
+Psychology and Sociology programs.
+</p>
+
+<a th:href="@{/course/ba}" class="course-btn">View Details</a>
+
+</div>
+</div>
+
+<!-- BCOM -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/4386321/pexels-photo-4386321.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<div class="course-top">
+<h3>B.Com</h3>
+<span>Commerce</span>
+</div>
+
+<p>
+Accounting, Taxation, Banking,
+Finance and Business Management.
+</p>
+
+<a th:href="@{/course/bcom}" class="course-btn">View Details</a>
+
+</div>
+</div>
+
+<!-- HIDDEN UG COURSES -->
+
+<div class="course-card more-ug" style="display:none;">
+
+<img src="https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<div class="course-top">
+<h3>Diploma</h3>
+<span>Technical</span>
+</div>
+
+<p>
+Practical technical education in
+engineering and computer applications.
+</p>
+
+<a th:href="@{/course/diploma}" class="course-btn">View Details</a>
+
+</div>
+</div>
+
+</div>
+
+<!-- UG BUTTON -->
+
+<div style="text-align:center; margin-top:40px;">
+
+<button class="course-btn" onclick="showUGCourses()" id="ugBtn">
+Show More UG Courses
+</button>
+
+</div>
+
+<!-- ================= PG COURSES ================= -->
+
+<div class="section-title" style="margin-top:80px;">
+<h2 style="font-size:38px;">PG Courses</h2>
+</div>
+
+<div class="courses-grid">
+
+<!-- MCA -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<div class="course-top">
+<h3>M.C.A</h3>
+<span>Advanced</span>
+</div>
+
+<p>
+Advanced Full Stack Development,
+Cyber Security, AI/ML and Cloud.
+</p>
+
+<a th:href="@{/course/mca}" class="course-btn">View Details</a>
+
+</div>
+</div>
+
+<!-- MBA -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<div class="course-top">
+<h3>M.B.A</h3>
+<span>Management</span>
+</div>
+
+<p>
+Marketing, Finance, HR,
+Operations and Business Leadership.
+</p>
+
+<a th:href="@{/course/mba}" class="course-btn">View Details</a>
+
+</div>
+</div>
+
+<!-- MSC -->
+
+<div class="course-card">
+
+<img src="https://images.pexels.com/photos/2280549/pexels-photo-2280549.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<div class="course-top">
+<h3>M.Sc</h3>
+<span>Research</span>
+</div>
+
+<p>
+Advanced scientific research in
+Physics, Chemistry and Mathematics.
+</p>
+
+<a th:href="@{/course/msc}" class="course-btn">View Details</a>
+
+</div>
+</div>
+
+<!-- HIDDEN PG COURSES -->
+
+<div class="course-card more-pg" style="display:none;">
+
+<img src="https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<div class="course-top">
+<h3>M.A</h3>
+<span>Humanities</span>
+</div>
+
+<p>
+Postgraduate education in
+English, History and Political Science.
+</p>
+
+<a th:href="@{/course/ma}" class="course-btn">View Details</a>
+
+</div>
+</div>
+
+<!-- MTECH -->
+
+<div class="course-card more-pg" style="display:none;">
+
+<img src="https://images.pexels.com/photos/3862130/pexels-photo-3862130.jpeg?auto=compress&cs=tinysrgb&w=1200">
+
+<div class="course-content">
+
+<div class="course-top">
+<h3>M.Tech</h3>
+<span>Engineering</span>
+</div>
+
+<p>
+Advanced engineering specialization in
+AI, Robotics, Data Science and Software Systems.
+</p>
+
+<a th:href="@{/course/mtech}" class="course-btn">View Details</a>
+
+</div>
+</div>
+
+</div>
+
+<!-- PG BUTTON -->
+
+<div style="text-align:center; margin-top:40px;">
+
+<button class="course-btn" onclick="showPGCourses()" id="pgBtn">
+Show More PG Courses
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= SHOW MORE SCRIPT ================= -->
+
+<script>
+
+function showUGCourses(){
+
+  const ugCourses = document.querySelectorAll(".more-ug");
+
+  ugCourses.forEach(course => {
+    course.style.display = "block";
+  });
+
+  document.getElementById("ugBtn").style.display = "none";
+}
+
+function showPGCourses(){
+
+  const pgCourses = document.querySelectorAll(".more-pg");
+
+  pgCourses.forEach(course => {
+    course.style.display = "block";
+  });
+
+  document.getElementById("pgBtn").style.display = "none";
+}
+
+</script>
+<!-- ================= QUICK LINKS ================= -->
+
+<section>
+
+<div class="section-title">
+
+<h2>Quick Links</h2>
+
+<p>
+Access all important student services instantly.
+</p>
+
+</div>
+
+<div class="quick-links">
+
+    <a th:href="@{/admission}" class="quick-link">
+        <i class="fa-solid fa-user-plus"></i>
+        Admission Form
+    </a>
+
+    <a th:href="@{/payment}" class="quick-link">
+        <i class="fa-solid fa-credit-card"></i>
+        Online Payment
+    </a>
+
+    <a th:href="@{/loginStudent}" class="quick-link">
+        <i class="fa-solid fa-user"></i>
+        Student Login
+    </a>
+
+    <a th:href="@{/loginStaff}" class="quick-link">
+        <i class="fa-solid fa-user-tie"></i>
+        Staff Login
+    </a>
+
+    <a th:href="@{/loginAdmin}" class="quick-link">
+        <i class="fa-solid fa-lock"></i>
+        Admin Login
+    </a>
+
+    <a th:href="@{/result}" class="quick-link">
+        <i class="fa-solid fa-file-lines"></i>
+        Examination Result
+    </a>
+
+    <a th:href="@{/scholarship}" class="quick-link">
+        <i class="fa-solid fa-graduation-cap"></i>
+        Scholarship
+    </a>
+
+    <a th:href="@{/examination}" class="quick-link">
+        <i class="fa-solid fa-book-open"></i>
+        Examination Portal
+    </a>
+
+</div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footer-grid">
+
+<div class="footer-col">
+
+<h3>About College</h3>
+
+<p>
+Apna College is committed to providing quality education,
+skill development and career opportunities to students.
+</p>
+
+<div class="social">
+
+<a href="https://www.facebook.com"
+   target="_blank">
+   <i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="https://www.instagram.com"
+   target="_blank">
+   <i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://www.linkedin.com"
+   target="_blank">
+   <i class="fab fa-linkedin-in"></i>
+</a>
+
+<a href="https://www.youtube.com"
+   target="_blank">
+   <i class="fab fa-youtube"></i>
+</a>
+
+</div>
+
+</div>
+
+<div class="footer-col">
+
+	<h3>Important Links</h3>
+
+	<a th:href="@{/admission}">Admission</a>
+
+	<a th:href="@{/result}">Result</a>
+
+	<a th:href="@{/scholarship}">Scholarship</a>
+
+	<a th:href="@{/loginStudent}">Student ERP Login</a>
+
+	<a th:href="@{/loginStaff}">Staff ERP Login</a>
+
+	<a th:href="@{/loginAdmin}">Admin ERP Login</a>
+
+	<a th:href="@{/examination}">Examination</a>
+</div>
+
+<div class="footer-col">
+
+<h3>Contact Information</h3>
+
+<p><i class="fa-solid fa-phone"></i> +91 9876543210</p>
+
+<p><i class="fa-solid fa-envelope"></i> info@apnacollege.com</p>
+
+<p><i class="fa-solid fa-location-dot"></i> Bihar, India</p>
+
+</div>
+
+</div>
+
+<div class="copyright">
+© 2026 Apna College. All Rights Reserved.
+</div>
+
+</footer>
+
+<!-- ================= VIDEO POPUP ================= -->
+
+<div class="video-popup" id="videoPopup">
+
+<div class="video-container">
+
+<div class="close-btn" onclick="closeVideo()">
+<i class="fa-solid fa-xmark"></i>
+</div>
+
+<!-- ADD YOUR 20-30 SECOND VIDEO HERE -->
+
+<video id="campusVideo" controls>
+
+<source src="college-campus.mp4" type="video/mp4">
+
+</video>
+
+</div>
+
+</div>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+const popup = document.getElementById("videoPopup");
+const video = document.getElementById("campusVideo");
+
+function openVideo(){
+  popup.classList.add("active");
+  video.play();
+}
+
+function closeVideo(){
+  popup.classList.remove("active");
+  video.pause();
+  video.currentTime = 0;
+}
+
+window.addEventListener("click", function(e){
+  if(e.target === popup){
+    closeVideo();
+  }
+});
+
+</script>
+
+</body>
+</html>
