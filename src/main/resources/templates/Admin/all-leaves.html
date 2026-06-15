@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>All Leave Applications | Apna College</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+    padding:30px;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+}
+
+.header{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    margin-bottom:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header h2{
+    color:#071952;
+}
+
+.header p{
+    color:#64748b;
+    margin-top:5px;
+}
+
+.back-btn{
+    text-decoration:none;
+    background:#0d6efd;
+    color:white;
+    padding:12px 20px;
+    border-radius:10px;
+    font-weight:600;
+}
+
+.table-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+    margin-bottom:30px;
+}
+
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+    border-bottom:1px solid #eee;
+}
+
+.section-header h3{
+    color:#071952;
+}
+
+.show-btn{
+    border:none;
+    background:#2563eb;
+    color:white;
+    padding:10px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.show-btn:hover{
+    background:#1d4ed8;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:linear-gradient(135deg,#0d6efd,#6610f2);
+}
+
+thead th{
+    color:white;
+    padding:16px;
+    text-align:left;
+}
+
+tbody td{
+    padding:16px;
+    border-bottom:1px solid #eee;
+}
+
+tbody tr:hover{
+    background:#f8fbff;
+}
+
+.pending{
+    background:#fff3cd;
+    color:#856404;
+    padding:7px 12px;
+    border-radius:20px;
+    font-size:13px;
+}
+
+.approved{
+    background:#d1fae5;
+    color:#065f46;
+    padding:7px 12px;
+    border-radius:20px;
+    font-size:13px;
+}
+
+.rejected{
+    background:#fee2e2;
+    color:#991b1b;
+    padding:7px 12px;
+    border-radius:20px;
+    font-size:13px;
+}
+
+.view-btn{
+    background:#2563eb;
+    color:white;
+    padding:8px 14px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.view-btn:hover{
+    background:#1d4ed8;
+}
+
+.student-hidden,
+.staff-hidden{
+    display:none;
+}
+
+@media(max-width:900px){
+
+    body{
+        padding:15px;
+    }
+
+    .header{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+
+    .table-card{
+        overflow-x:auto;
+    }
+
+    table{
+        min-width:900px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <div>
+            <h2>All Leave Applications</h2>
+            <p>Student & Staff Leave Records</p>
+        </div>
+
+		<a th:href="@{/indexAdmin}"
+		   class="back-btn">
+		    <i class="fa-solid fa-arrow-left"></i>
+		    Dashboard
+		</a>
+    </div>
+
+    <!-- ========================= -->
+    <!-- STUDENT LEAVES -->
+    <!-- ========================= -->
+
+    <div class="table-card">
+
+        <div class="section-header">
+
+            <h3>Student Leave Applications</h3>
+
+            <button id="studentBtn"
+                    class="show-btn"
+                    onclick="showStudents()">
+                Show More Students
+            </button>
+
+        </div>
+
+        <table>
+
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Leave Type</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="leave,stat : ${studentLeaves}"
+                th:class="${stat.index >= 5} ? 'student-hidden' : ''">
+
+                <td th:text="${leave.id}"></td>
+
+                <td th:text="${leave.name}"></td>
+
+                <td th:text="${leave.leaveType}"></td>
+
+                <td th:text="${leave.fromDate}"></td>
+
+                <td th:text="${leave.toDate}"></td>
+
+                <td>
+
+                    <span th:if="${leave.status=='Pending'}"
+                          class="pending">
+                        Pending
+                    </span>
+
+                    <span th:if="${leave.status=='Approved'}"
+                          class="approved">
+                        Approved
+                    </span>
+
+                    <span th:if="${leave.status=='Rejected'}"
+                          class="rejected">
+                        Rejected
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <a th:href="@{/admin/viewLeave/{id}(id=${leave.id})}"
+                       class="view-btn">
+                        View
+                    </a>
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- STAFF LEAVES -->
+    <!-- ========================= -->
+
+    <div class="table-card">
+
+        <div class="section-header">
+
+            <h3>Staff Leave Applications</h3>
+
+            <button id="staffBtn"
+                    class="show-btn"
+                    onclick="showStaff()">
+                Show More Staff
+            </button>
+
+        </div>
+
+        <table>
+
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Leave Type</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="leave,stat : ${staffLeaves}"
+                th:class="${stat.index >= 5} ? 'staff-hidden' : ''">
+
+                <td th:text="${leave.id}"></td>
+
+                <td th:text="${leave.name}"></td>
+
+                <td th:text="${leave.leaveType}"></td>
+
+                <td th:text="${leave.fromDate}"></td>
+
+                <td th:text="${leave.toDate}"></td>
+
+                <td>
+
+                    <span th:if="${leave.status=='Pending'}"
+                          class="pending">
+                        Pending
+                    </span>
+
+                    <span th:if="${leave.status=='Approved'}"
+                          class="approved">
+                        Approved
+                    </span>
+
+                    <span th:if="${leave.status=='Rejected'}"
+                          class="rejected">
+                        Rejected
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <a th:href="@{/admin/viewLeave/{id}(id=${leave.id})}"
+                       class="view-btn">
+                        View
+                    </a>
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script>
+
+function showStudents(){
+
+    document
+        .querySelectorAll(".student-hidden")
+        .forEach(function(row){
+            row.style.display="table-row";
+        });
+
+    document
+        .getElementById("studentBtn")
+        .style.display="none";
+}
+
+function showStaff(){
+
+    document
+        .querySelectorAll(".staff-hidden")
+        .forEach(function(row){
+            row.style.display="table-row";
+        });
+
+    document
+        .getElementById("staffBtn")
+        .style.display="none";
+}
+
+</script>
+
+</body>
+</html>

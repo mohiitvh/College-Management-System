@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Certificates | Apna College</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#eef2ff,#f8fafc);
+    padding:30px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+/* HEADER */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+    padding:20px 25px;
+    background:white;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+}
+
+.header h2{
+    color:#1e293b;
+    font-size:24px;
+}
+
+.header span{
+    color:#64748b;
+    font-size:13px;
+}
+
+.back-btn{
+    text-decoration:none;
+    background:linear-gradient(135deg,#6366f1,#3b82f6);
+    color:#fff;
+    padding:10px 18px;
+    border-radius:10px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.back-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 20px rgba(59,130,246,.25);
+}
+
+/* TABLE CARD */
+.table-card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:linear-gradient(135deg,#6366f1,#3b82f6);
+    color:white;
+}
+
+th{
+    padding:16px;
+    text-align:left;
+    font-size:14px;
+    letter-spacing:.3px;
+}
+
+td{
+    padding:16px;
+    border-bottom:1px solid #eef2f7;
+    font-size:14px;
+    color:#334155;
+}
+
+tbody tr:hover{
+    background:#f8fbff;
+    transition:.2s;
+}
+
+/* BADGES */
+.badge{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+    display:inline-block;
+}
+
+.pending{
+    background:#fff7cd;
+    color:#a16207;
+}
+
+.approved{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.rejected{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+/* BUTTON */
+.download-btn{
+    text-decoration:none;
+    background:linear-gradient(135deg,#10b981,#059669);
+    color:white;
+    padding:8px 14px;
+    border-radius:10px;
+    font-size:13px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.download-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 20px rgba(16,185,129,.25);
+}
+
+.not-available{
+    color:#94a3b8;
+    font-weight:600;
+    font-size:13px;
+}
+
+/* EMPTY STATE */
+.empty{
+    text-align:center;
+    padding:50px;
+    color:#64748b;
+    font-weight:500;
+}
+
+.empty::before{
+    content:"📄";
+    display:block;
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    table{
+        min-width:900px;
+    }
+
+    .header{
+        flex-direction:column;
+        gap:12px;
+        align-items:flex-start;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+    <div>
+        <h2>My Certificates</h2>
+        <span>Track all your certificate requests</span>
+    </div>
+
+    <a th:href="@{/indexStudent}" class="back-btn">
+        ← Back
+    </a>
+</div>
+
+<div class="table-card">
+
+<table>
+
+<thead>
+<tr>
+    <th>ID</th>
+    <th>Certificate Type</th>
+    <th>Status</th>
+    <th>Apply Date</th>
+    <th>Download</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr th:if="${#lists.isEmpty(certificates)}">
+    <td colspan="5" class="empty">
+        No Certificate Requests Found
+    </td>
+</tr>
+
+<tr th:each="c : ${certificates}">
+
+    <td th:text="${c.id}"></td>
+
+    <td th:text="${c.certificateType}"></td>
+
+    <td>
+        <span th:if="${c.status=='PENDING'}" class="badge pending">Pending</span>
+        <span th:if="${c.status=='APPROVED'}" class="badge approved">Approved</span>
+        <span th:if="${c.status=='REJECTED'}" class="badge rejected">Rejected</span>
+    </td>
+
+    <td th:text="${c.applyDate}"></td>
+
+    <td>
+        <span th:if="${c.status=='APPROVED'}">
+            <a th:href="@{'/student/certificate/download/' + ${c.id}}"
+               class="download-btn">
+                Download
+            </a>
+        </span>
+
+        <span th:if="${c.status!='APPROVED'}"
+              class="not-available">
+            Not Available
+        </span>
+    </td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Staff</title>
+
+    <style>
+		*{
+		    margin:0;
+		    padding:0;
+		    box-sizing:border-box;
+		    font-family:'Poppins',sans-serif;
+		}
+
+		body{
+		    background:#f5f7fb;
+		    padding:30px;
+		}
+
+		.header{
+		    display:flex;
+		    justify-content:space-between;
+		    align-items:center;
+		    margin-bottom:25px;
+		}
+
+		.header h1{
+		    color:#1e293b;
+		}
+
+		.back-btn{
+		    text-decoration:none;
+		    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+		    color:white;
+		    padding:12px 20px;
+		    border-radius:10px;
+		    font-weight:600;
+		}
+
+		.back-btn:hover{
+		    transform:translateY(-2px);
+		}
+
+		.box{
+		    background:white;
+		    padding:25px;
+		    border-radius:20px;
+		    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+		}
+
+		table{
+		    width:100%;
+		    border-collapse:collapse;
+		}
+
+		th{
+		    background:#198754;
+		    color:white;
+		    padding:15px;
+		    font-size:15px;
+		}
+
+		td{
+		    padding:15px;
+		    text-align:center;
+		    border-bottom:1px solid #eee;
+		}
+
+		tr:hover{
+		    background:#f8fafc;
+		}
+
+		.staff-photo{
+		    width:60px;
+		    height:60px;
+		    border-radius:50%;
+		    object-fit:cover;
+		    border:3px solid #198754;
+		}
+
+		.badge{
+		    background:#dcfce7;
+		    color:#166534;
+		    padding:6px 12px;
+		    border-radius:20px;
+		    font-size:13px;
+		    font-weight:600;
+		}
+
+		@media(max-width:768px){
+		    body{
+		        padding:15px;
+		    }
+
+		    table{
+		        font-size:13px;
+		    }
+
+		    .staff-photo{
+		        width:45px;
+		        height:45px;
+		    }
+		}
+    </style>
+</head>
+
+<body>
+	<div class="header">
+
+	    <h1>👨‍🏫 Staff Management</h1>
+
+	    <a th:href="@{/indexAdmin}" class="back-btn">
+	        ← Back Dashboard
+	    </a>
+
+	</div>
+	
+
+<div class="box">
+
+	<h2 style="margin-bottom:20px;color:#198754;">
+	    All Staff Members
+	</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="st : ${staffList}">
+            <td th:text="${st.id}"></td>
+
+            <td>
+				<img class="staff-photo"
+				     th:src="@{/staff/photo/{id}(id=${st.id})}">
+            </td>
+
+            <td th:text="${st.name}"></td>
+            <td th:text="${st.email}"></td>
+			<td>
+			    <span class="badge"
+			          th:text="${st.department}">
+			    </span>
+			</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

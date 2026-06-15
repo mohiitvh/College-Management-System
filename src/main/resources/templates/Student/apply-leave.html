@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Apply Leave | Student Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7ff;
+}
+
+/* HEADER */
+.header{
+    background:linear-gradient(135deg,#0d6efd,#6610f2);
+    color:white;
+    padding:40px 20px;
+    text-align:center;
+    border-radius:0 0 30px 30px;
+}
+
+.header h1{
+    font-size:34px;
+    margin-bottom:5px;
+}
+
+.header p{
+    opacity:0.9;
+}
+
+/* CONTAINER */
+.container{
+    max-width:900px;
+    margin:-40px auto 40px;
+    padding:0 20px;
+}
+
+/* CARD */
+.form-card{
+    background:white;
+    border-radius:25px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+/* TITLE */
+.form-title{
+    font-size:22px;
+    color:#071952;
+    margin-bottom:25px;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+/* FORM GRID */
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+/* INPUTS */
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    color:#475569;
+    font-weight:500;
+    font-size:14px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px 15px;
+    border:1px solid #e2e8f0;
+    border-radius:14px;
+    outline:none;
+    font-size:14px;
+    transition:0.3s;
+    background:#f8fafc;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#0d6efd;
+    background:white;
+    box-shadow:0 0 0 4px rgba(13,110,253,0.1);
+}
+
+textarea{
+    min-height:120px;
+    resize:none;
+}
+
+/* BUTTONS */
+.btn-area{
+    display:flex;
+    gap:15px;
+    margin-top:25px;
+}
+
+.submit-btn{
+    flex:1;
+    background:linear-gradient(135deg,#0d6efd,#6610f2);
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:14px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.reset-btn{
+    flex:1;
+    background:#e2e8f0;
+    color:#071952;
+    border:none;
+    padding:14px;
+    border-radius:14px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.submit-btn:hover,
+.reset-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .row{
+        grid-template-columns:1fr;
+    }
+
+    .form-card{
+        padding:25px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1><i class="fa-solid fa-calendar-plus"></i> Apply Leave</h1>
+    <p>Submit your leave request easily from student portal</p>
+</div>
+
+<div class="container">
+
+<div class="form-card">
+
+<h2 class="form-title">
+    <i class="fa-solid fa-file-pen"></i>
+    Leave Application Form
+</h2>
+
+<form th:action="@{/student/save-leave}"
+      method="post"
+      enctype="multipart/form-data">
+
+<div class="form-group">
+<label>Student Name</label>
+<input type="text" name="name" required>
+</div>
+
+<div class="row">
+
+<div class="form-group">
+<label>Leave Type</label>
+<select name="leaveType" required>
+<option value="">Select Leave Type</option>
+<option>Sick Leave</option>
+<option>Medical Leave</option>
+<option>Personal Leave</option>
+<option>Emergency Leave</option>
+<option>Academic Leave</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Total Days</label>
+<input type="number" name="totalDays" required>
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="form-group">
+<label>From Date</label>
+<input type="date" name="fromDate" required>
+</div>
+
+<div class="form-group">
+<label>To Date</label>
+<input type="date" name="toDate" required>
+</div>
+
+</div>
+
+<div class="form-group">
+<label>Reason</label>
+<textarea name="reason" placeholder="Write your leave reason..." required></textarea>
+</div>
+
+<div class="form-group">
+<label>Attachment (Optional)</label>
+<input type="file" name="file">
+</div>
+
+<div class="btn-area">
+
+<button type="submit" class="submit-btn">
+    <i class="fa-solid fa-paper-plane"></i> Submit Leave
+</button>
+
+<button type="reset" class="reset-btn">
+    Reset
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>

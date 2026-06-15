@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Leave Management | Admin Panel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+}
+
+.container{
+    padding:30px;
+}
+
+/* HEADER */
+
+.header{
+    background:white;
+    border-radius:20px;
+    padding:25px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    margin-bottom:25px;
+}
+
+.header-left h2{
+    color:#071952;
+    font-size:28px;
+}
+
+.header-left p{
+    color:#64748b;
+    margin-top:5px;
+}
+
+.back-btn{
+    text-decoration:none;
+    background:linear-gradient(135deg,#6d28d9,#9333ea);
+    color:white;
+    padding:12px 20px;
+    border-radius:12px;
+    font-weight:600;
+}
+
+.back-btn:hover{
+    opacity:.9;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h3{
+    color:#64748b;
+    font-size:15px;
+    margin-bottom:10px;
+}
+
+.card h1{
+    color:#071952;
+    font-size:35px;
+}
+
+.total{
+    border-left:6px solid #3b82f6;
+}
+
+.pending{
+    border-left:6px solid #f59e0b;
+}
+
+.approved{
+    border-left:6px solid #10b981;
+}
+
+.rejected{
+    border-left:6px solid #ef4444;
+}
+
+/* ACTION SECTION */
+
+.action-section{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.action-section h3{
+    color:#071952;
+    margin-bottom:20px;
+}
+
+.actions{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.action-btn{
+    text-decoration:none;
+    padding:20px;
+    text-align:center;
+    border-radius:15px;
+    color:white;
+    font-weight:600;
+    font-size:16px;
+    transition:.3s;
+}
+
+.action-btn:hover{
+    transform:translateY(-3px);
+}
+
+.view-all{
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
+}
+
+.pending-btn{
+    background:linear-gradient(135deg,#f59e0b,#f97316);
+}
+
+.approved-btn{
+    background:linear-gradient(135deg,#10b981,#059669);
+}
+
+.rejected-btn{
+    background:linear-gradient(135deg,#ef4444,#dc2626);
+}
+
+/* RECENT TABLE */
+
+.table-card{
+    background:white;
+    margin-top:30px;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.table-header{
+    background:linear-gradient(135deg,#6d28d9,#9333ea);
+    color:white;
+    padding:18px 25px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#f8fafc;
+    padding:15px;
+    text-align:left;
+}
+
+td{
+    padding:15px;
+    border-top:1px solid #e5e7eb;
+}
+
+.status{
+    padding:7px 15px;
+    border-radius:25px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.pending-status{
+    background:#fff3cd;
+    color:#856404;
+}
+
+.approved-status{
+    background:#d1fae5;
+    color:#065f46;
+}
+
+.rejected-status{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .container{
+        padding:15px;
+    }
+
+    .header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    table{
+        min-width:700px;
+    }
+
+	.table-card{
+	    background:#fff;
+	    border-radius:25px;
+	    overflow:hidden;
+	    box-shadow:0 20px 40px rgba(0,0,0,.08);
+	}
+
+	tbody tr{
+	    transition:.3s;
+	}
+
+	tbody tr:hover{
+	    background:#f8faff;
+	    transform:scale(1.01);
+	}
+
+	.table-header{
+	    background:linear-gradient(135deg,#2563eb,#7c3aed);
+	    padding:20px 25px;
+	}
+
+	.table-header h3{
+	    font-size:20px;
+	    font-weight:700;
+	}
+	
+	.view-btn{
+	    background:linear-gradient(135deg,#2563eb,#7c3aed);
+	    color:#fff;
+	    padding:8px 14px;
+	    border-radius:10px;
+	    text-decoration:none;
+	    font-size:13px;
+	    font-weight:600;
+	    display:inline-block;
+	}
+
+	.view-btn:hover{
+	    transform:translateY(-2px);
+	    box-shadow:0 8px 20px rgba(37,99,235,.25);
+	}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="header-left">
+            <h2>Leave Management Dashboard</h2>
+            <p>Manage Student & Staff Leave Requests</p>
+        </div>
+
+        <a href="/indexAdmin" class="back-btn">
+            Back Dashboard
+        </a>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="cards">
+
+		<div class="card total">
+		    <h3>Total Leave Requests</h3>
+		    <h1 th:text="${totalLeaves}">0</h1>
+		</div>
+
+		<div class="card pending">
+		    <h3>Pending Requests</h3>
+		    <h1 th:text="${pendingLeaves}">0</h1>
+		</div>
+
+		<div class="card approved">
+		    <h3>Approved Requests</h3>
+		    <h1 th:text="${approvedLeaves}">0</h1>
+		</div>
+
+		<div class="card rejected">
+		    <h3>Rejected Requests</h3>
+		    <h1 th:text="${rejectedLeaves}">0</h1>
+		</div>
+
+    </div>
+
+    <!-- ACTIONS -->
+
+    <div class="actions">
+
+    <a th:href="@{/allLeaves}"
+       class="action-btn view-all">
+       View All Leaves
+    </a>
+
+    <a th:href="@{/allLeaves}"
+       class="action-btn pending-btn">
+       Manage Pending Leaves
+    </a>
+
+    <a th:href="@{/allLeaves}"
+       class="action-btn approved-btn">
+       Approved Leaves
+    </a>
+
+    <a th:href="@{/allLeaves}"
+       class="action-btn rejected-btn">
+       Rejected Leaves
+    </a>
+
+</div>
+
+    <!-- RECENT LEAVES -->
+
+    <div class="table-card">
+
+        <div class="table-header">
+            <h3>Recent Leave Requests</h3>
+        </div>
+
+        <table>
+
+			<thead>
+			<tr>
+			    <th>ID</th>
+			    <th>Name</th>
+			    <th>Role</th>
+			    <th>Leave Type</th>
+			    <th>From</th>
+			    <th>To</th>
+			    <th>Status</th>
+			    <th>Action</th>
+			</tr>
+			</thead>
+            <tbody>
+
+<tr th:each="leave : ${recentLeaves}">
+
+    <td th:text="${leave.id}"></td>
+    <td th:text="${leave.name}"></td>
+    <td th:text="${leave.role}"></td>
+    <td th:text="${leave.leaveType}"></td>
+
+    <td th:text="${#temporals.format(leave.fromDate,'dd MMM yyyy')}"></td>
+
+    <td th:text="${#temporals.format(leave.toDate,'dd MMM yyyy')}"></td>
+
+    <td>
+        <span th:if="${leave.status == 'Pending'}"
+              class="status pending-status">
+            Pending
+        </span>
+
+        <span th:if="${leave.status == 'Approved'}"
+              class="status approved-status">
+            Approved
+        </span>
+
+        <span th:if="${leave.status == 'Rejected'}"
+              class="status rejected-status">
+            Rejected
+        </span>
+    </td>
+
+    <td>
+        <a th:href="@{'/admin/viewLeave/' + ${leave.id}}"
+           class="view-btn">
+           View
+        </a>
+    </td>
+
+</tr>
+
+</tbody>
+
+        </table>
+		
+		
+
+    </div>
+
+</div>
+
+</body>
+</html>

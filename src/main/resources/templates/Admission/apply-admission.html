@@ -7,81 +7,276 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body{
-    margin:0;
-    font-family:Poppins;
-    background:linear-gradient(135deg,#0f172a,#1e293b);
-    color:white;
-}
+	*{
+	    margin:0;
+	    padding:0;
+	    box-sizing:border-box;
+	    font-family:'Poppins',sans-serif;
+	}
 
-/* HEADER */
-.header{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:15px;
-    padding:20px;
-    background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(10px);
-}
+	body{
+	    min-height:100vh;
+	    background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+	    display:flex;
+	    flex-direction:column;
+	}
 
-.header img{
-    height:60px;
-    border-radius:10px;
-}
+	/* HEADER */
 
-/* CONTENT */
-.container{
-    max-width:900px;
-    margin:40px auto;
-    padding:20px;
-}
+	.header{
+	    width:100%;
+	    padding:18px 40px;
+	    display:flex;
+	    align-items:center;
+	    gap:15px;
+	    background:rgba(255,255,255,.08);
+	    backdrop-filter:blur(15px);
+	    border-bottom:1px solid rgba(255,255,255,.1);
+	}
 
-.card{
-    background:rgba(255,255,255,0.08);
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
-}
+	.header img{
+	    width:65px;
+	    height:65px;
+	    border-radius:15px;
+	    background:white;
+	    padding:5px;
+	}
 
-h2{
-    color:#38bdf8;
-}
+	.header h2{
+	    color:white;
+	    font-size:30px;
+	    font-weight:700;
+	}
 
-p, li{
-    line-height:1.7;
-    color:#e2e8f0;
-}
+	/* CONTAINER */
 
-/* BACK BUTTON */
-.back-btn{
-    display:inline-block;
-    margin-top:20px;
-    padding:10px 18px;
-    background:#38bdf8;
-    color:black;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:600;
-}
-.back-btn:hover{
-    background:#0ea5e9;
-}
+	.container{
+	    flex:1;
+	    display:flex;
+	    justify-content:center;
+	    align-items:center;
+	    padding:40px;
+	}
+
+	/* CARD */
+
+	.card{
+
+	    width:100%;
+	    max-width:800px;
+
+	    background:rgba(255,255,255,.10);
+
+	    backdrop-filter:blur(20px);
+
+	    border:1px solid rgba(255,255,255,.15);
+
+	    border-radius:30px;
+
+	    padding:50px;
+
+	    text-align:center;
+
+	    box-shadow:
+	    0 20px 50px rgba(0,0,0,.25);
+
+	}
+
+	.card h2{
+
+	    color:#fff;
+
+	    font-size:42px;
+
+	    margin-bottom:20px;
+
+	}
+
+	.card p{
+
+	    color:#dbeafe;
+
+	    font-size:18px;
+
+	    line-height:1.8;
+
+	    margin-bottom:40px;
+
+	}
+
+	/* BUTTONS */
+
+	.hero-btns{
+
+	    display:flex;
+
+	    justify-content:center;
+
+	    gap:20px;
+
+	    flex-wrap:wrap;
+
+	}
+
+	.btn{
+
+	    text-decoration:none;
+
+	    padding:16px 30px;
+
+	    border-radius:50px;
+
+	    font-size:16px;
+
+	    font-weight:600;
+
+	    transition:.3s;
+
+	    display:flex;
+
+	    align-items:center;
+
+	    gap:10px;
+
+	}
+
+	.btn-primary{
+
+	    background:linear-gradient(
+	    135deg,
+	    #06b6d4,
+	    #2563eb);
+
+	    color:white;
+
+	}
+
+	.btn-primary:hover{
+
+	    transform:translateY(-4px);
+
+	    box-shadow:
+	    0 15px 30px
+	    rgba(37,99,235,.4);
+
+	}
+
+	.back-btn{
+
+	    background:white;
+
+	    color:#0f172a;
+
+	    text-decoration:none;
+
+	    padding:16px 30px;
+
+	    border-radius:50px;
+
+	    font-weight:600;
+
+	    transition:.3s;
+
+	}
+
+	.back-btn:hover{
+
+	    transform:translateY(-4px);
+
+	    background:#e2e8f0;
+
+	}
+
+	/* MOBILE */
+
+	@media(max-width:768px){
+
+	.card{
+
+	padding:35px 25px;
+
+	}
+
+	.card h2{
+
+	font-size:30px;
+
+	}
+
+	.card p{
+
+	font-size:16px;
+
+	}
+
+	.hero-btns{
+
+	flex-direction:column;
+
+	}
+
+	.btn,
+	.back-btn{
+
+	width:100%;
+
+	justify-content:center;
+
+	}
+
+	}
 </style>
 
 </head>
 <body>
-  <div class="header">
-    <img th:src="@{/images/apnacollegLogo.png}" alt="logo">
+
+<div class="header">
+
+    <img th:src="@{/images/apnacollegLogo.png}"
+         alt="logo">
+
     <h2>Apna College</h2>
-</div>	<div class="container">
-	<div class="card">
 
-	<h2>Apply Admission</h2>
-	<p>Online admission form available.</p>
+</div>
 
-	<a th:href="@{/}" class="back-btn">⬅ Back</a>
 
-	</div>
-	</div>
-	</body></html>
+<div class="container">
+
+    <div class="card">
+
+        <h2>🎓 Apply For Admission</h2>
+
+        <p>
+
+            Welcome to Apna College Admission Portal.
+
+            Start your admission process online for the new academic session.
+
+            Fill the application form and secure your future today.
+
+        </p>
+
+        <div class="hero-btns">
+
+            <a th:href="@{/admission}"
+               class="btn btn-primary">
+
+                New Session Admission
+
+            </a>
+
+            <a th:href="@{/}"
+               class="back-btn">
+
+               ⬅ Back To Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

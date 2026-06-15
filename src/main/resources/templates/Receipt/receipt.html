@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Payment Receipt | Apna College</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7ff;
+    padding:20px;
+}
+
+.receipt{
+    max-width:800px;
+    margin:auto;
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+/* HEADER */
+
+.header{
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.header i{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.header h1{
+    font-size:28px;
+    margin-bottom:5px;
+}
+
+.header p{
+    font-size:14px;
+    opacity:.9;
+}
+
+/* STATUS */
+
+.status-section{
+    text-align:center;
+    padding:15px;
+}
+
+.status{
+    padding:8px 18px;
+    border-radius:30px;
+    color:white;
+    font-size:13px;
+    font-weight:600;
+}
+
+.paid{
+    background:#16a34a;
+}
+
+.pending{
+    background:#f59e0b;
+}
+
+.due{
+    background:#dc2626;
+}
+
+/* TABLE */
+
+.table-area{
+    padding:20px 30px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table td{
+    padding:12px;
+    border-bottom:1px solid #e5e7eb;
+}
+
+table td:first-child{
+    width:40%;
+    font-weight:600;
+    color:#64748b;
+}
+
+table td:last-child{
+    font-weight:500;
+    color:#111827;
+}
+
+/* AMOUNTS */
+
+.amounts{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    padding:0 30px 25px;
+}
+
+.amount-box{
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:15px;
+    text-align:center;
+    padding:15px;
+}
+
+.amount-box h4{
+    color:#64748b;
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.amount-box h2{
+    color:#2563eb;
+    font-size:22px;
+}
+
+/* ACTIONS */
+
+.actions{
+    text-align:center;
+    padding:20px;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    text-decoration:none;
+    cursor:pointer;
+    font-weight:600;
+    margin:5px;
+}
+
+.print-btn{
+    background:#16a34a;
+    color:white;
+}
+
+.back-btn{
+    background:#111827;
+    color:white;
+}
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    padding:15px;
+    color:#94a3b8;
+    font-size:12px;
+    border-top:1px solid #e5e7eb;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .amounts{
+        grid-template-columns:1fr;
+    }
+
+    .btn{
+        width:100%;
+    }
+}
+
+/* PRINT */
+
+@media print{
+
+    @page{
+        size:A4;
+        margin:8mm;
+    }
+
+    body{
+        background:white;
+        padding:0;
+    }
+
+    .receipt{
+        box-shadow:none;
+        border:none;
+        max-width:100%;
+    }
+
+    .actions{
+        display:none;
+    }
+
+    .header{
+        padding:15px;
+    }
+
+    .header h1{
+        font-size:22px;
+    }
+
+    .table-area{
+        padding:10px;
+    }
+
+    table td{
+        padding:8px;
+        font-size:13px;
+    }
+
+    .amounts{
+        padding:10px;
+        gap:10px;
+    }
+
+    .amount-box{
+        padding:10px;
+    }
+
+    .amount-box h2{
+        font-size:18px;
+    }
+
+    .footer{
+        padding-top:10px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="receipt">
+
+    <div class="header">
+        <i class="fa-solid fa-building-columns"></i>
+        <h1>APNA COLLEGE</h1>
+        <p>Official Fee Payment Receipt</p>
+    </div>
+
+    <div class="status-section">
+
+        <span th:text="${payment.paymentStatus}"
+              th:classappend="${payment.paymentStatus == 'PAID'} ? 'status paid' :
+              (${payment.paymentStatus == 'PENDING'} ? 'status pending' : 'status due')">
+        </span>
+
+    </div>
+
+    <div class="table-area">
+
+        <table>
+
+            <tr>
+                <td>Student ID</td>
+                <td th:text="${payment.studentId}"></td>
+            </tr>
+
+            <tr>
+                <td>Student Name</td>
+                <td th:text="${payment.studentName}"></td>
+            </tr>
+
+            <tr>
+                <td>Course</td>
+                <td th:text="${payment.courseName}"></td>
+            </tr>
+
+            <tr>
+                <td>Payment Mode</td>
+                <td th:text="${payment.paymentMode}"></td>
+            </tr>
+
+            <tr>
+                <td>Transaction ID</td>
+                <td th:text="${payment.transactionId}"></td>
+            </tr>
+
+            <tr>
+                <td>Payment Date</td>
+                <td th:text="${payment.paymentDate}"></td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="amounts">
+
+        <div class="amount-box">
+            <h4>Total Fee</h4>
+            <h2>₹ <span th:text="${payment.totalFee}"></span></h2>
+        </div>
+
+        <div class="amount-box">
+            <h4>Paid Amount</h4>
+            <h2>₹ <span th:text="${payment.paidAmount}"></span></h2>
+        </div>
+
+        <div class="amount-box">
+            <h4>Due Amount</h4>
+            <h2>₹ <span th:text="${payment.dueAmount}"></span></h2>
+        </div>
+
+    </div>
+
+    <div class="actions">
+
+        <button class="btn print-btn" onclick="window.print()">
+            <i class="fa-solid fa-print"></i>
+            Print Receipt
+        </button>
+
+        <a th:href="@{/indexStudent}" class="btn back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            Dashboard
+        </a>
+
+    </div>
+
+    <div class="footer">
+        © 2026 Apna College ERP • This is a computer-generated receipt.
+    </div>
+
+</div>
+
+</body>
+</html>

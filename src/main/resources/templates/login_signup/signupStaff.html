@@ -9,174 +9,250 @@
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+	*{
+	    margin:0;
+	    padding:0;
+	    box-sizing:border-box;
+	    font-family:'Poppins',sans-serif;
+	}
 
-body{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-background:
-linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
-url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1600');
-background-size:cover;
-background-position:center;
-}
+	body{
+	    min-height:100vh;
+	    display:flex;
+	    justify-content:center;
+	    align-items:center;
+	    padding:20px;
+	    background:
+	    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+	    url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1600');
+	    background-size:cover;
+	    background-position:center;
+	}
 
-/* BACK BUTTON */
+	/* Back Button */
 
-.back-btn{
-position:fixed;
-top:20px;
-left:20px;
-padding:12px 22px;
-text-decoration:none;
-background:rgba(255,255,255,.15);
-border:1px solid rgba(255,255,255,.2);
-backdrop-filter:blur(10px);
-border-radius:50px;
-color:#fff;
-font-weight:600;
-}
+	.back-btn{
+	    position:fixed;
+	    top:20px;
+	    left:20px;
+	    padding:12px 24px;
+	    text-decoration:none;
+	    background:rgba(255,255,255,.15);
+	    border:1px solid rgba(255,255,255,.2);
+	    backdrop-filter:blur(12px);
+	    border-radius:50px;
+	    color:#fff;
+	    font-weight:600;
+	    transition:.3s;
+	}
 
-/* CARD */
+	.back-btn:hover{
+	    background:rgba(255,255,255,.25);
+	}
 
-.container{
-width:100%;
-max-width:500px;
-padding:40px;
-border-radius:25px;
-background:rgba(255,255,255,.12);
-border:1px solid rgba(255,255,255,.2);
-backdrop-filter:blur(18px);
-box-shadow:0 20px 60px rgba(0,0,0,.3);
-}
+	/* Container */
 
-.logo{
-text-align:center;
-color:#fff;
-font-size:18px;
-font-weight:700;
-letter-spacing:2px;
-margin-bottom:10px;
-}
+	.container{
+	    width:100%;
+	    max-width:550px;
+	    padding:40px;
+	    border-radius:25px;
+	    background:rgba(255,255,255,.12);
+	    border:1px solid rgba(255,255,255,.2);
+	    backdrop-filter:blur(18px);
+	    box-shadow:0 20px 60px rgba(0,0,0,.35);
+	    animation:fadeUp .6s ease;
+	}
 
-h2{
-text-align:center;
-color:#fff;
-font-size:34px;
-margin-bottom:8px;
-}
+	@keyframes fadeUp{
+	    from{
+	        opacity:0;
+	        transform:translateY(30px);
+	    }
+	    to{
+	        opacity:1;
+	        transform:translateY(0);
+	    }
+	}
 
-.subtitle{
-text-align:center;
-color:#ddd;
-margin-bottom:30px;
-font-size:14px;
-}
+	/* Header */
 
-/* INPUT */
+	.logo{
+	    text-align:center;
+	    color:#fff;
+	    font-size:18px;
+	    font-weight:700;
+	    letter-spacing:2px;
+	    margin-bottom:10px;
+	}
 
-.input-group{
-margin-bottom:18px;
-}
+	h2{
+	    text-align:center;
+	    color:#fff;
+	    font-size:34px;
+	    margin-bottom:8px;
+	}
 
-.input-group input{
-width:100%;
-padding:14px;
-border:none;
-outline:none;
-border-radius:12px;
-background:rgba(255,255,255,.15);
-color:#fff;
-font-size:15px;
-}
+	.subtitle{
+	    text-align:center;
+	    color:#ddd;
+	    margin-bottom:30px;
+	    font-size:14px;
+	}
 
-.input-group input::placeholder{
-color:#ddd;
-}
+	/* Input */
 
-.password-box{
-position:relative;
-}
+	.input-group{
+	    margin-bottom:18px;
+	}
 
-.toggle{
-position:absolute;
-right:15px;
-top:50%;
-transform:translateY(-50%);
-cursor:pointer;
-font-size:13px;
-font-weight:600;
-color:#fff;
-}
+	.input-group input,
+	.input-group select{
+	    width:100%;
+	    padding:14px;
+	    border:none;
+	    outline:none;
+	    border-radius:12px;
+	    background:rgba(255,255,255,.15);
+	    color:white;
+	    font-size:15px;
+	}
 
-/* BUTTON */
+	.input-group input::placeholder{
+	    color:#ddd;
+	}
 
-button{
-width:100%;
-padding:15px;
-border:none;
-border-radius:50px;
-background:linear-gradient(135deg,#198754,#20c997);
-color:#fff;
-font-size:16px;
-font-weight:700;
-cursor:pointer;
-transition:.3s;
-}
+	.input-group select{
+	    cursor:pointer;
+	}
 
-button:hover{
-transform:translateY(-3px);
-}
+	.input-group select option{
+	    background:white;
+	    color:black;
+	}
 
-/* LOGIN LINK */
+	/* File Upload */
 
-.link{
-text-align:center;
-margin-top:20px;
-color:#eee;
-}
+	.file-label{
+	    display:block;
+	    color:white;
+	    margin-bottom:8px;
+	    font-weight:500;
+	}
 
-.link a{
-color:#fff;
-font-weight:700;
-text-decoration:none;
-}
+	input[type="file"]{
+	    width:100%;
+	    padding:12px;
+	    border-radius:12px;
+	    background:rgba(255,255,255,.15);
+	    border:1px solid rgba(255,255,255,.2);
+	    color:white;
+	}
 
-.footer{
-text-align:center;
-margin-top:20px;
-color:#ccc;
-font-size:13px;
-}
+	input[type="file"]::file-selector-button{
+	    border:none;
+	    padding:10px 16px;
+	    border-radius:10px;
+	    background:linear-gradient(135deg,#0d6efd,#6610f2);
+	    color:white;
+	    cursor:pointer;
+	    font-weight:600;
+	    margin-right:10px;
+	}
 
-@media(max-width:600px){
+	/* Password */
 
-.container{
-padding:30px 20px;
-}
+	.password-box{
+	    position:relative;
+	}
 
-h2{
-font-size:28px;
-}
+	.password-box input{
+	    padding-right:80px;
+	}
 
-}
+	.toggle{
+	    position:absolute;
+	    right:15px;
+	    top:50%;
+	    transform:translateY(-50%);
+	    cursor:pointer;
+	    color:white;
+	    font-size:13px;
+	    font-weight:600;
+	}
 
+	/* Button */
+
+	button{
+	    width:100%;
+	    padding:15px;
+	    border:none;
+	    border-radius:50px;
+	    background:linear-gradient(135deg,#198754,#20c997);
+	    color:white;
+	    font-size:16px;
+	    font-weight:700;
+	    cursor:pointer;
+	    transition:.3s;
+	    box-shadow:0 10px 25px rgba(25,135,84,.35);
+	}
+
+	button:hover{
+	    transform:translateY(-3px);
+	}
+
+	/* Login Link */
+
+	.link{
+	    text-align:center;
+	    margin-top:22px;
+	    color:#eee;
+	}
+
+	.link a{
+	    color:white;
+	    font-weight:700;
+	    text-decoration:none;
+	}
+
+	.link a:hover{
+	    text-decoration:underline;
+	}
+
+	/* Footer */
+
+	.footer{
+	    text-align:center;
+	    margin-top:20px;
+	    color:#ccc;
+	    font-size:13px;
+	}
+
+	/* Mobile */
+
+	@media(max-width:600px){
+
+	    .container{
+	        padding:30px 20px;
+	    }
+
+	    h2{
+	        font-size:28px;
+	    }
+
+	    .back-btn{
+	        padding:10px 18px;
+	        font-size:14px;
+	    }
+	}
 </style>
 </head>
 
 <body>
 
-<a th:href="@{/}" class="back-btn">
-← Back
-</a>
+	<a th:href="@{/}" class="back-btn">
+	    <i class="fa-solid fa-arrow-left"></i> Back to Home
+	</a>
 
 <div class="container">
 
@@ -190,7 +266,9 @@ APNA COLLEGE
 Create Faculty & Employee Account
 </p>
 
-<form th:action="@{/signupStaff}" method="post">
+<form th:action="@{/signupStaff}"
+      method="post"
+      enctype="multipart/form-data">
 
 <div class="input-group">
 <input type="text"
@@ -207,11 +285,127 @@ required>
 </div>
 
 <div class="input-group">
-<input type="text"
-name="department"
-placeholder="Department"
-required>
-</div>
+<select name="department" required>
+	<option value="">Select Designation</option>
+
+	<optgroup label="Administration Department">
+	<option>Principal / Director</option>
+	<option>Vice Principal</option>
+	<option>Registrar</option>
+	<option>Administrative Officer</option>
+	<option>Office Assistant</option>
+	<option>Receptionist</option>
+	</optgroup>
+
+	<optgroup label="Academic Department">
+	<option>Professor</option>
+	<option>Associate Professor</option>
+	<option>Assistant Professor</option>
+	<option>Lecturer</option>
+	<option>Guest Faculty</option>
+	<option>HOD (Head of Department)</option>
+	</optgroup>
+
+	<optgroup label="Admission Department">
+	<option>Admission Officer</option>
+	<option>Admission Counselor</option>
+	<option>Admission Executive</option>
+	<option>Document Verification Staff</option>
+	</optgroup>
+
+	<optgroup label="Examination Department">
+	<option>Controller of Examination (COE)</option>
+	<option>Exam Coordinator</option>
+	<option>Exam Assistant</option>
+	<option>Result Processing Staff</option>
+	</optgroup>
+
+	<optgroup label="Accounts & Finance Department">
+	<option>Accountant</option>
+	<option>Finance Officer</option>
+	<option>Cashier</option>
+	<option>Fee Collection Executive</option>
+	</optgroup>
+
+	<optgroup label="Human Resource">
+	<option>HR Manager</option>
+	<option>HR Executive</option>
+	<option>Recruitment Officer</option>
+	<option>Payroll Executive</option>
+	</optgroup>
+
+	<optgroup label="Library Department">
+	<option>Librarian</option>
+	<option>Assistant Librarian</option>
+	<option>Library Attendant</option>
+	</optgroup>
+
+	<optgroup label="IT Department">
+	<option>System Administrator</option>
+	<option>Network Engineer</option>
+	<option>Software Developer</option>
+	<option>Technical Support Executive</option>
+	<option>Computer Lab Assistant</option>
+	</optgroup>
+
+	<optgroup label="Student Affairs">
+	<option>Student Welfare Officer</option>
+	<option>Discipline Officer</option>
+	<option>Student Coordinator</option>
+	<option>Placement Coordinator</option>
+	</optgroup>
+
+	<optgroup label="Training & Placement">
+	<option>Placement Officer</option>
+	<option>Placement Coordinator</option>
+	<option>Corporate Relations Executive</option>
+	</optgroup>
+
+	<optgroup label="Hostel Department">
+	<option>Hostel Warden</option>
+	<option>Assistant Warden</option>
+	<option>Hostel Clerk</option>
+	</optgroup>
+
+	<optgroup label="Transport Department">
+	<option>Transport Manager</option>
+	<option>Driver</option>
+	<option>Transport Coordinator</option>
+	</optgroup>
+
+	<optgroup label="Security Department">
+	<option>Security Officer</option>
+	<option>Security Guard</option>
+	</optgroup>
+
+	<optgroup label="Maintenance Department">
+	<option>Electrician</option>
+	<option>Plumber</option>
+	<option>Carpenter</option>
+	<option>Housekeeping Staff</option>
+	</optgroup>
+
+	<optgroup label="Sports Department">
+	<option>Sports Officer</option>
+	<option>Physical Education Teacher</option>
+	<option>Coach</option>
+	</optgroup>
+
+	<optgroup label="Medical Department">
+	<option>College Doctor</option>
+	<option>Nurse</option>
+	<option>Medical Assistant</option>
+	</optgroup>
+
+	<optgroup label="Marketing & PR">
+	<option>Marketing Manager</option>
+	<option>Digital Marketing Executive</option>
+	<option>Social Media Manager</option>
+	<option>Public Relations Officer</option>
+	</optgroup>
+
+	</select>
+	</div> 
 
 <div class="input-group">
 <input type="text"
@@ -222,6 +416,18 @@ required>
 
 <div class="input-group">
 
+    <label class="file-label">
+        Upload Staff Photo
+    </label>
+
+    <input type="file"
+           name="photo"
+           accept="image/*"
+           required>
+
+</div>
+
+<div class="input-group">
 <div class="password-box">
 
 <input type="password"

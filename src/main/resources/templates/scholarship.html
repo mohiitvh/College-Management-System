@@ -551,19 +551,81 @@ footer{
   padding:30px;
 }
 
+
+
+
+}
+.hero{
+    position:relative;
+}
+
+.back-area{
+
+    position:absolute;
+
+    top:35px;
+
+    left:40px;
+
+    z-index:100;
+
+}
+
+.back-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:12px 24px;
+
+    background:#fff;
+
+    color:#071952;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+    transition:.3s;
+
+}
+
+.back-btn:hover{
+
+    background:#38bdf8;
+
+    color:white;
+
+    transform:translateY(-3px);
+
 }
 
 </style>
 </head>
 
 <body>
-
+	
 <!-- ================= HERO ================= -->
-
 <div class="hero">
 
-<div class="hero-content">
+	<div class="back-area">
 
+	        <a th:href="@{/}" class="back-btn">
+	            Back To Home
+	        </a>
+
+	    </div>
+
+    <div class="hero-content">
+
+        
 <div class="logo">
 AC
 </div>
@@ -808,19 +870,34 @@ Submit Application
 
 <div class="footer-col">
 
-<h3>Apna College</h3>
+<h3>About College</h3>
 
 <p>
-Apna College is committed to quality education,
-innovation and student success.
+Apna College is committed to providing quality education,
+skill development and career opportunities to students.
 </p>
 
 <div class="social">
 
-<a href="#"><i class="fab fa-facebook-f"></i></a>
-<a href="#"><i class="fab fa-instagram"></i></a>
-<a href="#"><i class="fab fa-linkedin-in"></i></a>
-<a href="#"><i class="fab fa-youtube"></i></a>
+<a href="https://www.facebook.com"
+   target="_blank">
+   <i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="https://www.instagram.com"
+   target="_blank">
+   <i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://www.linkedin.com"
+   target="_blank">
+   <i class="fab fa-linkedin-in"></i>
+</a>
+
+<a href="https://www.youtube.com"
+   target="_blank">
+   <i class="fab fa-youtube"></i>
+</a>
 
 </div>
 
@@ -828,23 +905,30 @@ innovation and student success.
 
 <div class="footer-col">
 
-<h3>Quick Links</h3>
+	<h3>Important Links</h3>
 
-<a href="#">Admission</a>
-<a href="#">Scholarship</a>
-<a href="#">Student Login</a>
-<a href="#">ERP Portal</a>
-<a href="#">Contact</a>
+	
 
+	<a th:href="@{/result}">Result</a>
+
+	
+
+	<a th:href="@{/loginStudent}">Student ERP Login</a>
+
+	<a th:href="@{/loginStaff}">Staff ERP Login</a>
+
+	<a th:href="@{/loginAdmin}">Admin ERP Login</a>
+
+	<a th:href="@{/examination}">Examination</a>
 </div>
 
 <div class="footer-col">
 
-<h3>Contact Info</h3>
+<h3>Contact Information</h3>
 
 <p><i class="fa-solid fa-phone"></i> +91 9876543210</p>
 
-<p><i class="fa-solid fa-envelope"></i> scholarship@apnacollege.com</p>
+<p><i class="fa-solid fa-envelope"></i> info@apnacollege.com</p>
 
 <p><i class="fa-solid fa-location-dot"></i> Bihar, India</p>
 
@@ -853,7 +937,7 @@ innovation and student success.
 </div>
 
 <div class="copyright">
-© 2026 Apna College Scholarship Portal | All Rights Reserved
+© 2026 Apna College. All Rights Reserved.
 </div>
 
 </footer>
@@ -878,24 +962,32 @@ form.addEventListener("submit", function(e){
 
 /* LOGIN CHECK */
 function checkLogin() {
+
   const isLoggedIn = localStorage.getItem("isLoggedIn");
 
   if (isLoggedIn === "true") {
+
     document.getElementById("applyForm")
       .scrollIntoView({ behavior: "smooth" });
+
   } else {
+
     alert("⚠ Please login first");
-    window.location.href = "loginStudent.html";
+
+    window.location.href = "/loginStudent";
+
   }
 }
-
 /* LOGOUT */
 function logout() {
+
   localStorage.removeItem("isLoggedIn");
   localStorage.removeItem("username");
 
   alert("Logged out successfully");
-  window.location.href = "index.html";
+
+  window.location.href = "/";
+
 }
 
 </script>

@@ -22,7 +22,38 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 /* ===============================
 COMMON CSS
 =============================== */
+.logout-btn{
+      text-decoration:none;
+      background:#dc3545;
+      color:white;
+      padding:10px 18px;
+      border-radius:12px;
+      font-size:14px;
+      font-weight:600;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      transition:.3s;
+  }
 
+  .logout-btn:hover{
+      background:#bb2d3b;
+      transform:translateY(-2px);
+  }
+  .sidebar{
+      width:280px;
+      height:100vh;
+      position:fixed;
+      left:0;
+      top:0;
+  }
+
+  .main{
+      margin-left:280px;
+      width:calc(100% - 280px);
+      min-height:100vh;
+      padding:30px;
+  }
 *{
   margin:0;
   padding:0;
@@ -157,25 +188,27 @@ body{
 }
 
 .profile{
-  display:flex;
-  align-items:center;
-  gap:15px;
+    display:flex;
+    align-items:center;
+    gap:15px;
 }
 
 .profile img{
-  width:55px;
-  height:55px;
-  border-radius:50%;
-  object-fit:cover;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #0d6efd;
 }
 
 .profile h4{
-  color:var(--primary);
+    color:#071952;
+    font-size:16px;
 }
 
 .profile span{
-  color:var(--text);
-  font-size:14px;
+    color:#64748b;
+    font-size:13px;
 }
 
 /* ================= WELCOME ================= */
@@ -401,6 +434,34 @@ table td{
 
 /* ================= FOOTER ================= */
 
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+    padding-bottom:15px;
+    border-bottom:1px solid #1e293b;
+}
+
+.logo-icon{
+    width:40px;
+    height:40px;
+    background:#2563eb;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+.section-title{
+    margin-top:15px;
+    margin-bottom:8px;
+    font-size:12px;
+    color:#64748b;
+    text-transform:uppercase;
+    padding-left:8px;
+}
 .footer{
   margin-top:40px;
   text-align:center;
@@ -438,6 +499,7 @@ table td{
   .welcome h2{
     font-size:32px;
   }
+  
 
 }
 
@@ -448,84 +510,133 @@ table td{
 <body>
 
 <!-- ================= SIDEBAR ================= -->
-
 <div class="sidebar">
 
-  <div class="logo">
-	
-    <div class="logo-icon">
-      AC
+    <!-- LOGO -->
+    <div class="logo">
+
+        <div class="logo-icon">AC</div>
+
+        <div class="logo-text">
+            <h2>Apna College</h2>
+            <p>Admin ERP Panel</p>
+        </div>
+
     </div>
 
-    <div class="logo-text">
-      <h2>Apna College</h2>
-      <p>Admin Dashboard</p>
-    </div>
+    <ul class="menu">
 
-  </div>
+        <!-- DASHBOARD -->
+        <li>
+            <a th:href="@{/indexAdmin}" class="active">
+                <i class="fa-solid fa-gauge"></i>
+                Dashboard
+            </a>
+        </li>
 
-  <ul class="menu">
+        <!-- ACADEMIC MODULE -->
+        <li class="section-title">ACADEMIC</li>
 
-    <li>
-      <a href="#" class="active">
-        <i class="fa-solid fa-gauge"></i>
-        Dashboard
-      </a>
-    </li>
+        <li>
+            <a th:href="@{/admin/admissions}">
+                <i class="fa-solid fa-graduation-cap"></i>
+                Admission Management
+            </a>
+        </li>
 
-    <li>
-      <a href="#">
-        <i class="fa-solid fa-calendar-check"></i>
-        Leave Management
-      </a>
-    </li>
+        <li>
+            <a th:href="@{/admin/students}">
+                <i class="fa-solid fa-user-graduate"></i>
+                Students Directory
+            </a>
+        </li>
 
-    <li>
-      <a href="#">
-        <i class="fa-solid fa-user-plus"></i>
-        Add Staff
-      </a>
-    </li>
+        <li>
+            <a th:href="@{/admin/courses}">
+                <i class="fa-solid fa-book-open"></i>
+                Course Management
+            </a>
+        </li>
 
-    <li>
-      <a href="#">
-        <i class="fa-solid fa-user-pen"></i>
-        Update Staff
-      </a>
-    </li>
+        <!-- HR MODULE -->
+        <li class="section-title">HR / STAFF</li>
 
-    <li>
-      <a href="#">
-        <i class="fa-solid fa-graduation-cap"></i>
-        Admission Management
-      </a>
-    </li>
+        <li>
+            <a th:href="@{/admin/staff}">
+                <i class="fa-solid fa-users"></i>
+                Staff Management
+            </a>
+        </li>
 
-    <li>
-      <a href="#">
-        <i class="fa-solid fa-money-check-dollar"></i>
-        Fee Management
-      </a>
-    </li>
+        <!-- COMMENTED: Not used currently -->
+        <!--
+        <li>
+            <a th:href="@{/addStaff}">
+                <i class="fa-solid fa-user-plus"></i>
+                Add Staff
+            </a>
+        </li>
+        -->
 
-    <li>
-      <a href="#">
-        <i class="fa-solid fa-certificate"></i>
-        Certificate
-      </a>
-    </li>
+		<li>
+		    <a th:href="@{/leave-management}">
+		        <i class="fa-solid fa-calendar-check"></i>
+		        Leave Management
+		    </a>
+		</li>
 
-    <li>
-      <a href="#">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        Logout
-      </a>
-    </li>
+		
 
-  </ul>
+		<li>
+		    <a th:href="@{/allLeaves}">
+		        <i class="fa-solid fa-list-check"></i>
+		        All Leave Applications
+		    </a>
+		</li>
+
+        <!-- FINANCE MODULE -->
+        <li class="section-title">FINANCE</li>
+
+        <li>
+            <a th:href="@{/admin/payment/dashboard}">
+                <i class="fa-solid fa-credit-card"></i>
+                Fee Payment System
+            </a>
+        </li>
+
+        <!-- EXAM MODULE -->
+        <li class="section-title">EXAMINATION</li>
+
+        <li>
+            <a th:href="@{/result-management}">
+                <i class="fa-solid fa-square-poll-vertical"></i>
+                Result Management
+            </a>
+        </li>
+
+        <!-- CERTIFICATE MODULE -->
+        <li class="section-title">CERTIFICATES</li>
+
+        <li>
+            <a th:href="@{/certificate-management}">
+                <i class="fa-solid fa-certificate"></i>
+                Certificate  Managements
+            </a>
+        </li>
+
+        <!-- OPTIONAL / NOT ACTIVE MODULES -->
+        <!--
+        <li>
+            <a th:href="@{/leave-management}">
+                <i class="fa-solid fa-calendar-check"></i>
+                Leave Management (Old Module)
+            </a>
+        </li>
+        -->
+
+    </ul>
 
 </div>
-
 <!-- ================= MAIN ================= -->
 
 <div class="main">
@@ -539,16 +650,30 @@ table td{
       <p>Manage staff, admission, fee and certificate operations.</p>
     </div>
 
-    <div class="profile">
+	<div class="profile">
 
-      <img src="https://randomuser.me/api/portraits/men/45.jpg">
+	    <img th:src="@{/admin/photo/{id}(id=${admin.id})}"
+	         alt="Admin Photo">
 
-      <div>
-        <h4>Admin User</h4>
-        <span>Super Admin</span>
-      </div>
+	    <div>
 
-    </div>
+	        <h4 th:text="${admin.name}">
+	            Admin Name
+	        </h4>
+
+	        <span th:text="${admin.email}">
+	            admin@gmail.com
+	        </span>
+
+	    </div>
+
+	    <a th:href="@{/logoutAdmin}"
+	       class="logout-btn">
+	       <i class="fa-solid fa-right-from-bracket"></i>
+	       Logout
+	    </a>
+
+	</div>
 
   </div>
 
@@ -565,163 +690,276 @@ table td{
   </div>
 
   <!-- STATS -->
-
+  
   <div class="stats">
 
-    <div class="stat-card">
-      <i class="fa-solid fa-users"></i>
-      <h2>5200</h2>
-      <p>Total Students</p>
-    </div>
+      <!-- Students -->
+      <div class="stat-card">
+          <i class="fa-solid fa-users"></i>
+          <h2 th:text="${totalStudents ?: 0}">0</h2>
+          <p>Total Students</p>
+      </div>
 
-    <div class="stat-card">
-      <i class="fa-solid fa-chalkboard-user"></i>
-      <h2>180</h2>
-      <p>Total Staff</p>
-    </div>
+      <!-- Staff -->
+      <div class="stat-card">
+          <i class="fa-solid fa-chalkboard-user"></i>
+          <h2 th:text="${totalStaff ?: 0}">0</h2>
+          <p>Total Staff</p>
+      </div>
 
-    <div class="stat-card">
-      <i class="fa-solid fa-money-bill"></i>
-      <h2>₹12L</h2>
-      <p>Fee Collected</p>
-    </div>
+      <!-- Admissions -->
+      <div class="stat-card">
+          <i class="fa-solid fa-user-plus"></i>
+          <h2 th:text="${totalAdmissions ?: 0}">0</h2>
+          <p>Total Admissions</p>
+      </div>
+	  
+	  <!-- Courses -->
+	        <div class="stat-card">
+	            <i class="fa-solid fa-book-open"></i>
+	            <h2 th:text="${totalCourses ?: 0}">0</h2>
+	            <p>Total Courses</p>
+	        </div>
 
-    <div class="stat-card">
-      <i class="fa-solid fa-file-circle-check"></i>
-      <h2>320</h2>
-      <p>Certificates</p>
-    </div>
+	   
 
-  </div>
+      <!-- Fee Collection -->
+      <div class="stat-card">
+          <i class="fa-solid fa-money-bill"></i>
+          <h2>₹<span th:text="${feeCollected ?: 0}">0</span></h2>
+          <p>Fee Collected</p>
+      </div>
+
+      <!-- Pending Fee -->
+      <div class="stat-card">
+          <i class="fa-solid fa-wallet"></i>
+          <h2 th:text="${pendingPayments ?: 0}">0</h2>
+          <p>Pending Payments</p>
+      </div>
+	  
+	  <div class="stat-card">
+	      <i class="fa-solid fa-wallet"></i>
+
+	      <h2>
+	          ₹<span th:text="${totalDueAmount ?: 0}">0</span>
+	      </h2>
+
+	      <p>Total Due Amount</p>
+	  </div>
+
+      <!-- Certificates -->
+      <div class="stat-card">
+          <i class="fa-solid fa-certificate"></i>
+          <h2 th:text="${totalCertificates ?: 0}">0</h2>
+          <p>Total Certificates</p>
+      </div>
+
+      <!-- Approved Certificates -->
+      <div class="stat-card">
+          <i class="fa-solid fa-file-circle-check"></i>
+          <h2 th:text="${approvedCertificates ?: 0}">0</h2>
+          <p>Approved Certificates</p>
+      </div>
+
+      <!-- Total Leaves -->
+      <div class="stat-card">
+          <i class="fa-solid fa-calendar-days"></i>
+          <h2 th:text="${totalLeaves ?: 0}">0</h2>
+          <p>Total Leave Requests</p>
+      </div>
+
+      <!-- Pending Leaves -->
+      <div class="stat-card">
+          <i class="fa-solid fa-hourglass-half"></i>
+          <h2 th:text="${pendingLeaves ?: 0}">0</h2>
+          <p>Pending Leaves</p>
+      </div>
+
+      <!-- Approved Leaves -->
+      <div class="stat-card">
+          <i class="fa-solid fa-circle-check"></i>
+          <h2 th:text="${approvedLeaves ?: 0}">0</h2>
+          <p>Approved Leaves</p>
+      </div>
+
+      <!-- Rejected Leaves -->
+      <div class="stat-card">
+          <i class="fa-solid fa-circle-xmark"></i>
+          <h2 th:text="${rejectedLeaves ?: 0}">0</h2>
+          <p>Rejected Leaves</p>
+      </div>
+
+      
+	  </div>
 
   <!-- DASHBOARD CARDS -->
 
   <div class="dashboard-grid">
 
-    <div class="dashboard-card">
+      <!-- ACADEMIC MODULE -->
+      <div class="dashboard-card">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h3>Admission Management</h3>
+          <p>Manage student admissions, approvals and records.</p>
+          <a th:href="@{/admin/admissions}">Open</a>
+      </div>
 
-      <i class="fa-solid fa-calendar-check"></i>
+      <div class="dashboard-card">
+          <i class="fa-solid fa-book-open"></i>
+          <h3>Course Management</h3>
+          <p>Manage courses, fees, duration and curriculum.</p>
+          <a th:href="@{/admin/courses}">Manage</a>
+      </div>
+	  
+	  <div class="dashboard-card">
+    <i class="fa-solid fa-calendar-check"></i>
+    <h3>Leave Management</h3>
+    <p>Leave dashboard, statistics and approvals.</p>
+    <a th:href="@{/leave-management}">
+        Open Dashboard
+    </a>
+</div>
 
-      <h3>Leave Management</h3>
+<div class="dashboard-card">
+    <i class="fa-solid fa-list-check"></i>
+    <h3>All Leave Applications</h3>
+    <p>View all student and staff leave applications.</p>
+    <a th:href="@{/allLeaves}">
+        View All
+    </a>
+</div>
 
-      <p>
-        Approve or reject staff leave applications online.
-      </p>
+	  
+	  
+      <!-- FINANCE MODULE -->
+      <div class="dashboard-card">
+          <i class="fa-solid fa-credit-card"></i>
+          <h3>Payment Dashboard</h3>
+          <p>View payment analytics and fee status overview.</p>
+          <a th:href="@{/admin/payment/dashboard}">Open</a>
+      </div>
 
-      <a href="#">Open Panel</a>
+      <div class="dashboard-card">
+          <i class="fa-solid fa-list"></i>
+          <h3>Payment Management</h3>
+          <p>View, edit and manage all payment records.</p>
+          <a th:href="@{/admin/payment/list}">Manage</a>
+      </div>
 
-    </div>
+      <div class="dashboard-card">
+          <i class="fa-solid fa-circle-check"></i>
+          <h3>Paid Students</h3>
+          <p>Students who completed full payment.</p>
+          <a th:href="@{/admin/payment/paid}">View</a>
+      </div>
 
-    <div class="dashboard-card">
+      <div class="dashboard-card">
+          <i class="fa-solid fa-hourglass-half"></i>
+          <h3>Pending Payments</h3>
+          <p>Students with pending fee status.</p>
+          <a th:href="@{/admin/payment/pending}">View</a>
+      </div>
 
-      <i class="fa-solid fa-user-plus"></i>
+      <div class="dashboard-card">
+          <i class="fa-solid fa-wallet"></i>
+          <h3>Due Payments</h3>
+          <p>Students having outstanding dues.</p>
+          <a th:href="@{/admin/payment/due}">View</a>
+      </div>
 
-      <h3>Add New Staff</h3>
+      <!-- CERTIFICATE MODULE -->
+      <div class="dashboard-card">
+          <i class="fa-solid fa-certificate"></i>
+          <h3>Certificate Management</h3>
+          <p>Approve or reject certificate requests.</p>
+          <a th:href="@{/certificate-management}">Open</a>
+      </div>
 
-      <p>
-        Add teaching and non-teaching staff details.
-      </p>
+      <!-- REPORTS MODULE -->
+      <div class="dashboard-card">
+          <i class="fa-solid fa-file-lines"></i>
+          <h3>Reports</h3>
+          <p>Generate admission, fee and academic reports.</p>
+          <a th:href="@{/reports}">Generate</a>
+      </div>
 
-      <a href="#">Add Staff</a>
+      <!-- HR MODULE (COMMENTED UNUSED FEATURES) -->
 
-    </div>
+      <!--
+      <div class="dashboard-card">
+          <i class="fa-solid fa-calendar-check"></i>
+          <h3>Leave Management</h3>
+          <p>Approve or reject staff leave requests.</p>
+          <a th:href="@{/leave-management}">Open</a>
+      </div>
 
-    <div class="dashboard-card">
-
-      <i class="fa-solid fa-graduation-cap"></i>
-
-      <h3>Admission Management</h3>
-
-      <p>
-        Manage student admission records and registration.
-      </p>
-
-      <a href="#">View Admission</a>
-
-    </div>
-
-    <div class="dashboard-card">
-
-      <i class="fa-solid fa-money-check-dollar"></i>
-
-      <h3>Fee Management</h3>
-
-      <p>
-        Update payment status and generate reports.
-      </p>
-
-      <a href="#">Manage Fee</a>
-
-    </div>
-
-    <div class="dashboard-card">
-
-      <i class="fa-solid fa-certificate"></i>
-
-      <h3>Certificate Management</h3>
-
-      <p>
-        Approve or reject certificate applications.
-      </p>
-
-      <a href="#">Open Certificates</a>
-
-    </div>
-
-    <div class="dashboard-card">
-
-      <i class="fa-solid fa-file-lines"></i>
-
-      <h3>Generate Reports</h3>
-
-      <p>
-        Generate admission and fee reports instantly.
-      </p>
-
-      <a href="#">Generate</a>
-
-    </div>
+      <div class="dashboard-card">
+          <i class="fa-solid fa-user-plus"></i>
+          <h3>Staff Management</h3>
+          <p>Add and manage teaching and non-teaching staff.</p>
+          <a th:href="@{/addStaff}">Add Staff</a>
+      </div>
+      -->
 
   </div>
-
   <!-- TABLE -->
 
   <div class="table-box">
 
-    <h3>Recent Leave Requests</h3>
+     
+		
+		 <h3>Recent Leave Requests</h3>
 
-    <table>
+      <table>
 
-      <tr>
-        <th>Staff Name</th>
-        <th>Department</th>
-        <th>Date</th>
-        <th>Status</th>
-      </tr>
+          <thead>
+          <tr>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Leave Type</th>
+              <th>Applied Date</th>
+              <th>Status</th>
+          </tr>
+          </thead>
 
-      <tr>
-        <td>Rahul Kumar</td>
-        <td>BCA</td>
-        <td>29 May 2026</td>
-        <td><span class="status approved">Approved</span></td>
-      </tr>
+          <tbody>
 
-      <tr>
-        <td>Priya Sharma</td>
-        <td>BBA</td>
-        <td>28 May 2026</td>
-        <td><span class="status pending">Pending</span></td>
-      </tr>
+          <tr th:if="${leaves == null || #lists.isEmpty(leaves)}">
+              <td colspan="5">No Leave Records Found</td>
+          </tr>
 
-      <tr>
-        <td>Amit Singh</td>
-        <td>B.Tech</td>
-        <td>27 May 2026</td>
-        <td><span class="status rejected">Rejected</span></td>
-      </tr>
+          <tr th:each="leave : ${leaves}">
 
-    </table>
+			<td th:text="${leave.name}"></td>
+			<td th:text="${leave.role}"></td>
+			<td th:text="${leave.leaveType}"></td>
+			<td th:text="${leave.appliedDate}"></td>
 
+              <td>
+
+                  <span th:if="${leave.status == 'Approved'}"
+                        class="status approved">
+                      Approved
+                  </span>
+
+                  <span th:if="${leave.status == 'Pending'}"
+                        class="status pending">
+                      Pending
+                  </span>
+
+                  <span th:if="${leave.status == 'Rejected'}"
+                        class="status rejected">
+                      Rejected
+                  </span>
+
+              </td>
+
+          </tr>
+
+          </tbody>
+
+      </table>
+	  
   </div>
 
   <!-- FOOTER -->

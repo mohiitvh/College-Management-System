@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Details | Admin</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#eef2ff,#f8fafc);
+padding:30px;
+}
+
+.container{
+max-width:1050px;
+margin:auto;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.header h2{
+font-size:28px;
+color:#1e293b;
+font-weight:700;
+}
+
+.btn{
+padding:10px 18px;
+border:none;
+border-radius:10px;
+text-decoration:none;
+font-size:14px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+display:inline-flex;
+align-items:center;
+gap:8px;
+}
+
+.back{
+background:#64748b;
+color:white;
+}
+
+.back:hover{
+background:#475569;
+}
+
+.card{
+background:white;
+border-radius:18px;
+padding:30px;
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+}
+
+.box{
+background:linear-gradient(145deg,#f8fafc,#ffffff);
+padding:18px;
+border-radius:14px;
+border:1px solid #e2e8f0;
+transition:.3s;
+}
+
+.box:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 20px rgba(0,0,0,.06);
+}
+
+.box h4{
+color:#64748b;
+font-size:13px;
+margin-bottom:6px;
+}
+
+.box p{
+font-size:16px;
+font-weight:600;
+color:#0f172a;
+}
+
+.status-paid{
+color:#16a34a;
+font-weight:700;
+}
+
+.status-pending{
+color:#f59e0b;
+font-weight:700;
+}
+
+.status-due{
+color:#ef4444;
+font-weight:700;
+}
+
+.action{
+margin-top:25px;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.edit{
+background:#2563eb;
+color:white;
+}
+
+.edit:hover{
+background:#1d4ed8;
+}
+
+.receipt{
+background:#16a34a;
+color:white;
+}
+
+.receipt:hover{
+background:#15803d;
+}
+
+.icon{
+color:#2563eb;
+margin-right:6px;
+}
+
+@media(max-width:768px){
+.header{
+flex-direction:column;
+align-items:flex-start;
+gap:10px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<h2>
+<i class="fa-solid fa-receipt icon"></i>
+Payment Details
+</h2>
+
+<a th:href="@{/admin/payment/list}" class="btn back">
+<i class="fa-solid fa-arrow-left"></i>
+Back
+</a>
+
+</div>
+
+<div class="card">
+
+<div class="grid">
+
+<div class="box">
+<h4>Payment ID</h4>
+<p th:text="${payment.id}"></p>
+</div>
+
+<div class="box">
+<h4>Student ID</h4>
+<p th:text="${payment.studentId}"></p>
+</div>
+
+<div class="box">
+<h4>Student Name</h4>
+<p th:text="${payment.studentName}"></p>
+</div>
+
+<div class="box">
+<h4>Course</h4>
+<p th:text="${payment.courseName}"></p>
+</div>
+
+<div class="box">
+<h4>Total Fee</h4>
+<p>₹ <span th:text="${payment.totalFee}"></span></p>
+</div>
+
+<div class="box">
+<h4>Paid Amount</h4>
+<p>₹ <span th:text="${payment.paidAmount}"></span></p>
+</div>
+
+<div class="box">
+<h4>Due Amount</h4>
+<p>₹ <span th:text="${payment.dueAmount}"></span></p>
+</div>
+
+<div class="box">
+<h4>Payment Mode</h4>
+<p th:text="${payment.paymentMode}"></p>
+</div>
+
+<div class="box">
+<h4>Transaction ID</h4>
+<p th:text="${payment.transactionId}"></p>
+</div>
+
+<div class="box">
+<h4>Payment Date</h4>
+<p th:text="${payment.paymentDate}"></p>
+</div>
+
+<div class="box">
+<h4>Status</h4>
+
+<p th:if="${payment.paymentStatus=='PAID'}" class="status-paid">
+PAID
+</p>
+
+<p th:if="${payment.paymentStatus=='PENDING'}" class="status-pending">
+PENDING
+</p>
+
+<p th:if="${payment.paymentStatus=='DUE'}" class="status-due">
+DUE
+</p>
+
+</div>
+
+</div>
+
+<div class="action">
+
+<a th:href="@{'/admin/payment/edit/' + ${payment.id}}" class="btn edit">
+<i class="fa-solid fa-pen"></i> Edit
+</a>
+
+<a th:href="@{'/receipt/' + ${payment.id}}" class="btn receipt" target="_blank">
+<i class="fa-solid fa-print"></i> Print Receipt
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

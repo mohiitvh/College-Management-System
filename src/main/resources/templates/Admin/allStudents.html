@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>All Students | Admin</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f7fb;
+padding:30px;
+}
+
+/* CONTAINER */
+
+.container{
+max-width:1300px;
+margin:auto;
+}
+
+/* HEADER */
+
+.header{
+background:white;
+padding:25px 30px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+margin-bottom:25px;
+}
+
+.header h1{
+
+font-size:30px;
+color:#1e293b;
+}
+
+.header p{
+
+color:#64748b;
+margin-top:5px;
+}
+
+/* BUTTON */
+
+.back-btn{
+
+text-decoration:none;
+
+padding:12px 22px;
+
+background:linear-gradient(135deg,#2563eb,#3b82f6);
+
+color:white;
+
+border-radius:12px;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.back-btn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 10px 20px rgba(37,99,235,.25);
+
+}
+
+/* CARD */
+
+.card{
+
+background:white;
+
+border-radius:22px;
+
+padding:25px;
+
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+}
+
+/* TABLE */
+
+.table-box{
+
+overflow-x:auto;
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+thead{
+
+background:#f8fafc;
+
+}
+
+th{
+
+padding:18px;
+
+text-align:center;
+
+color:#334155;
+
+font-size:15px;
+
+font-weight:700;
+
+border-bottom:2px solid #e2e8f0;
+
+}
+
+td{
+
+padding:18px;
+
+text-align:center;
+
+border-bottom:1px solid #edf2f7;
+
+color:#475569;
+
+font-size:14px;
+
+}
+
+tbody tr{
+
+transition:.3s;
+
+}
+
+tbody tr:hover{
+
+background:#f8fbff;
+
+}
+
+/* PHOTO */
+
+.student-photo{
+
+width:60px;
+
+height:60px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:3px solid #2563eb;
+
+transition:.3s;
+
+}
+
+.student-photo:hover{
+
+transform:scale(1.15);
+
+}
+
+/* EMPTY */
+
+.no-data{
+
+text-align:center;
+
+padding:30px;
+
+color:#ef4444;
+
+font-weight:600;
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+body{
+
+padding:15px;
+
+}
+
+.header{
+
+flex-direction:column;
+
+gap:15px;
+
+align-items:flex-start;
+
+}
+
+table{
+
+min-width:900px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div>
+
+<h1>All Students</h1>
+
+<p>Manage and View Registered Students</p>
+
+</div>
+
+<a th:href="@{/indexAdmin}"
+
+class="back-btn">
+
+← Back Dashboard
+
+</a>
+
+</div>
+
+
+<!-- CARD -->
+
+<div class="card">
+
+<div class="table-box">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Photo</th>
+
+<th>Name</th>
+
+<th>Email</th>
+
+<th>Phone</th>
+
+<th>Program</th>
+
+<th>Course</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr th:if="${#lists.isEmpty(students)}">
+
+<td colspan="7"
+
+class="no-data">
+
+No Students Found
+
+</td>
+
+</tr>
+
+<tr th:each="s : ${students}">
+
+<td th:text="${s.id}"></td>
+
+<td>
+
+<img th:if="${s.studentPhoto != null}"
+
+th:src="@{/student/photo/{id}(id=${s.id})}"
+
+class="student-photo">
+
+<span th:if="${s.studentPhoto == null}">
+
+No Photo
+
+</span>
+
+</td>
+
+<td th:text="${s.name}"></td>
+
+<td th:text="${s.email}"></td>
+
+<td th:text="${s.phone}"></td>
+
+<td th:text="${s.programType}"></td>
+
+<td th:text="${s.course}"></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

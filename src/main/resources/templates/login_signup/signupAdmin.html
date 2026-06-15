@@ -176,9 +176,9 @@ font-size:28px;
 
 <body>
 
-<a th:href="@{/}" class="back-btn">
-← Back
-</a>
+	<a th:href="@{/}" class="back-btn">
+	    <i class="fa-solid fa-arrow-left"></i> Back to Home
+	</a>
 
 <div class="container">
 
@@ -191,59 +191,78 @@ APNA COLLEGE ERP
 <p class="subtitle">
 Create System Administrator Account
 </p>
-
-<form th:action="@{/signupAdmin}" method="post">
-
-<div class="input-group">
-<input type="text"
-name="name"
-placeholder="Admin Full Name"
-required>
+<div th:if="${error}"
+     style="background:#ffebee;
+            color:red;
+            padding:12px;
+            border-radius:10px;
+            margin-bottom:15px;">
+    <span th:text="${error}"></span>
 </div>
+<form th:action="@{/signupAdmin}"
+      method="post"
+      enctype="multipart/form-data">
 
-<div class="input-group">
-<input type="email"
-name="email"
-placeholder="Admin Email Address"
-required>
-</div>
+    <div class="input-group">
+        <input type="text"
+               name="name"
+               placeholder="Admin Full Name"
+               required>
+    </div>
 
-<div class="input-group">
-<input type="text"
-name="employeeId"
-placeholder="Admin ID"
-required>
-</div>
+    <div class="input-group">
+        <input type="email"
+               name="email"
+               placeholder="Admin Email Address"
+               required>
+    </div>
 
-<div class="input-group">
-<input type="text"
-name="phone"
-placeholder="Mobile Number"
-required>
-</div>
+    <div class="input-group">
+        <input type="text"
+               name="phone"
+               placeholder="Mobile Number"
+               required>
+    </div>
 
-<div class="input-group">
+    <!-- Secret Admin Key -->
 
-<div class="password-box">
+    <div class="input-group">
+        <input type="text"
+               name="adminPass"
+               placeholder="Enter Admin Secret Key"
+               required>
+    </div>
 
-<input type="password"
-id="adminPass"
-name="password"
-placeholder="Create Password"
-required>
+    <!-- Login Password -->
 
-<span class="toggle"
-onclick="togglePassword(this)">
-Show
-</span>
+    <div class="input-group">
+        <div class="password-box">
 
-</div>
+            <input type="password"
+                   id="adminPassword"
+                   name="password"
+                   placeholder="Create Password"
+                   required>
 
-</div>
+            <span class="toggle"
+                  onclick="togglePassword(this)">
+                Show
+            </span>
 
-<button type="submit">
-Create Admin Account
-</button>
+        </div>
+    </div>
+
+    <!-- Photo -->
+
+    <div class="input-group">
+        <input type="file"
+               name="photo"
+               accept="image/*">
+    </div>
+
+    <button type="submit">
+        Create Admin Account
+    </button>
 
 </form>
 

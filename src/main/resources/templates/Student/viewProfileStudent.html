@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admission Profile | Apna College</title>
+<title>Student Profile | Apna College</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 
@@ -20,8 +22,9 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#f4f7ff;
-padding:40px;
+background:linear-gradient(135deg,#0f172a,#1e3a8a);
+min-height:100vh;
+padding:40px 20px;
 }
 
 .container{
@@ -30,76 +33,144 @@ margin:auto;
 }
 
 .card{
-background:#fff;
-border-radius:25px;
-box-shadow:0 20px 60px rgba(0,0,0,.08);
+background:white;
+border-radius:30px;
 overflow:hidden;
+box-shadow:0 25px 60px rgba(0,0,0,.15);
 }
 
 /* HEADER */
+
 .header{
-background:linear-gradient(135deg,#1e3a8a,#2563eb);
+background:linear-gradient(135deg,#2563eb,#0ea5e9);
+padding:40px;
 color:white;
-padding:30px;
 text-align:center;
+position:relative;
 }
 
 .header h1{
-font-size:28px;
+font-size:32px;
+font-weight:700;
 }
 
-/* PROFILE */
-.profile{
-padding:30px;
+.header p{
+margin-top:8px;
+opacity:.9;
+}
+
+/* PROFILE TOP */
+
+.profile-top{
+padding:40px;
 display:flex;
-justify-content:space-between;
+align-items:center;
+gap:35px;
 flex-wrap:wrap;
-gap:20px;
 border-bottom:1px solid #eee;
 }
 
-.profile h2{
-color:#1e3a8a;
+/* PHOTO */
+
+.photo-box{
+position:relative;
+}
+
+.photo-box img{
+width:180px;
+height:180px;
+border-radius:50%;
+object-fit:cover;
+border:6px solid #2563eb;
+box-shadow:0 15px 40px rgba(37,99,235,.3);
+background:#f1f5f9;
+}
+
+.online{
+position:absolute;
+bottom:15px;
+right:15px;
+width:20px;
+height:20px;
+background:#22c55e;
+border-radius:50%;
+border:3px solid white;
+}
+
+/* INFO */
+
+.profile-info h2{
+font-size:32px;
+color:#1e293b;
+margin-bottom:10px;
+}
+
+.profile-info p{
+color:#64748b;
+margin-bottom:8px;
+}
+
+.badges{
+display:flex;
+gap:10px;
+margin-top:15px;
+flex-wrap:wrap;
 }
 
 .badge{
-background:#dcfce7;
-color:#16a34a;
-padding:6px 14px;
-border-radius:20px;
+padding:8px 18px;
+border-radius:30px;
+font-size:14px;
 font-weight:600;
 }
 
+.course{
+background:#dbeafe;
+color:#2563eb;
+}
+
+.program{
+background:#dcfce7;
+color:#16a34a;
+}
+
 /* GRID */
+
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
-padding:30px;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:25px;
+padding:40px;
 }
 
 .box{
 background:#f8fafc;
-padding:20px;
-border-radius:15px;
-border:1px solid #e5e7eb;
+padding:25px;
+border-radius:20px;
+border:1px solid #e2e8f0;
+transition:.3s;
+}
+
+.box:hover{
+transform:translateY(-5px);
 }
 
 .box h3{
+margin-bottom:20px;
 color:#2563eb;
-margin-bottom:15px;
-font-size:18px;
+font-size:20px;
 }
 
 .row{
 display:flex;
 justify-content:space-between;
-padding:8px 0;
-border-bottom:1px solid #eee;
+padding:12px 0;
+border-bottom:1px solid #e5e7eb;
 }
 
 .label{
-color:#6b7280;
+font-weight:500;
+color:#64748b;
 }
 
 .value{
@@ -107,146 +178,220 @@ font-weight:600;
 color:#111827;
 }
 
-/* BUTTON */
-.back{
-display:block;
-text-align:center;
-margin:30px;
-padding:14px;
-background:#2563eb;
-color:white;
-text-decoration:none;
-border-radius:25px;
-font-weight:600;
+/* BUTTONS */
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+padding:30px;
+flex-wrap:wrap;
 }
 
-.back:hover{
-background:#1e40af;
+.btn{
+padding:14px 30px;
+border-radius:40px;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+.dashboard{
+background:#2563eb;
+color:white;
+}
+
+.dashboard:hover{
+background:#1d4ed8;
+}
+
+.home{
+background:#16a34a;
+color:white;
+}
+
+.home:hover{
+background:#15803d;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.profile-top{
+justify-content:center;
+text-align:center;
+}
+
+.profile-info{
+width:100%;
+}
+
+.profile-info h2{
+font-size:26px;
+}
+
+.photo-box img{
+width:150px;
+height:150px;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
+
 <div class="card">
 
-<!-- HEADER -->
-<div class="header">
-<h1>APNA COLLEGE</h1>
-<p>Admission Profile Details</p>
+    <!-- HEADER -->
+
+    <div class="header">
+        <h1>APNA COLLEGE</h1>
+        <p>Student Profile Dashboard</p>
+    </div>
+
+    <!-- PROFILE SECTION -->
+
+    <div class="profile-top">
+
+        <div class="photo-box">
+
+            <img th:src="@{'/student/photo/' + ${student.id}}"
+                 alt="Student Photo">
+
+            <span class="online"></span>
+
+        </div>
+
+        <div class="profile-info">
+
+            <h2 th:text="${student.name}">
+                Student Name
+            </h2>
+
+            <p>
+                <i class="fa-solid fa-id-card"></i>
+                Student ID :
+                <span th:text="${student.id}"></span>
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                <span th:text="${student.email}"></span>
+            </p>
+
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                <span th:text="${student.phone}"></span>
+            </p>
+
+            <div class="badges">
+
+                <span class="badge course"
+                      th:text="${student.course}">
+                </span>
+
+                <span class="badge program"
+                      th:text="${student.programType}">
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- DETAILS -->
+
+    <div class="grid">
+
+        <div class="box">
+
+            <h3>
+                <i class="fa-solid fa-user"></i>
+                Personal Information
+            </h3>
+
+            <div class="row">
+                <span class="label">Full Name</span>
+                <span class="value"
+                      th:text="${student.name}">
+                </span>
+            </div>
+
+            <div class="row">
+                <span class="label">Email</span>
+                <span class="value"
+                      th:text="${student.email}">
+                </span>
+            </div>
+
+            <div class="row">
+                <span class="label">Phone</span>
+                <span class="value"
+                      th:text="${student.phone}">
+                </span>
+            </div>
+
+        </div>
+
+        <div class="box">
+
+            <h3>
+                <i class="fa-solid fa-graduation-cap"></i>
+                Academic Information
+            </h3>
+
+            <div class="row">
+                <span class="label">Student ID</span>
+                <span class="value"
+                      th:text="${student.id}">
+                </span>
+            </div>
+
+            <div class="row">
+                <span class="label">Program Type</span>
+                <span class="value"
+                      th:text="${student.programType}">
+                </span>
+            </div>
+
+            <div class="row">
+                <span class="label">Course</span>
+                <span class="value"
+                      th:text="${student.course}">
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BUTTONS -->
+
+    <div class="buttons">
+
+        <a th:href="@{/indexStudent}"
+           class="btn dashboard">
+            <i class="fa-solid fa-gauge"></i>
+            Dashboard
+        </a>
+
+        <a th:href="@{/}"
+           class="btn home">
+            <i class="fa-solid fa-house"></i>
+            Home
+        </a>
+
+    </div>
+
 </div>
 
-<!-- PROFILE TOP -->
-<div class="profile">
-
-<div>
-<h2 th:text="${admission.fullName}">Student Name</h2>
-<p>ID: <span th:text="${admission.id}"></span></p>
-</div>
-
-<div class="badge">
-<span th:text="${admission.selectedCourse}">Course</span>
-</div>
-
-</div>
-
-<!-- GRID -->
-<div class="grid">
-
-<!-- PERSONAL -->
-<div class="box">
-<h3><i class="fa fa-user"></i> Personal</h3>
-
-<div class="row"><span class="label">DOB</span>
-<span class="value" th:text="${admission.dateOfBirth}"></span></div>
-
-<div class="row"><span class="label">Gender</span>
-<span class="value" th:text="${admission.gender}"></span></div>
-
-<div class="row"><span class="label">Category</span>
-<span class="value" th:text="${admission.category}"></span></div>
-
-<div class="row"><span class="label">Aadhaar</span>
-<span class="value" th:text="${admission.aadhaarNumber}"></span></div>
-
-</div>
-
-<!-- GUARDIAN -->
-<div class="box">
-<h3><i class="fa fa-users"></i> Guardian</h3>
-
-<div class="row"><span class="label">Father</span>
-<span class="value" th:text="${admission.fatherName}"></span></div>
-
-<div class="row"><span class="label">Mother</span>
-<span class="value" th:text="${admission.motherName}"></span></div>
-
-<div class="row"><span class="label">Guardian</span>
-<span class="value" th:text="${admission.guardianName}"></span></div>
-
-</div>
-
-<!-- CONTACT -->
-<div class="box">
-<h3><i class="fa fa-phone"></i> Contact</h3>
-
-<div class="row"><span class="label">Mobile</span>
-<span class="value" th:text="${admission.mobileNumber}"></span></div>
-
-<div class="row"><span class="label">Email</span>
-<span class="value" th:text="${admission.emailId}"></span></div>
-
-<div class="row"><span class="label">Address</span>
-<span class="value" th:text="${admission.currentAddress}"></span></div>
-
-</div>
-
-<!-- ACADEMIC -->
-<div class="box">
-<h3><i class="fa fa-graduation-cap"></i> Academic</h3>
-
-<div class="row"><span class="label">School</span>
-<span class="value" th:text="${admission.previousSchoolCollege}"></span></div>
-
-<div class="row"><span class="label">Board</span>
-<span class="value" th:text="${admission.boardUniversity}"></span></div>
-
-<div class="row"><span class="label">Marks</span>
-<span class="value" th:text="${admission.marksPercentageCgpa}"></span></div>
-
-</div>
-
-<!-- ADMISSION -->
-<div class="box">
-<h3><i class="fa fa-book"></i> Admission</h3>
-
-<div class="row"><span class="label">UG/PG</span>
-<span class="value" th:text="${admission.ug_pg}"></span></div>
-
-<div class="row"><span class="label">Course</span>
-<span class="value" th:text="${admission.selectedCourse}"></span></div>
-
-<div class="row"><span class="label">Session</span>
-<span class="value" th:text="${admission.sessionBatch}"></span></div>
-
-</div>
-
-</div>
-
-<!-- BACK -->
-<div style="display:flex;gap:15px;padding:20px;">
-    <a th:href="@{/}" class="back">
-        ← Back to Home
-    </a>
-
-    <a th:href="@{/indexStudent}" class="back">
-        Save
-    </a>
-</div>
-
-</div>
 </div>
 
 </body>

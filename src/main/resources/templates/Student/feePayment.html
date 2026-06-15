@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Fee Payment | Apna College</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7ff;
+    padding:30px;
+}
+
+/* HEADER */
+.header{
+    background:linear-gradient(135deg,#0d6efd,#6610f2);
+    color:white;
+    padding:25px;
+    border-radius:20px;
+    margin-bottom:25px;
+}
+
+.header h2{
+    font-size:26px;
+}
+
+/* WRAPPER */
+.container{
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:25px;
+}
+
+/* CARD */
+.card{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* INFO */
+.info{
+    margin-bottom:15px;
+}
+
+.info h4{
+    font-size:13px;
+    color:#64748b;
+}
+
+.info p{
+    font-size:16px;
+    font-weight:600;
+    color:#0f172a;
+}
+
+/* SUMMARY BOX */
+.summary{
+    background:#f8faff;
+    padding:20px;
+    border-radius:15px;
+    border:1px solid #eef2ff;
+    margin-bottom:15px;
+}
+
+.summary h3{
+    color:#0d6efd;
+    margin-bottom:10px;
+}
+
+.summary p{
+    margin:6px 0;
+    font-size:14px;
+    color:#334155;
+}
+
+/* INPUT */
+input, select{
+    width:100%;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid #e2e8f0;
+    margin-top:8px;
+    outline:none;
+    font-size:14px;
+}
+
+input:focus, select:focus{
+    border-color:#0d6efd;
+}
+
+/* BUTTON */
+.btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    font-weight:600;
+    cursor:pointer;
+    font-size:15px;
+    transition:0.3s;
+    margin-top:15px;
+}
+
+.btn-pay{
+    background:linear-gradient(135deg,#0d6efd,#6610f2);
+    color:white;
+}
+
+.btn-pay:hover{
+    transform:translateY(-3px);
+}
+
+/* SIDE CARD */
+.side{
+    position:sticky;
+    top:20px;
+}
+
+/* BADGE */
+.badge{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+    background:#dcfce7;
+    color:#166534;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .container{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <h2><i class="fa-solid fa-credit-card"></i> Fee Payment</h2>
+    <p>Securely pay your college fee online</p>
+</div>
+
+<form th:action="@{/student/payment/pay}"
+      method="post"
+      th:object="${payment}">
+
+<div class="container">
+
+    <!-- LEFT -->
+    <div class="card">
+
+        <div class="info">
+            <h4>Student Name</h4>
+            <p th:text="*{studentName}">Name</p>
+        </div>
+
+        <div class="info">
+            <h4>Course</h4>
+            <p th:text="*{courseName}">Course</p>
+        </div>
+
+        <div class="info">
+            <h4>Total Fee</h4>
+            <p>₹ <span th:text="*{totalFee}"></span></p>
+        </div>
+
+        <div class="info">
+            <h4>Due Amount</h4>
+            <p>₹ <span th:text="*{dueAmount}"></span></p>
+        </div>
+
+        <label>Enter Payment Amount</label>
+        <input type="number"
+               name="paidAmount"
+               placeholder="Enter amount to pay"
+               th:value="${payment.paidAmount}" required>
+
+        <label>Payment Mode</label>
+        <select th:field="*{paymentMode}">
+            <option value="UPI">UPI</option>
+            <option value="Cash">Cash</option>
+            <option value="Card">Card</option>
+            <option value="Net Banking">Net Banking</option>
+        </select>
+
+        <button type="submit" class="btn btn-pay">
+            <i class="fa-solid fa-lock"></i> Pay Now
+        </button>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="card side">
+
+        <div class="summary">
+            <h3>Payment Summary</h3>
+
+            <p>Student: <b th:text="*{studentName}"></b></p>
+            <p>Course: <b th:text="*{courseName}"></b></p>
+            <p>Total Fee: ₹ <b th:text="*{totalFee}"></b></p>
+            <p>Due: ₹ <b th:text="*{dueAmount}"></b></p>
+
+            <p>Status:
+                <span class="badge">ACTIVE</span>
+            </p>
+
+        </div>
+
+        <p style="font-size:12px;color:#64748b;">
+            🔒 Your payment is secure and recorded instantly in system.
+        </p>
+
+    </div>
+
+</div>
+
+</form>
+
+</body>
+</html>

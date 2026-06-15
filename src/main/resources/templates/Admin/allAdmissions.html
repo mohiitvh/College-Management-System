@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admission Management | Apna College</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7ff;
+    padding:30px;
+}
+
+.container{
+    max-width:1500px;
+    margin:auto;
+}
+
+.page-header{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.page-header h2{
+    color:#071952;
+}
+
+.page-header p{
+    color:#64748b;
+}
+
+.back-btn{
+    text-decoration:none;
+    background:#0d6efd;
+    color:white;
+    padding:12px 20px;
+    border-radius:10px;
+    font-weight:600;
+}
+
+.search-box{
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    margin-bottom:25px;
+}
+
+.search-box input{
+    width:300px;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+.search-box button{
+    padding:12px 18px;
+    border:none;
+    border-radius:10px;
+    background:#0d6efd;
+    color:white;
+    cursor:pointer;
+}
+
+.table-card{
+    background:white;
+    border-radius:20px;
+    overflow-x:auto;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#0d6efd;
+}
+
+thead th{
+    color:white;
+    padding:18px;
+}
+
+tbody td{
+    padding:16px;
+    border-bottom:1px solid #eee;
+}
+
+tbody tr:hover{
+    background:#f8fbff;
+}
+
+.student-photo{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.pending{
+    background:#fff3cd;
+    color:#856404;
+    padding:8px 15px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.approved{
+    background:#d1fae5;
+    color:#065f46;
+    padding:8px 15px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.rejected{
+    background:#fee2e2;
+    color:#991b1b;
+    padding:8px 15px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.view-btn,
+.approve-btn,
+.reject-btn{
+    text-decoration:none;
+    color:white;
+    padding:10px 14px;
+    border-radius:8px;
+    font-size:13px;
+    margin-right:5px;
+}
+
+.view-btn{
+    background:#2563eb;
+}
+
+.approve-btn{
+    background:#10b981;
+}
+
+.reject-btn{
+    background:#ef4444;
+}
+
+@media(max-width:768px){
+    body{
+        padding:15px;
+    }
+
+    .page-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    table{
+        min-width:1100px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+	<div class="container">
+
+	    <div class="page-header">
+	        <div>
+	            <h2>Admission Management</h2>
+	            <p>View, Approve & Reject Student Admission Applications</p>
+	        </div>
+
+	        <a th:href="@{/indexAdmin}" class="back-btn">
+	            Back To Dashboard
+	        </a>
+	    </div>
+
+	    <!-- SEARCH -->
+		<div class="search-box">
+
+		    <form th:action="@{/admin/allAdmissions}"
+		          method="get">
+
+		        <input type="text"
+		               name="keyword"
+		               th:value="${param.keyword}"
+		               placeholder="Search Student Name">
+
+		        <button type="submit">
+		            Search
+		        </button>
+
+		    </form>
+
+		</div>
+
+	    <!-- TABLE -->
+	    <div class="table-card">
+
+	        <table>
+
+	            <thead>
+	            <tr>
+	                <th>ID</th>
+	                <th>Photo</th>
+	                <th>Name</th>
+	                <th>Email</th>
+	                <th>Mobile</th>
+	                <th>Course</th>
+	                <th>Session</th>
+	                <th>Status</th>
+	                <th>Action</th>
+	            </tr>
+	            </thead>
+
+				<tbody>
+
+				<tr th:if="${admissions == null || #lists.isEmpty(admissions)}">
+				    <td colspan="9">No Admission Records Found</td>
+				</tr>
+
+				<tr th:each="a : ${admissions}">
+
+				    <td th:text="${a.id}"></td>
+
+				    <!-- Photo -->
+				    <td>
+				        <img th:src="@{/admission/photo/{id}(id=${a.id})}"
+				             class="student-photo"
+				             alt="Photo">
+				    </td>
+
+				    <!-- Name -->
+				    <td th:text="${a.fullName}"></td>
+
+				    <!-- Email -->
+				    <td th:text="${a.emailId}"></td>
+
+				    <!-- Mobile -->
+				    <td th:text="${a.mobileNumber}"></td>
+
+				    <!-- Course -->
+				    <td th:text="${a.course != null ? a.course.courseName : 'N/A'}"></td>
+
+				    <!-- Session -->
+				    <td th:text="${a.sessionBatch}"></td>
+
+				    <!-- Status -->
+				    <td>
+				        <span th:classappend="${
+				            a.status == 'Approved' ? 'approved' :
+				            (a.status == 'Rejected' ? 'rejected' : 'pending')
+				        }"
+				        th:text="${a.status}">
+				        </span>
+				    </td>
+
+				    <!-- Action -->
+				    <td>
+						<a class="view-btn"
+						   th:href="@{/admin/admission/view/{id}(id=${a.id})}">
+						    View
+						</a>
+				    </td>
+
+				</tr>
+
+				</tbody>
+
+	        </table>
+
+	    </div>
+
+	</div>
+
+</body>
+</html>

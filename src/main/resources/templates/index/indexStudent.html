@@ -20,6 +20,7 @@
       box-sizing:border-box;
       font-family:'Poppins',sans-serif;
     }
+	
 
     :root{
       --primary:#071952;
@@ -37,6 +38,16 @@
       overflow-x:hidden;
     }
 
+	.menu-title{
+	    font-size:11px;
+	    text-transform:uppercase;
+	    color:#94a3b8;
+	    padding:15px 20px 5px;
+	    font-weight:600;
+	    letter-spacing:1px;
+	}
+	
+	
     /* SIDEBAR */
 
     .sidebar{
@@ -122,51 +133,75 @@
 
     /* TOPBAR */
 
-    .topbar{
-      background:white;
-      border-radius:25px;
-      padding:20px 30px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      box-shadow:var(--shadow);
-      margin-bottom:30px;
-      flex-wrap:wrap;
-      gap:20px;
-    }
+	/* TOPBAR */
 
-    .topbar h1{
-      color:var(--primary);
-      font-size:30px;
-    }
+	.topbar{
+	    background:white;
+	    border-radius:25px;
+	    padding:20px 30px;
+	    display:flex;
+	    justify-content:space-between;
+	    align-items:center;
+	    box-shadow:var(--shadow);
+	    margin-bottom:30px;
+	    flex-wrap:wrap;
+	    gap:20px;
+	}
 
-    .topbar p{
-      color:var(--text);
-      margin-top:5px;
-    }
+	.topbar h1{
+	    color:var(--primary);
+	    font-size:30px;
+	}
 
-    .profile{
-      display:flex;
-      align-items:center;
-      gap:15px;
-    }
+	.topbar p{
+	    color:var(--text);
+	    margin-top:5px;
+	}
 
-    .profile img{
-      width:55px;
-      height:55px;
-      border-radius:50%;
-      object-fit:cover;
-    }
+	.profile{
+	    display:flex;
+	    align-items:center;
+	    gap:15px;
+	}
 
-    .profile h4{
-      color:var(--primary);
-    }
+	.profile img{
+	    width:60px;
+	    height:60px;
+	    border-radius:50%;
+	    object-fit:cover;
+	    border:3px solid #e2e8f0;
+	}
 
-    .profile span{
-      color:var(--text);
-      font-size:14px;
-    }
+	.profile div{
+	    display:flex;
+	    flex-direction:column;
+	}
 
+	.profile h4{
+	    color:var(--primary);
+	    margin:0;
+	    font-size:16px;
+	}
+
+	.profile span{
+	    color:var(--text);
+	    font-size:13px;
+	}
+
+	.logout-btn{
+	    background:#dc2626;
+	    color:#fff;
+	    text-decoration:none;
+	    padding:10px 18px;
+	    border-radius:12px;
+	    font-size:14px;
+	    font-weight:600;
+	    transition:.3s;
+	}
+
+	.logout-btn:hover{
+	    background:#b91c1c;
+	}
     /* WELCOME */
 
     .welcome{
@@ -371,7 +406,7 @@
       .welcome h2{
         font-size:32px;
       }
-
+	  
     }
 
   </style>
@@ -380,258 +415,316 @@
 
 <body>
 
-  <!-- SIDEBAR -->
+	<!-- SIDEBAR -->
+	<div class="sidebar">
 
-  <div class="sidebar">
+	    <div class="logo">
+	        <div class="logo-icon">AC</div>
 
-    <div class="logo">
-
-      <div class="logo-icon">
-        AC
-      </div>
-
-      <div class="logo-text">
-        <h2>Apna College</h2>
-        <p>Student Dashboard</p>
-      </div>
-
-    </div>
-
-    <ul class="menu">
-
-      <li>
-        <a href="#" class="active">
-          <i class="fa-solid fa-gauge"></i>
-          Dashboard
-        </a>
-      </li>
-
-      <li>
-<a th:href="@{/student/profile}">
-	          <i class="fa-solid fa-user"></i>
-          View Profile
-        </a>
-      </li>
-
-	  <li>
-	      <a th:href="@{/admission}">
-	          <i class="fa-solid fa-user-plus"></i>
-	          New Admission
-	      </a>
-	  </li>
-
-      <li>
-        <a href="#">
-          <i class="fa-solid fa-credit-card"></i>
-          Fee Payment
-        </a>
-      </li>
-
-      <li>
-        <a href="#">
-          <i class="fa-solid fa-clock-rotate-left"></i>
-          Payment History
-        </a>
-      </li>
-
-      <li>
-        <a href="#">
-          <i class="fa-solid fa-file-signature"></i>
-          Certificate Apply
-        </a>
-      </li>
-
-      <li>
-        <a th:href="@{/idStudent}">
-          <i class="fa-solid fa-id-card"></i>
-          Download ID Card
-        </a>
-      </li>
-
-      <li>
-        <a th:href="@{/logout}">
-          <i class="fa-solid fa-right-from-bracket"></i>
-          Logout
-        </a>
-      </li>
-
-    </ul>
-
-  </div>
-
-  <!-- MAIN -->
-
-  <div class="main">
-
-    <!-- TOPBAR -->
-
-    <div class="topbar">
-
-      <div>
-        <h1>Student Dashboard</h1>
-        <p>Welcome back! Manage all your college activities here.</p>
-      </div>
-
-	  <div class="profile">
-
-	    <img th:src="@{/images/user.png}">
-
-	    <div>
-	      <h4 th:text="${student.fullName}">Student Name</h4>
-	      <span th:text="${student.ug_pg} + ' Student'">Course</span>
+	        <div class="logo-text">
+	            <h2>Apna College</h2>
+	            <p>Student Dashboard</p>
+	        </div>
 	    </div>
 
-	  </div>
-    <!-- WELCOME -->
-<div class="welcome">
-	<h2>
-	  Welcome To Apna College ERP,
-	  <span th:text="${student.fullName}"></span>
-	</h2>
-      <p>
-        Access your profile, admission details, payment records,
-        certificates and ID card from one smart student dashboard.
-      </p>
+	    <ul class="menu">
 
-    </div>
+	        <li>
+	            <a th:href="@{/indexStudent}" class="active">
+	                <i class="fa-solid fa-gauge-high"></i>
+	                Dashboard
+	            </a>
+	        </li>
 
-    <!-- STATS -->
+	        <li class="menu-title">Student Profile</li>
 
-    <div class="stats">
+	        <li>
+	            <a th:href="@{/student/profile}">
+	                <i class="fa-solid fa-user"></i>
+	                My Profile
+	            </a>
+	        </li>
 
-		<div class="stat-card">
-		  <i class="fa-solid fa-book"></i>
-		  <h2 th:text="${student.selectedCourse}">Course</h2>
-		  <p>Selected Course</p>
-		</div>
+	        <li>
+	            <a th:href="@{/idStudent}">
+	                <i class="fa-solid fa-id-card"></i>
+	                Student ID Card
+	            </a>
+	        </li>
 
-		<div class="stat-card">
-		  <i class="fa-solid fa-id-card"></i>
-		  <h2 th:text="${student.ug_pg}">UG/PG</h2>
-		  <p>Program Level</p>
-		</div>
+	        <li class="menu-title">Admission</li>
 
-      <div class="stat-card">
-        <i class="fa-solid fa-certificate"></i>
-        <h2>3</h2>
-        <p>Certificates</p>
-      </div>
+	        <li>
+	            <a th:href="@{/admission}">
+	                <i class="fa-solid fa-user-plus"></i>
+	                New Admission
+	            </a>
+	        </li>
 
-      <div class="stat-card">
-        <i class="fa-solid fa-calendar-check"></i>
-        <h2>92%</h2>
-        <p>Attendance</p>
-      </div>
+	        <li>
+	            <a th:href="@{/viewAdmissionForm}">
+	                <i class="fa-solid fa-file-lines"></i>
+	                Admission Details
+	            </a>
+	        </li>
 
-    </div>
+	        <li class="menu-title">Fee Management</li>
 
-    <!-- DASHBOARD CARDS -->
+	        <li>
+	            <a th:href="@{/student/payment/feePayment}">
+	                <i class="fa-solid fa-credit-card"></i>
+	                Pay Fee
+	            </a>
+	        </li>
 
-    <div class="dashboard-grid">
+	        <li>
+	            <a th:href="@{/student/payment/feeHistory}">
+	                <i class="fa-solid fa-clock-rotate-left"></i>
+	                Payment History
+	            </a>
+	        </li>
 
-      <div class="dashboard-card">
+	        <li>
+	            <a th:href="@{/student/payment/feeDetails}">
+	                <i class="fa-solid fa-file-invoice-dollar"></i>
+	                Fee Details
+	            </a>
+	        </li>
 
-        <i class="fa-solid fa-user"></i>
+	        <li>
+	            <a th:href="@{/student/payment/receipt}">
+	                <i class="fa-solid fa-receipt"></i>
+	                Download Receipt
+	            </a>
+	        </li>
 
-        <h3>View Profile</h3>
+	        <li class="menu-title">Leave Management</li>
 
-        <p>
-          View and update your personal details,
-          academic information and contact details.
-        </p>
+	        <li>
+	            <a th:href="@{/student/apply-leave}">
+	                <i class="fa-solid fa-calendar-plus"></i>
+	                Apply Leave
+	            </a>
+	        </li>
 
-		<a th:href="@{/student/profile}">
-		    Open Profile
-		</a>
+	        <li>
+	            <a th:href="@{/student/leave-history}">
+	                <i class="fa-solid fa-calendar-check"></i>
+	                Leave History
+	            </a>
+	        </li>
 
-      </div>
+	        <li class="menu-title">Certificates</li>
 
-      <div class="dashboard-card">
+	        <li>
+	            <a th:href="@{/certificate/apply}">
+	                <i class="fa-solid fa-file-signature"></i>
+	                Apply Certificate
+	            </a>
+	        </li>
 
-        <i class="fa-solid fa-user-plus"></i>
+	        <li>
+	            <a th:href="@{/student/certificates}">
+	                <i class="fa-solid fa-certificate"></i>
+	                My Certificates
+	            </a>
+	        </li>
 
-        <h3>Apply New Admission</h3>
+	        <li class="menu-title">Account</li>
 
-        <p>
-          Submit admission application form
-          for new academic session online.
-        </p>
+	        <li>
+	            <a th:href="@{/logout}">
+	                <i class="fa-solid fa-right-from-bracket"></i>
+	                Logout
+	            </a>
+	        </li>
 
-        <a th:href="@{/admission}">Apply Now</a>
+	    </ul>
 
-      </div>
+	</div>
 
-      <div class="dashboard-card">
+	
+	
+	<!-- MAIN CONTENT -->
+	<div class="main">
+		
+		<!-- TOPBAR -->
 
-        <i class="fa-solid fa-credit-card"></i>
+			<div class="topbar">
 
-        <h3>Fee Payment</h3>
+			    <div>
+			        <h1>Student Dashboard</h1>
+			        <p>Manage profile, admission, fee, leave and certificates.</p>
+			    </div>
 
-        <p>
-          Pay semester fees, admission fees
-          and other charges securely online.
-        </p>
+			    <div class="profile">
 
-        <a href="#">Pay Fee</a>
+			        <img th:src="@{/student/photo/{id}(id=${student.id})}"
+			             alt="Student Photo">
 
-      </div>
+			        <div>
+			            <h4 th:text="${student.name}"></h4>
+			            <span th:text="${student.email}"></span>
+			        </div>
 
-      <div class="dashboard-card">
+			        <a th:href="@{/logout}" class="logout-btn">
+			            <i class="fa-solid fa-right-from-bracket"></i>
+			            Logout
+			        </a>
 
-        <i class="fa-solid fa-clock-rotate-left"></i>
+			    </div>
 
-        <h3>Payment History</h3>
+			</div>
 
-        <p>
-          View all previous fee transactions
-          and download payment receipts.
-        </p>
+	    <!-- WELCOME -->
+	    <div class="welcome">
+	        <h2>
+	            Welcome To Apna College,
+	            <span th:text="${student.name}"></span>
+	        </h2>
 
-        <a href="#">View History</a>
+	        <p>
+	            Access your profile, admission details,
+	            payment records, certificates and ID card
+	            from one smart student dashboard.
+	        </p>
+	    </div>
 
-      </div>
+	    <!-- STATS -->
+	    <div class="stats">
 
-      <div class="dashboard-card">
+	        <div class="stat-card">
+	            <i class="fa-solid fa-book"></i>
+	            <h2 th:text="${student.course}"></h2>
+	            <p>Selected Course</p>
+	        </div>
 
-        <i class="fa-solid fa-file-signature"></i>
+	        <div class="stat-card">
+	            <i class="fa-solid fa-id-card"></i>
+	            <h2 th:text="${student.programType}"></h2>
+	            <p>Program Level</p>
+	        </div>
 
-        <h3>Apply Certificate</h3>
+			<div class="stat-card">
+			    <i class="fa-solid fa-certificate"></i>
+			    <h2 th:text="${certificateCount}">0</h2>
+			    <p>Total Certificates</p>
+			</div>
+			
+			<div class="stat-card">
+			    <i class="fa-solid fa-circle-check"></i>
+			    <h2 th:text="${approvedCertificateCount}">0</h2>
+			    <p>Approved Certificates</p>
+			</div>
 
-        <p>
-          Apply for CLC/TC, Character Certificate,
-          Bonafide and other certificates.
-        </p>
+	        <div class="stat-card">
+	            <i class="fa-solid fa-calendar-check"></i>
+	            <h2 th:text="${totalLeaves}">0</h2>
+	            <p>Total Leaves</p>
+	        </div>
 
-        <a href="#">Apply Certificate</a>
+	        <div class="stat-card">
+	            <i class="fa-solid fa-circle-check"></i>
+	            <h2 th:text="${approvedLeaves}">0</h2>
+	            <p>Approved Leaves</p>
+	        </div>
 
-      </div>
+	        <div class="stat-card">
+	            <i class="fa-solid fa-hourglass-half"></i>
+	            <h2 th:text="${pendingLeaves}">0</h2>
+	            <p>Pending Leaves</p>
+	        </div>
 
-      <div class="dashboard-card">
+	    </div>
 
-        <i class="fa-solid fa-id-card"></i>
+	    <!-- DASHBOARD -->
+	    <div class="dashboard-grid">
 
-        <h3>Download ID Card</h3>
+	        <div class="dashboard-card">
+	            <i class="fa-solid fa-user"></i>
+	            <h3>My Profile</h3>
+	            <p>Manage personal and academic information.</p>
+	            <a th:href="@{/student/profile}">View Profile</a>
+	        </div>
 
-        <p>
-          Download your digital student ID card
-          anytime from the ERP portal.
-        </p>
+	        <div class="dashboard-card">
+	            <i class="fa-solid fa-user-plus"></i>
+	            <h3>Admission Portal</h3>
+	            <p>View and manage admission details.</p>
+	            <a th:href="@{/viewAdmissionForm}">View Admission</a>
+	        </div>
 
-		<a th:href="@{/idStudent}">
-		    Download ID Card
-		</a>
+	        <div class="dashboard-card">
+	            <i class="fa-solid fa-credit-card"></i>
+	            <h3>Fee Payment</h3>
+	            <p>Pay semester and admission fees online.</p>
+	            <a th:href="@{/student/payment/feePayment}">Pay Now</a>
+	        </div>
 
-      </div>
+	        <div class="dashboard-card">
+	            <i class="fa-solid fa-money-check-dollar"></i>
+	            <h3>Payment History</h3>
+	            <p>View previous payment records.</p>
+	            <a th:href="@{/student/payment/feeHistory}">View History</a>
+	        </div>
 
-    </div>
+	        <div class="dashboard-card">
+	            <i class="fa-solid fa-file-invoice-dollar"></i>
+	            <h3>Fee Details</h3>
+	            <p>Check fee structure and due amount.</p>
+	            <a th:href="@{/student/payment/feeDetails}">View Details</a>
+	        </div>
 
-    <!-- FOOTER -->
+	        <div class="dashboard-card">
+	            <i class="fa-solid fa-receipt"></i>
+	            <h3>Fee Receipt</h3>
+	            <p>Download latest payment receipt.</p>
+	            <a th:href="@{/student/payment/receipt}">Download</a>
+	        </div>
 
-    <div class="footer">
-      © 2026 Apna College ERP | Student Dashboard
-    </div>
+	        <div class="dashboard-card">
+	            <i class="fa-solid fa-calendar-plus"></i>
+	            <h3>Apply Leave</h3>
+	            <p>Submit leave request online.</p>
+	            <a th:href="@{/student/apply-leave}">Apply Leave</a>
+	        </div>
 
-  </div>
+	        <div class="dashboard-card">
+	            <i class="fa-solid fa-calendar-check"></i>
+	            <h3>Leave History</h3>
+	            <p>Track leave approval status.</p>
+	            <a th:href="@{/student/leave-history}">View History</a>
+	        </div>
+
+	        <div class="dashboard-card">
+	            <i class="fa-solid fa-file-signature"></i>
+	            <h3>Apply Certificate</h3>
+	            <p>Apply for Bonafide, TC and other certificates.</p>
+	            <a th:href="@{/certificate/apply}">Apply Now</a>
+	        </div>
+
+	        <div class="dashboard-card">
+	            <i class="fa-solid fa-certificate"></i>
+	            <h3>My Certificates</h3>
+	            <p>View approved certificates.</p>
+	            <a th:href="@{/student/certificates}">View Certificates</a>
+	        </div>
+
+	        <div class="dashboard-card">
+	            <i class="fa-solid fa-id-card"></i>
+	            <h3>Student ID Card</h3>
+	            <p>Download digital ID card.</p>
+	            <a th:href="@{/idStudent}">Download ID</a>
+	        </div>
+
+	    </div>
+
+	    <!-- FOOTER -->
+	    <div class="footer">
+	        © 2026 Apna College ERP | Student Dashboard
+	    </div>
+
+	</div>
 
 </body>
 </html>

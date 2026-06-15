@@ -12,18 +12,36 @@ public class AdminService {
     @Autowired
     private AdminRepo repo;
 
-    public Admin save(Admin admin){
-        return repo.save(admin);
+    private static final String SECRET_ADMIN_PASS = "admin@123";
+    
+    
+
+    public String register(Admin admin) {
+
+        if(!SECRET_ADMIN_PASS.equals(admin.getAdminPass())) {
+            return "INVALID_ADMIN_PASS";
+        }
+
+        repo.save(admin);
+
+        return "SUCCESS";
     }
 
     public Admin login(String email,String password){
+
         Admin admin = repo.findByEmail(email);
 
         if(admin != null &&
-           admin.getPassword().equals(password)){
+           admin.getPassword().equals(password)) {
+
             return admin;
         }
 
         return null;
     }
+
+    public Admin findById(Long id){
+        return repo.findById(id).orElse(null);
+    }
+    
 }

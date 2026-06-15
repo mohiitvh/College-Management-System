@@ -169,9 +169,9 @@ font-size:28px;
 
 <body>
 
-<a th:href="@{/}" class="back-btn">
-← Back
-</a>
+	<a th:href="@{/}" class="back-btn">
+	    <i class="fa-solid fa-arrow-left"></i> Back to Home
+	</a>
 
 <div class="container">
 
@@ -185,7 +185,9 @@ APNA COLLEGE
 Create Your Student Account
 </p>
 
-<form th:action="@{/signupStudent}" method="post">
+<form th:action="@{/signupStudent}"
+      method="post"
+      enctype="multipart/form-data">
 
 <div class="input-group">
 <input type="text"
@@ -201,12 +203,7 @@ placeholder="Student Email"
 required>
 </div>
 
-<div class="input-group">
-<input type="text"
-name="rollno"
-placeholder="Roll Number"
-required>
-</div>
+
 
 <div class="input-group">
 <input type="text"
@@ -255,6 +252,7 @@ Select Course
 </select>
 
 </div>
+
 <!-- Password -->
 
 <div class="input-group">
@@ -271,6 +269,18 @@ required>
 onclick="togglePassword(this)">
 Show
 </span>
+
+</div>
+<div class="input-group">
+
+    <label style="color:white;display:block;margin-bottom:8px;">
+        Upload Student Photo
+    </label>
+
+    <input type="file"
+           name="photo"
+           accept="image/*"
+           required>
 
 </div>
 

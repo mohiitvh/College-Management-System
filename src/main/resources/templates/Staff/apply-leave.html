@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Staff Leave Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#eef2ff,#f8fafc);
+padding:30px;
+}
+
+/* CONTAINER */
+.container{
+max-width:850px;
+margin:auto;
+}
+
+/* HEADER */
+.header{
+background:linear-gradient(135deg,#1e3c72,#2a5298);
+color:white;
+padding:25px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.header h1{
+font-size:24px;
+}
+
+.header p{
+opacity:0.9;
+font-size:14px;
+}
+
+/* CARD */
+.form-card{
+background:white;
+margin-top:25px;
+padding:30px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* TITLE */
+.form-title{
+font-size:20px;
+font-weight:600;
+color:#1e3c72;
+margin-bottom:20px;
+border-left:4px solid #2a5298;
+padding-left:10px;
+}
+
+/* INPUT */
+input,select,textarea{
+width:100%;
+padding:14px;
+border-radius:12px;
+border:1px solid #d1d5db;
+outline:none;
+transition:0.3s;
+background:#f9fafb;
+}
+
+input:focus,select:focus,textarea:focus{
+border-color:#2563eb;
+background:white;
+box-shadow:0 0 0 3px rgba(37,99,235,0.15);
+}
+
+/* GRID */
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+@media(max-width:768px){
+.row{grid-template-columns:1fr;}
+}
+
+/* LABEL */
+label{
+display:block;
+margin-bottom:6px;
+font-weight:500;
+color:#374151;
+}
+
+/* GROUP */
+.form-group{
+margin-bottom:18px;
+}
+
+/* TEXTAREA */
+textarea{
+min-height:120px;
+resize:none;
+}
+
+/* BUTTONS */
+.btn-area{
+margin-top:20px;
+display:flex;
+gap:15px;
+}
+
+.submit-btn{
+flex:1;
+padding:14px;
+border:none;
+border-radius:12px;
+font-weight:600;
+color:white;
+background:linear-gradient(135deg,#2563eb,#1e40af);
+cursor:pointer;
+transition:0.3s;
+}
+
+.reset-btn{
+flex:1;
+padding:14px;
+border:none;
+border-radius:12px;
+font-weight:600;
+background:#e5e7eb;
+color:#111827;
+cursor:pointer;
+transition:0.3s;
+}
+
+.submit-btn:hover{
+transform:translateY(-2px);
+}
+
+.reset-btn:hover{
+background:#d1d5db;
+}
+
+/* FILE INPUT */
+input[type="file"]{
+background:white;
+padding:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+    <h1>Staff Leave Portal</h1>
+    <p>Submit your leave request easily</p>
+</div>
+
+<!-- FORM -->
+<div class="form-card">
+
+<h2 class="form-title">Leave Application Form</h2>
+
+<form th:action="@{/staff/save-leave}" method="post" enctype="multipart/form-data">
+
+<div class="form-group">
+<label>Staff Name</label>
+<input type="text" name="name" placeholder="Enter full name" required>
+</div>
+
+<div class="row">
+
+<div class="form-group">
+<label>Leave Type</label>
+<select name="leaveType" required>
+<option value="">Select Leave Type</option>
+<option>Casual Leave</option>
+<option>Sick Leave</option>
+<option>Medical Leave</option>
+<option>Emergency Leave</option>
+<option>Maternity Leave</option>
+<option>Paternity Leave</option>
+<option>Official Duty Leave</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Total Days</label>
+<input type="number" name="totalDays" placeholder="No. of days" required>
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="form-group">
+<label>From Date</label>
+<input type="date" name="fromDate" required>
+</div>
+
+<div class="form-group">
+<label>To Date</label>
+<input type="date" name="toDate" required>
+</div>
+
+</div>
+
+<div class="form-group">
+<label>Reason for Leave</label>
+<textarea name="reason" placeholder="Write reason..." required></textarea>
+</div>
+
+<div class="form-group">
+<label>Attachment (Optional)</label>
+<input type="file" name="file">
+</div>
+
+<div class="btn-area">
+<button type="submit" class="submit-btn">Submit Leave</button>
+<button type="reset" class="reset-btn">Reset</button>
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>

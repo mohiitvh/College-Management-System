@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fee History | Apna College</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#2563eb);
+    padding:30px;
+}
+
+/* MAIN CARD */
+
+.container{
+    max-width:900px;
+    margin:auto;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:25px;
+    padding:35px;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+    animation:fadeUp .8s ease;
+}
+
+/* HEADER */
+
+.header{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.header-icon{
+    width:90px;
+    height:90px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#10b981,#22c55e);
+    color:white;
+    font-size:38px;
+    box-shadow:0 12px 30px rgba(34,197,94,.4);
+    margin-bottom:15px;
+}
+
+.header h2{
+    color:white;
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.header p{
+    color:#cbd5e1;
+}
+
+/* TABLE */
+
+.table-box{
+    overflow:hidden;
+    border-radius:18px;
+    background:rgba(255,255,255,.08);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    width:35%;
+    padding:16px;
+    text-align:left;
+    color:#fff;
+    background:rgba(255,255,255,.08);
+    font-weight:600;
+}
+
+td{
+    padding:16px;
+    color:#e2e8f0;
+    font-weight:500;
+}
+
+/* STATUS */
+
+.status{
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:700;
+    color:white;
+}
+
+.paid{
+    background:#22c55e;
+}
+
+.partial{
+    background:#f59e0b;
+}
+
+.pending{
+    background:#ef4444;
+}
+
+/* SUMMARY */
+
+.summary{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.card{
+    background:rgba(255,255,255,.08);
+    border-radius:18px;
+    padding:20px;
+    text-align:center;
+}
+
+.card h4{
+    color:#cbd5e1;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:white;
+    font-size:24px;
+    font-weight:700;
+}
+
+/* BUTTONS */
+
+.actions{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    text-decoration:none;
+    padding:14px 25px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.receipt-btn{
+    background:linear-gradient(135deg,#10b981,#22c55e);
+    color:white;
+    box-shadow:0 10px 25px rgba(34,197,94,.4);
+}
+
+.dashboard-btn{
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.2);
+    color:white;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+    .container{
+        padding:20px;
+    }
+
+    table,
+    tbody,
+    tr,
+    th,
+    td{
+        display:block;
+        width:100%;
+    }
+
+    td{
+        margin-bottom:10px;
+    }
+
+    .btn{
+        width:100%;
+        text-align:center;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <div class="header-icon">
+            <i class="fa-solid fa-money-check-dollar"></i>
+        </div>
+
+        <h2>Fee Payment History</h2>
+
+        <p>Your complete payment information and transaction details.</p>
+
+    </div>
+
+    <!-- SUMMARY CARDS -->
+
+    <div class="summary">
+
+        <div class="card">
+            <h4>Total Fee</h4>
+            <p>₹ <span th:text="${payment.totalFee}"></span></p>
+        </div>
+
+        <div class="card">
+            <h4>Paid Amount</h4>
+            <p>₹ <span th:text="${payment.paidAmount}"></span></p>
+        </div>
+
+        <div class="card">
+            <h4>Due Amount</h4>
+            <p>₹ <span th:text="${payment.dueAmount}"></span></p>
+        </div>
+
+    </div>
+
+    <!-- DETAILS TABLE -->
+
+    <div class="table-box">
+
+        <table>
+
+            <tr>
+                <th>Student ID</th>
+                <td th:text="${payment.studentId}"></td>
+            </tr>
+
+            <tr>
+                <th>Student Name</th>
+                <td th:text="${payment.studentName}"></td>
+            </tr>
+
+            <tr>
+                <th>Course</th>
+                <td th:text="${payment.courseName}"></td>
+            </tr>
+
+            <tr>
+                <th>Admission Fee</th>
+                <td>₹ <span th:text="${payment.admissionFee}"></span></td>
+            </tr>
+
+            <tr>
+                <th>Semester Fee</th>
+                <td>₹ <span th:text="${payment.semesterFee}"></span></td>
+            </tr>
+
+            <tr>
+                <th>Total Fee</th>
+                <td>₹ <span th:text="${payment.totalFee}"></span></td>
+            </tr>
+
+            <tr>
+                <th>Paid Amount</th>
+                <td>₹ <span th:text="${payment.paidAmount}"></span></td>
+            </tr>
+
+            <tr>
+                <th>Due Amount</th>
+                <td>₹ <span th:text="${payment.dueAmount}"></span></td>
+            </tr>
+
+            <tr>
+                <th>Payment Mode</th>
+                <td th:text="${payment.paymentMode}"></td>
+            </tr>
+
+            <tr>
+                <th>Transaction ID</th>
+                <td th:text="${payment.transactionId}"></td>
+            </tr>
+
+            <tr>
+                <th>Payment Date</th>
+                <td th:text="${payment.paymentDate}"></td>
+            </tr>
+
+            <tr>
+                <th>Status</th>
+
+                <td>
+
+                    <span th:if="${payment.paymentStatus=='PAID'}"
+                          class="status paid"
+                          th:text="${payment.paymentStatus}">
+                    </span>
+
+                    <span th:if="${payment.paymentStatus=='PARTIAL'}"
+                          class="status partial"
+                          th:text="${payment.paymentStatus}">
+                    </span>
+
+                    <span th:if="${payment.paymentStatus=='PENDING'}"
+                          class="status pending"
+                          th:text="${payment.paymentStatus}">
+                    </span>
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="actions">
+
+        <a th:href="@{/student/payment/receipt}" class="btn receipt-btn">
+            <i class="fa-solid fa-download"></i>
+            Download Receipt
+        </a>
+
+        <a th:href="@{/indexStudent}" class="btn dashboard-btn">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

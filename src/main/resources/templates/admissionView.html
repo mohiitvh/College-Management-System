@@ -2,11 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Admission Details</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -21,222 +24,343 @@ body{
     padding:40px;
 }
 
-/* HEADER */
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
 .header{
     text-align:center;
     margin-bottom:30px;
 }
 
-.header img{
-    height:60px;
-    margin-bottom:10px;
-}
-
 .header h1{
-    font-size:28px;
     color:#38bdf8;
+    font-size:32px;
 }
 
-/* CARD */
-.container{
-    max-width:1000px;
-    margin:auto;
+.header p{
+    color:#cbd5e1;
 }
 
 .card{
     background:rgba(255,255,255,0.06);
-    backdrop-filter:blur(20px);
+    backdrop-filter:blur(15px);
     border-radius:20px;
     padding:30px;
-    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    box-shadow:0 15px 50px rgba(0,0,0,.4);
 }
 
-/* SECTION */
 .section{
-    margin-top:25px;
+    margin-bottom:25px;
+    background:rgba(255,255,255,.05);
     padding:20px;
     border-radius:15px;
-    background:rgba(255,255,255,0.05);
 }
 
 .section h2{
-    font-size:18px;
-    margin-bottom:15px;
     color:#38bdf8;
+    margin-bottom:15px;
     border-left:4px solid #38bdf8;
     padding-left:10px;
 }
 
-/* ROW */
 .row{
     display:flex;
     justify-content:space-between;
+    gap:20px;
     padding:10px 0;
-    border-bottom:1px solid rgba(255,255,255,0.1);
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-.row span:first-child{
-    opacity:0.7;
+.row:last-child{
+    border-bottom:none;
 }
 
-.row span:last-child{
+.label{
+    color:#94a3b8;
+    font-weight:500;
+}
+
+.value{
+    color:white;
     font-weight:600;
-    color:#e2e8f0;
+    text-align:right;
 }
 
-/* BACK BUTTON */
-.back{
-    display:inline-block;
+.btns{
+    display:flex;
+    gap:15px;
     margin-top:25px;
+}
+
+.btn{
     padding:12px 20px;
-    background:#38bdf8;
-    color:black;
     text-decoration:none;
     border-radius:10px;
     font-weight:600;
 }
-.back:hover{
-    background:#0ea5e9;
+
+.home{
+    background:#38bdf8;
+    color:black;
 }
+
+.dashboard{
+    background:#22c55e;
+    color:white;
+}
+
+@media(max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+    .row{
+        flex-direction:column;
+    }
+
+    .value{
+        text-align:left;
+    }
+
+    .btns{
+        flex-direction:column;
+    }
+}
+
 </style>
-
 </head>
-
 <body>
 
 <div class="container">
 
-<div class="header">
-    <img th:src="@{/images/apnacollegLogo.png}" alt="logo">
-    <h1>APNA COLLEGE</h1>
-    <p>Admission Details</p>
-</div>
-
-<div class="card">
-
-<!-- PERSONAL -->
-<div class="section">
-<h2>Personal Details</h2>
-
-<div class="row"><span>Name</span><span th:text="${admission.fullName}"></span></div>
-<div class="row"><span>DOB</span><span th:text="${admission.dateOfBirth}"></span></div>
-<div class="row"><span>Gender</span><span th:text="${admission.gender}"></span></div>
-<div class="row"><span>Category</span><span th:text="${admission.category}"></span></div>
-<div class="row">
-    <span>Nationality</span>
-    <span th:text="${admission.nationality}"></span>
-</div>
-<div class="row"><span>Aadhaar</span><span th:text="${admission.aadhaarNumber}"></span></div>
-</div>
-
-<!-- GUARDIAN -->
-<div class="section">
-<h2>Guardian Details</h2>
-
-<div class="row"><span>Father</span><span th:text="${admission.fatherName}"></span></div>
-<div class="row">
-    <span>Father Occupation</span>
-    <span th:text="${admission.fatheroccupation}"></span>
-</div>
-<div class="row"><span>Mother</span><span th:text="${admission.motherName}"></span></div>
-<div class="row">
-    <span>Mother Occupation</span>
-    <span th:text="${admission.motheroccupation}"></span>
-</div>
-<div class="row"><span>Guardian</span><span th:text="${admission.guardianName}"></span></div>
-<div class="row"><span>Income</span><span th:text="${admission.annualIncome}"></span></div>
-</div>
-
-<div class="section">
-<h2>Other Details</h2>
-
-<div class="row">
-<span>Blood Group</span>
-<span th:text="${admission.bloodGroup}"></span>
-</div>
-
-<div class="row">
-<span>Disability Status</span>
-<span th:text="${admission.disabilityStatus}"></span>
-</div>
-
-<div class="row">
-<span>Disability Details</span>
-<span th:text="${admission.disabilityDetails}"></span>
-</div>
-
-<div class="row">
-<span>Emergency Contact</span>
-<span th:text="${admission.emergencyContact}"></span>
-</div>
-
-</div>
-<!-- CONTACT -->
-<div class="section">
-<h2>Contact Details</h2>
-
-<div class="row"><span>Mobile</span><span th:text="${admission.mobileNumber}"></span></div>
-<div class="row"><span>Email</span><span th:text="${admission.emailId}"></span></div>
-<div class="row"><span>Guardian Mobile</span><span th:text="${admission.guardianMobile}"></span></div>
-<div class="row"><span>Address</span><span th:text="${admission.currentAddress}"></span></div>
-</div>
-
-<!-- ACADEMIC -->
-<div class="section">
-<h2>Academic Details</h2>
-
-<div class="row"><span>School</span><span th:text="${admission.previousSchoolCollege}"></span></div>
-<div class="row"><span>Board</span><span th:text="${admission.boardUniversity}"></span></div>
-<div class="row"><span>Course</span><span th:text="${admission.lastPassedCourse}"></span></div>
-<div class="row"><span>Passing Year</span><span th:text="${admission.passingYear}"></span></div>
-<div class="row"><span>Marks</span><span th:text="${admission.marksPercentageCgpa}"></span></div>
-<div class="row">
-<span>Roll No</span>
-<span th:text="${admission.rollRegistrationNumber}"></span>
-</div>
-</div>
-
-<!-- ADMISSION -->
-<div class="section">
-<h2>Admission Info</h2>
-
-<div class="row"><span>UG/PG</span><span th:text="${admission.ug_pg}"></span></div>
-<div class="row"><span>Course</span><span th:text="${admission.selectedCourse}"></span></div>
-<div class="row"><span>Branch</span><span th:text="${admission.branchSpecialization}"></span></div>
-<div class="row"><span>Session</span><span th:text="${admission.sessionBatch}"></span></div>
-</div>
-<div class="section">
-<h2>Login Details</h2>
-
-<div class="row">
-<span>Username</span>
-<span th:text="${admission.username}"></span>
-</div>
-
-</div>
-<div class="section">
-    <h2>Declaration</h2>
-
-    <div class="row">
-        <span>Declaration</span>
-        <span th:text="${admission.declarationCheckbox}"></span>
+    <div class="header">
+        <h1>APNA COLLEGE</h1>
+        <p>Admission Details</p>
     </div>
 
-    <div class="row">
-        <span>Terms Accepted</span>
-        <span th:text="${admission.termsConditions}"></span>
+    <div class="card">
+
+        <!-- PERSONAL DETAILS -->
+        <div class="section">
+            <h2>Personal Details</h2>
+
+            <div class="row">
+                <div class="label">Full Name</div>
+                <div class="value" th:text="${admission.fullName}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Date Of Birth</div>
+                <div class="value" th:text="${admission.dateOfBirth}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Gender</div>
+                <div class="value" th:text="${admission.gender}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Category</div>
+                <div class="value" th:text="${admission.category}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Nationality</div>
+                <div class="value" th:text="${admission.nationality}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Aadhaar Number</div>
+                <div class="value" th:text="${admission.aadhaarNumber}"></div>
+            </div>
+        </div>
+
+        <!-- GUARDIAN DETAILS -->
+        <div class="section">
+            <h2>Guardian Details</h2>
+
+            <div class="row">
+                <div class="label">Father Name</div>
+                <div class="value" th:text="${admission.fatherName}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Father Occupation</div>
+                <div class="value" th:text="${admission.fatheroccupation}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Mother Name</div>
+                <div class="value" th:text="${admission.motherName}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Mother Occupation</div>
+                <div class="value" th:text="${admission.motheroccupation}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Guardian Name</div>
+                <div class="value" th:text="${admission.guardianName}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Annual Income</div>
+                <div class="value" th:text="${admission.annualIncome}"></div>
+            </div>
+        </div>
+
+        <!-- OTHER DETAILS -->
+        <div class="section">
+            <h2>Other Details</h2>
+
+            <div class="row">
+                <div class="label">Blood Group</div>
+                <div class="value" th:text="${admission.bloodGroup}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Disability Status</div>
+                <div class="value" th:text="${admission.disabilityStatus}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Disability Details</div>
+                <div class="value" th:text="${admission.disabilityDetails}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Emergency Contact</div>
+                <div class="value" th:text="${admission.emergencyContact}"></div>
+            </div>
+        </div>
+
+        <!-- CONTACT DETAILS -->
+        <div class="section">
+            <h2>Contact Details</h2>
+
+            <div class="row">
+                <div class="label">Mobile Number</div>
+                <div class="value" th:text="${admission.mobileNumber}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Email</div>
+                <div class="value" th:text="${admission.emailId}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Guardian Mobile</div>
+                <div class="value" th:text="${admission.guardianMobile}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Current Address</div>
+                <div class="value" th:text="${admission.currentAddress}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Permanent Address</div>
+                <div class="value" th:text="${admission.permanentAddress}"></div>
+            </div>
+        </div>
+
+        <!-- ACADEMIC DETAILS -->
+        <div class="section">
+            <h2>Academic Details</h2>
+
+            <div class="row">
+                <div class="label">Previous School/College</div>
+                <div class="value" th:text="${admission.previousSchoolCollege}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Board / University</div>
+                <div class="value" th:text="${admission.boardUniversity}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Last Passed Course</div>
+                <div class="value" th:text="${admission.lastPassedCourse}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Roll Number</div>
+                <div class="value" th:text="${admission.rollRegistrationNumber}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Passing Year</div>
+                <div class="value" th:text="${admission.passingYear}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Marks / CGPA</div>
+                <div class="value" th:text="${admission.marksPercentageCgpa}"></div>
+            </div>
+        </div>
+
+        <!-- ADMISSION DETAILS -->
+        <div class="section">
+            <h2>Admission Details</h2>
+
+            <div class="row">
+                <div class="label">UG / PG</div>
+                <div class="value" th:text="${admission.ug_pg}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Course</div>
+                <div class="value" th:text="${admission.course.courseName}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Session</div>
+                <div class="value" th:text="${admission.sessionBatch}"></div>
+            </div>
+
+            
+        </div>
+
+        <!-- LOGIN DETAILS -->
+        <div class="section">
+            <h2>Login Details</h2>
+
+            <div class="row">
+                <div class="label">Username</div>
+                <div class="value" th:text="${admission.username}"></div>
+            </div>
+        </div>
+
+        <!-- DECLARATION -->
+        <div class="section">
+            <h2>Declaration</h2>
+
+            <div class="row">
+                <div class="label">Declaration Accepted</div>
+                <div class="value" th:text="${admission.declarationCheckbox}"></div>
+            </div>
+
+            <div class="row">
+                <div class="label">Terms Accepted</div>
+                <div class="value" th:text="${admission.termsConditions}"></div>
+            </div>
+        </div>
+
+        <div class="btns">
+            <a th:href="@{/student/payment/feePayment}" class="btn dashboard">
+                Fee Payment
+            </a>
+
+            <a href="javascript:history.back()" class="btn home">
+                Back To Dashboard
+            </a>
+        </div>
+
     </div>
-</div>
-
-<div style="display:flex;gap:15px;margin-top:25px;">
-
-    <a th:href="@{/}" class="back">
-        ← Back to Home
-    </a>
-
-    <a th:href="@{/indexStudent}" class="back">
-        Save
-    </a>
 
 </div>
 

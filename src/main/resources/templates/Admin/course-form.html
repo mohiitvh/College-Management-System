@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add / Edit Course</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#eef2ff,#f8fafc);
+    padding:40px;
+}
+
+/* CONTAINER */
+.container{
+    max-width:750px;
+    margin:auto;
+}
+
+/* CARD */
+.card{
+    background:white;
+    padding:35px;
+    border-radius:18px;
+    box-shadow:0 20px 50px rgba(0,0,0,.08);
+    position:relative;
+    overflow:hidden;
+}
+
+/* TOP BAR DECOR */
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:6px;
+    background:linear-gradient(135deg,#6366f1,#3b82f6,#10b981);
+}
+
+/* TITLE */
+h2{
+    font-size:24px;
+    margin-bottom:20px;
+    color:#0f172a;
+}
+
+/* FORM */
+form{
+    margin-top:10px;
+}
+
+label{
+    display:block;
+    margin-top:12px;
+    font-weight:500;
+    color:#334155;
+    font-size:14px;
+}
+
+input{
+    width:100%;
+    padding:12px 14px;
+    margin-top:6px;
+    margin-bottom:14px;
+    border:1px solid #e2e8f0;
+    border-radius:10px;
+    font-size:14px;
+    outline:none;
+    transition:.2s;
+}
+
+input:focus{
+    border-color:#6366f1;
+    box-shadow:0 0 0 3px rgba(99,102,241,.15);
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    margin-top:10px;
+    background:linear-gradient(135deg,#6366f1,#3b82f6);
+    color:white;
+    border:none;
+    padding:13px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:600;
+    font-size:15px;
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 25px rgba(59,130,246,.25);
+}
+
+/* SMALL GRID (optional enhancement) */
+@media(max-width:768px){
+    .container{
+        padding:10px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2 th:text="${course.id == null ? '➕ Add Course' : '✏️ Edit Course'}">
+            Add Course
+        </h2>
+
+        <form th:action="@{/admin/course/save}"
+              th:object="${course}"
+              method="post">
+
+            <input type="hidden" th:field="*{id}">
+
+            <label>Course Name</label>
+            <input type="text" th:field="*{courseName}" placeholder="Enter course name" required>
+
+            <label>Course Code</label>
+            <input type="text" th:field="*{courseCode}" placeholder="Enter course code" required>
+
+            <label>Admission Fee</label>
+            <input type="number" th:field="*{admissionFee}" placeholder="Enter admission fee" required>
+
+            <label>Semester Fee</label>
+            <input type="number" th:field="*{semesterFee}" placeholder="Enter semester fee" required>
+
+            <label>Total Fee</label>
+            <input type="number" th:field="*{totalFee}" placeholder="Enter total fee" required>
+
+            <label>Duration</label>
+            <input type="text" th:field="*{duration}" placeholder="e.g. 3 Years / 6 Semesters" required>
+
+            <button type="submit">
+                Save Course
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

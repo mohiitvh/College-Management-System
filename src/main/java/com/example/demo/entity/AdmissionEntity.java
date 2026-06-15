@@ -9,18 +9,21 @@ import lombok.Data;
 @Table(name = "admissions")
 @Data
 public class AdmissionEntity {
-
-
-
-
+	
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long id;
-
+private Long studentId;
 //=========================
 //1. Personal Details
 //=========================
 
+public Long getStudentId() {
+	return studentId;
+}
+public void setStudentId(Long studentId) {
+	this.studentId = studentId;
+}
 private String fullName;
 private LocalDate dateOfBirth;
 private String gender;
@@ -82,15 +85,18 @@ private byte[] marksheetUpload;
 //=========================
 
 private String ug_pg;
-private String selectedCourse;
-private String branchSpecialization;
-private String sessionBatch;
 
+@ManyToOne
+@JoinColumn(name = "course_id")
+private CourseEntity course;
+private String sessionBatch;
+private String status;
 
 
 //=========================
 //7. Document Uploads
 //=========================
+
 
 @Lob
 @Column(columnDefinition = "LONGBLOB")
@@ -121,11 +127,6 @@ private byte[] migrationCertificate;
 private byte[] categoryCertificate;
 
 
-
-//=========================
-//8. Login Details
-//=========================
-
 @Column(unique = true)
 private String username;
 
@@ -133,12 +134,14 @@ private String password;
 
 @Transient
 private String confirmPassword;
+
 //=========================
-//9. Final Section
+//8. Final Section
 //=========================
 
 private Boolean declarationCheckbox;
 private Boolean termsConditions;
+
 public Long getId() {
 	return id;
 }
@@ -319,23 +322,23 @@ public String getUg_pg() {
 public void setUg_pg(String ug_pg) {
 	this.ug_pg = ug_pg;
 }
-public String getSelectedCourse() {
-	return selectedCourse;
+public CourseEntity getCourse() {
+	return course;
 }
-public void setSelectedCourse(String selectedCourse) {
-	this.selectedCourse = selectedCourse;
-}
-public String getBranchSpecialization() {
-	return branchSpecialization;
-}
-public void setBranchSpecialization(String branchSpecialization) {
-	this.branchSpecialization = branchSpecialization;
+public void setCourse(CourseEntity course) {
+	this.course = course;
 }
 public String getSessionBatch() {
 	return sessionBatch;
 }
 public void setSessionBatch(String sessionBatch) {
 	this.sessionBatch = sessionBatch;
+}
+public String getStatus() {
+	return status;
+}
+public void setStatus(String status) {
+	this.status = status;
 }
 public byte[] getPassportPhoto() {
 	return passportPhoto;
@@ -409,6 +412,14 @@ public Boolean getTermsConditions() {
 public void setTermsConditions(Boolean termsConditions) {
 	this.termsConditions = termsConditions;
 }
+
+
+
+
+
+
+
+
 
 
 }

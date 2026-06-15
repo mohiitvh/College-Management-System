@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Course Management</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    background:
+    linear-gradient(
+    135deg,
+    #eef2ff,
+    #f8fafc,
+    #e0f2fe);
+
+    min-height:100vh;
+}
+
+/* HEADER */
+
+.header{
+
+    background:
+    linear-gradient(
+    135deg,
+    #0f172a,
+    #1e293b,
+    #334155);
+
+    color:white;
+
+    padding:25px 35px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.15);
+
+}
+
+.header h1{
+
+    font-size:30px;
+
+    font-weight:700;
+
+}
+
+.header p{
+
+    margin-top:8px;
+
+    color:#cbd5e1;
+
+}
+
+/* DASHBOARD BUTTON */
+
+.dashboard-btn{
+
+    text-decoration:none;
+
+    padding:14px 24px;
+
+    border-radius:15px;
+
+    color:white;
+
+    font-weight:600;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #3b82f6,
+    #2563eb);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    box-shadow:
+
+    0 12px 25px
+    rgba(37,99,235,.35);
+
+    transition:.3s;
+
+}
+
+.dashboard-btn:hover{
+
+    transform:
+
+    translateY(-4px)
+    scale(1.03);
+
+    box-shadow:
+
+    0 20px 35px
+    rgba(37,99,235,.45);
+
+}
+
+
+/* CONTAINER */
+
+.container{
+
+    padding:35px;
+
+    max-width:1400px;
+
+    margin:auto;
+
+}
+
+/* STATS */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(auto-fit,
+    minmax(250px,1fr));
+
+    gap:25px;
+
+    margin-bottom:30px;
+
+}
+
+.stat-card{
+
+    background:white;
+
+    padding:28px;
+
+    border-radius:22px;
+
+    box-shadow:
+
+    0 20px 40px
+    rgba(0,0,0,.08);
+
+    transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.stat-card:hover{
+
+    transform:
+
+    translateY(-8px);
+
+}
+
+.stat-card::before{
+
+content:"";
+
+position:absolute;
+
+width:120px;
+
+height:120px;
+
+border-radius:50%;
+
+background:
+
+rgba(99,102,241,.08);
+
+right:-30px;
+
+top:-30px;
+
+}
+
+.stat-card i{
+
+    font-size:32px;
+
+    color:#6366f1;
+
+    margin-bottom:15px;
+
+}
+
+.stat-card h2{
+
+    font-size:30px;
+
+    color:#0f172a;
+
+}
+
+.stat-card p{
+
+    color:#64748b;
+
+    margin-top:6px;
+
+}
+
+/* ADD COURSE */
+
+.add-course{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:14px 22px;
+
+border-radius:15px;
+
+text-decoration:none;
+
+color:white;
+
+font-weight:600;
+
+background:
+
+linear-gradient(
+135deg,
+#22c55e,
+#16a34a);
+
+box-shadow:
+
+0 12px 25px
+rgba(34,197,94,.3);
+
+transition:.3s;
+
+margin-bottom:25px;
+
+}
+
+.add-course:hover{
+
+transform:
+
+translateY(-4px);
+
+}
+
+/* TABLE */
+
+.table-box{
+
+background:white;
+
+border-radius:25px;
+
+overflow:hidden;
+
+box-shadow:
+
+0 25px 60px
+rgba(0,0,0,.08);
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+thead{
+
+background:
+
+linear-gradient(
+135deg,
+#6366f1,
+#3b82f6);
+
+color:white;
+
+}
+
+th{
+
+padding:18px;
+
+text-align:center;
+
+font-size:14px;
+
+font-weight:600;
+
+}
+
+td{
+
+padding:18px;
+
+text-align:center;
+
+border-bottom:
+
+1px solid #eef2f7;
+
+font-size:14px;
+
+color:#334155;
+
+}
+
+tbody tr{
+
+transition:.3s;
+
+}
+
+tbody tr:hover{
+
+background:#f8fbff;
+
+transform:scale(1.005);
+
+}
+
+/* BUTTON */
+
+.btn{
+
+padding:10px 16px;
+
+border-radius:12px;
+
+color:white;
+
+text-decoration:none;
+
+font-size:13px;
+
+font-weight:600;
+
+display:inline-flex;
+
+align-items:center;
+
+gap:6px;
+
+transition:.3s;
+
+margin:3px;
+
+}
+
+.edit{
+
+background:
+
+linear-gradient(
+135deg,
+#f59e0b,
+#d97706);
+
+}
+
+.delete{
+
+background:
+
+linear-gradient(
+135deg,
+#ef4444,
+#dc2626);
+
+}
+
+.btn:hover{
+
+transform:
+
+translateY(-3px);
+
+}
+
+/* EMPTY */
+
+.empty{
+
+text-align:center;
+
+padding:60px;
+
+font-size:18px;
+
+color:#64748b;
+
+}
+
+.empty::before{
+
+content:"📚";
+
+display:block;
+
+font-size:50px;
+
+margin-bottom:15px;
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.header{
+
+flex-direction:column;
+
+gap:20px;
+
+text-align:center;
+
+}
+
+.dashboard-btn{
+
+width:100%;
+
+justify-content:center;
+
+}
+
+.container{
+
+padding:15px;
+
+}
+
+table{
+
+min-width:950px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div>
+
+<h1>
+
+<i class="fa-solid fa-book"></i>
+
+Course Management
+
+</h1>
+
+<p>
+
+Manage all college courses, fees and programs
+
+</p>
+
+</div>
+
+<a th:href="@{/indexAdmin}"
+class="dashboard-btn">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+</div>
+
+
+<div class="container">
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat-card">
+
+<i class="fa-solid fa-book-open"></i>
+
+<h2 th:text="${#lists.size(courses)}">
+0
+</h2>
+
+<p>Total Courses</p>
+
+</div>
+
+
+<div class="stat-card">
+
+<i class="fa-solid fa-indian-rupee-sign"></i>
+
+<h2>Fees</h2>
+
+<p>Manage Course Fees</p>
+
+</div>
+
+
+<div class="stat-card">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+<h2>UG / PG</h2>
+
+<p>Programs Available</p>
+
+</div>
+
+</div>
+
+
+<a th:href="@{/admin/course/add}"
+
+class="add-course">
+
+<i class="fa-solid fa-plus"></i>
+
+Add New Course
+
+</a>
+
+
+<div class="table-box">
+
+
+<div th:if="${#lists.isEmpty(courses)}"
+
+class="empty">
+
+No Course Available
+
+</div>
+
+
+<table th:if="${not #lists.isEmpty(courses)}">
+
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Course Name</th>
+
+<th>Course Code</th>
+
+<th>Duration</th>
+
+<th>Total Fee</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+<tr th:each="course : ${courses}">
+
+<td th:text="${course.id}"></td>
+
+<td th:text="${course.courseName}"></td>
+
+<td th:text="${course.courseCode}"></td>
+
+<td th:text="${course.duration}"></td>
+
+<td>
+
+₹
+
+<span th:text="${course.totalFee}"></span>
+
+</td>
+
+<td>
+
+<a
+
+th:href="@{/admin/course/edit/{id}(id=${course.id})}"
+
+class="btn edit">
+
+<i class="fa-solid fa-pen"></i>
+
+Edit
+
+</a>
+
+
+<a
+
+th:href="@{/admin/course/delete/{id}(id=${course.id})}"
+
+class="btn delete"
+
+onclick="return confirm('Delete this course ?')">
+
+<i class="fa-solid fa-trash"></i>
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

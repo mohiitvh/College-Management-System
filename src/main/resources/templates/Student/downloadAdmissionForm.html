@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Admission Form</title>
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+padding:30px;
+}
+
+h2{
+text-align:center;
+margin-bottom:30px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-bottom:20px;
+}
+
+table,td{
+border:1px solid black;
+}
+
+td{
+padding:10px;
+}
+
+.label{
+font-weight:bold;
+width:250px;
+}
+
+.photo{
+width:150px;
+height:180px;
+border:1px solid black;
+object-fit:cover;
+}
+
+.signature{
+width:180px;
+height:80px;
+border:1px solid black;
+object-fit:contain;
+}
+
+.section{
+margin-top:20px;
+}
+
+</style>
+</head>
+<body>
+
+<h2>APNA COLLEGE ADMISSION FORM</h2>
+
+<div style="display:flex;justify-content:space-between">
+
+<div>
+<h3>Passport Photo</h3>
+<img th:attr="src=${photoUrl}" class="photo">
+</div>
+
+<div>
+<h3>Signature</h3>
+<img th:attr="src=${signatureUrl}" class="signature">
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h3>Personal Details</h3>
+
+<table>
+
+<tr>
+<td class="label">Full Name</td>
+<td th:text="${admission.fullName}"></td>
+</tr>
+
+<tr>
+<td class="label">Date Of Birth</td>
+<td th:text="${admission.dateOfBirth}"></td>
+</tr>
+
+<tr>
+<td class="label">Gender</td>
+<td th:text="${admission.gender}"></td>
+</tr>
+
+<tr>
+<td class="label">Category</td>
+<td th:text="${admission.category}"></td>
+</tr>
+
+<tr>
+<td class="label">Nationality</td>
+<td th:text="${admission.nationality}"></td>
+</tr>
+
+<tr>
+<td class="label">Aadhaar Number</td>
+<td th:text="${admission.aadhaarNumber}"></td>
+</tr>
+
+</table>
+
+</div>
+
+
+<div class="section">
+
+<h3>Guardian Details</h3>
+
+<table>
+
+<tr>
+<td class="label">Father Name</td>
+<td th:text="${admission.fatherName}"></td>
+</tr>
+
+<tr>
+<td class="label">Mother Name</td>
+<td th:text="${admission.motherName}"></td>
+</tr>
+
+<tr>
+<td class="label">Guardian Name</td>
+<td th:text="${admission.guardianName}"></td>
+</tr>
+
+<tr>
+<td class="label">Annual Income</td>
+<td th:text="${admission.annualIncome}"></td>
+</tr>
+
+</table>
+
+</div>
+
+
+<div class="section">
+
+<h3>Contact Details</h3>
+
+<table>
+
+<tr>
+<td class="label">Mobile Number</td>
+<td th:text="${admission.mobileNumber}"></td>
+</tr>
+
+<tr>
+<td class="label">Email</td>
+<td th:text="${admission.emailId}"></td>
+</tr>
+
+<tr>
+<td class="label">Current Address</td>
+<td th:text="${admission.currentAddress}"></td>
+</tr>
+
+<tr>
+<td class="label">Permanent Address</td>
+<td th:text="${admission.permanentAddress}"></td>
+</tr>
+
+</table>
+
+</div>
+
+
+<div class="section">
+
+<h3>Academic Details</h3>
+
+<table>
+
+<tr>
+<td class="label">School/College</td>
+<td th:text="${admission.previousSchoolCollege}"></td>
+</tr>
+
+<tr>
+<td class="label">Board/University</td>
+<td th:text="${admission.boardUniversity}"></td>
+</tr>
+
+<tr>
+<td class="label">Last Passed Course</td>
+<td th:text="${admission.lastPassedCourse}"></td>
+</tr>
+
+<tr>
+<td class="label">Passing Year</td>
+<td th:text="${admission.passingYear}"></td>
+</tr>
+
+<tr>
+<td class="label">Marks</td>
+<td th:text="${admission.marksPercentageCgpa}"></td>
+</tr>
+
+</table>
+
+</div>
+
+
+<div class="section">
+
+<h3>Admission Details</h3>
+
+<table>
+
+<tr>
+<td class="label">UG/PG</td>
+<td th:text="${admission.ug_pg}"></td>
+</tr>
+
+<tr>
+<td class="label">Course</td>
+<td th:text="${admission.course!=null ? admission.course.courseName : 'N/A'}"></td>
+</tr>
+
+<tr>
+<td class="label">Session</td>
+<td th:text="${admission.sessionBatch}"></td>
+</tr>
+
+<tr>
+<td class="label">Status</td>
+<td th:text="${admission.status}"></td>
+</tr>
+
+</table>
+
+</div>
+
+</body>
+</html>

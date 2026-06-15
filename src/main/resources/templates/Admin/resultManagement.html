@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Result Management | Admin</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#eef2ff,#f8fafc);
+padding:30px;
+}
+
+/* HEADER */
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:white;
+padding:22px 25px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+margin-bottom:25px;
+}
+
+.header h2{
+font-size:26px;
+color:#0f172a;
+}
+
+.back-btn{
+text-decoration:none;
+background:#2563eb;
+color:white;
+padding:10px 18px;
+border-radius:10px;
+font-weight:600;
+transition:.3s;
+}
+
+.back-btn:hover{
+background:#1d4ed8;
+transform:translateY(-2px);
+}
+
+/* TABLE CARD */
+.card{
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+overflow-x:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:800px;
+}
+
+thead{
+background:#2563eb;
+color:white;
+}
+
+th{
+padding:14px;
+text-align:left;
+font-size:14px;
+}
+
+td{
+padding:14px;
+border-bottom:1px solid #eee;
+font-size:14px;
+}
+
+tbody tr:hover{
+background:#f8fafc;
+}
+
+/* INPUT */
+input{
+width:100px;
+padding:8px;
+border:1px solid #ddd;
+border-radius:8px;
+outline:none;
+}
+
+input:focus{
+border-color:#2563eb;
+box-shadow:0 0 0 2px rgba(37,99,235,.1);
+}
+
+/* BUTTON */
+.save-btn{
+background:linear-gradient(135deg,#10b981,#059669);
+color:white;
+border:none;
+padding:10px 16px;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+transition:.3s;
+}
+
+.save-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(16,185,129,.25);
+}
+
+/* BADGE STYLE (optional future use) */
+.badge{
+padding:5px 10px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h2><i class="fa-solid fa-graduation-cap"></i> Result Management</h2>
+
+    <a th:href="@{/indexAdmin}" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Back Dashboard
+    </a>
+</div>
+
+<div class="card">
+
+<table>
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Student Name</th>
+<th>Course</th>
+<th>Semester</th>
+<th>Marks</th>
+<th>Grade</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr th:each="student : ${students}">
+
+<td th:text="${student.id}"></td>
+<td th:text="${student.fullName}"></td>
+<td th:text="${student.course.courseName}"></td>
+<td>1</td>
+
+<td>
+<input type="number" placeholder="Enter Marks">
+</td>
+
+<td>
+<input type="text" placeholder="Enter Grade">
+</td>
+
+<td>
+<button class="save-btn">
+<i class="fa-solid fa-floppy-disk"></i> Save
+</button>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>

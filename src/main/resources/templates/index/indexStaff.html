@@ -138,39 +138,79 @@ body{
 
 .topbar p{
   color:var(--text);
-  margin-top:5px;
+  margin-top:15px;
 }
 
 .profile{
-  display:flex;
-  align-items:center;
-  gap:15px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+.profile{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.profile-info{
+    display:flex;
+    flex-direction:column;
+}
+
+.top-logout{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#dc3545;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    transition:.3s;
+    margin-left:10px;
+}
+
+.top-logout:hover{
+    transform:scale(1.08);
+    background:#bb2d3b;
 }
 
 .profile img{
-  width:55px;
-  height:55px;
-  border-radius:50%;
-  object-fit:cover;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #0d6efd;
 }
 
 .profile h4{
-  color:var(--primary);
+    color:#071952;
+    margin-bottom:3px;
 }
 
 .profile span{
-  color:var(--text);
-  font-size:14px;
+    color:#64748b;
+    font-size:14px;
+}
+
+.logout-btn{
+    background:rgba(255,0,0,.15);
+}
+
+.logout-btn:hover{
+    background:#dc3545 !important;
+    color:white !important;
 }
 
 .welcome{
-  background:var(--gradient);
-  color:white;
-  border-radius:30px;
-  padding:50px;
-  position:relative;
-  overflow:hidden;
-  margin-bottom:35px;
+    background:linear-gradient(135deg,#0d6efd,#6610f2);
+    color:white;
+    border-radius:30px;
+    padding:50px;
+    margin-bottom:35px;
+    position:relative;
+    overflow:hidden;
 }
 
 .welcome::before{
@@ -185,18 +225,21 @@ body{
 }
 
 .welcome h2{
-  font-size:42px;
-  margin-bottom:15px;
-  position:relative;
-  z-index:2;
+    font-size:42px;
+    margin-bottom:10px;
 }
 
+.welcome h3{
+    font-size:20px;
+    font-weight:500;
+    margin-bottom:15px;
+    color:#e2e8f0;
+}
+
+
 .welcome p{
-  line-height:1.9;
-  color:#e2e8f0;
-  max-width:700px;
-  position:relative;
-  z-index:2;
+    color:#f8fafc;
+    line-height:1.8;
 }
 
 .stats{
@@ -249,6 +292,14 @@ body{
   gap:30px;
 }
 
+.dashboard-card a i{
+    width:auto !important;
+    height:auto !important;
+    background:none !important;
+    font-size:14px !important;
+    margin:0 6px 0 0 !important;
+    display:inline !important;
+}
 .dashboard-card{
   background:white;
   padding:35px;
@@ -260,7 +311,8 @@ body{
 }
 
 .dashboard-card:hover{
-  transform:translateY(-10px);
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(13,110,253,.15);
 }
 
 .dashboard-card::before{
@@ -410,6 +462,27 @@ table td{
   .welcome h2{
     font-size:32px;
   }
+  .quick-actions{
+      margin-top:25px;
+      display:flex;
+      gap:15px;
+      flex-wrap:wrap;
+  }
+
+  .quick-actions a{
+      background:rgba(255,255,255,.18);
+      color:white;
+      text-decoration:none;
+      padding:12px 20px;
+      border-radius:12px;
+      font-weight:600;
+      transition:.3s;
+  }
+
+  .quick-actions a:hover{
+      background:white;
+      color:#0d6efd;
+  }
 
 }
 
@@ -446,21 +519,21 @@ table td{
     </li>
 
     <li>
-      <a href="#">
+<a th:href="@{/staff/apply-leave}">
         <i class="fa-solid fa-calendar-plus"></i>
         Apply Leave
       </a>
     </li>
 
     <li>
-      <a href="#">
+      <a th:href="@{/staff/leave-history}">
         <i class="fa-solid fa-clock-rotate-left"></i>
         Leave History
       </a>
     </li>
 
     <li>
-      <a href="#">
+      <a th:href="@{/staff/profile}">
         <i class="fa-solid fa-user"></i>
         View Profile
       </a>
@@ -473,12 +546,12 @@ table td{
 		</a>
     </li>
 
-    <li>
-      <a href="#">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        Logout
-      </a>
-    </li>
+	<li>
+	  <a th:href="@{/logoutStaff}" class="logout-btn">
+	    <i class="fa-solid fa-right-from-bracket"></i>
+	    Logout
+	  </a>
+	</li>
 
   </ul>
 
@@ -497,58 +570,62 @@ table td{
       <p>Manage leave requests and profile details.</p>
     </div>
 
-    <div class="profile">
+	<div class="profile">
 
-      <img src="https://randomuser.me/api/portraits/women/44.jpg">
+	    <img th:src="@{'/staff/photo/' + ${staff.id}}"
+	         alt="Staff">
 
-      <div>
-        <h4>Priya Sharma</h4>
-        <span>Assistant Professor</span>
-      </div>
+	    <div class="profile-info">
+	        <h4 th:text="${staff.name}"></h4>
+	        <span th:text="${staff.department}"></span>
+	    </div>
 
-    </div>
+	    <a th:href="@{/logoutStaff}" class="top-logout">
+	        <i class="fa-solid fa-right-from-bracket"></i>
+	    </a>
 
+	</div>
   </div>
 
   <!-- WELCOME -->
 
   <div class="welcome">
 
-    <h2>Welcome To Staff ERP Portal</h2>
+      <h2>
+          Welcome,
+          <span th:text="${staff.name}"></span>
+      </h2>
 
-    <p>
-      Access leave management, profile details and ID card from one smart dashboard.
-    </p>
+      <h3 th:text="${staff.department}"></h3>
+
+      <p>
+          Access leave management, profile details and ID card from one smart dashboard.
+      </p>
 
   </div>
-
   <!-- STATS -->
 
   <div class="stats">
 
     <div class="stat-card">
       <i class="fa-solid fa-calendar-check"></i>
-      <h2>12</h2>
+      <h2 th:text="${totalLeaves}">0</h2>
       <p>Total Leaves</p>
     </div>
 
     <div class="stat-card">
       <i class="fa-solid fa-circle-check"></i>
-      <h2>10</h2>
+      <h2 th:text="${approvedLeaves}">0</h2>
       <p>Approved Leaves</p>
     </div>
 
     <div class="stat-card">
       <i class="fa-solid fa-hourglass-half"></i>
-      <h2>2</h2>
+      <h2 th:text="${pendingLeaves}">0</h2>
       <p>Pending Leaves</p>
     </div>
 
-    <div class="stat-card">
-      <i class="fa-solid fa-user-group"></i>
-      <h2>150</h2>
-      <p>Total Students</p>
-    </div>
+    
 
   </div>
 
@@ -566,7 +643,7 @@ table td{
         Submit leave application online for approval.
       </p>
 
-      <a href="#">Apply Now</a>
+      <a th:href="@{/staff/apply-leave}">Apply Now</a>
 
     </div>
 
@@ -580,7 +657,7 @@ table td{
         View approved and pending leave records.
       </p>
 
-      <a href="#">View History</a>
+      <a th:href="@{/staff/leave-history}">View History</a>
 
     </div>
 
@@ -594,8 +671,10 @@ table td{
         View and update staff profile information.
       </p>
 
-      <a href="#">Open Profile</a>
-
+	  <a th:href="@{/staff/profile}">
+	      <i class="fa-solid fa-user"></i>
+	      View Profile
+	  </a>
     </div>
 
     <div class="dashboard-card">
@@ -617,32 +696,31 @@ table td{
 
   <div class="table-box">
 
-    <h3>Recent Leave Applications</h3>
+      <h3>Recent Leave Applications</h3>
 
-    <table>
+      <table>
 
-      <tr>
-        <th>Leave Type</th>
-        <th>Date</th>
-        <th>Days</th>
-        <th>Status</th>
-      </tr>
+          <tr>
+              <th>Leave Type</th>
+              <th>From Date</th>
+              <th>Days</th>
+              <th>Status</th>
+          </tr>
 
-      <tr>
-        <td>Medical Leave</td>
-        <td>25 May 2026</td>
-        <td>2 Days</td>
-        <td><span class="status approved">Approved</span></td>
-      </tr>
+		  <tr th:each="leave : ${leaves}">
+		      <td th:text="${leave.leaveType}"></td>
 
-      <tr>
-        <td>Casual Leave</td>
-        <td>18 May 2026</td>
-        <td>1 Day</td>
-        <td><span class="status pending">Pending</span></td>
-      </tr>
+		      <td th:text="${#temporals.format(leave.fromDate,'dd MMM yyyy')}"></td>
 
-    </table>
+		      <td th:text="${leave.totalDays + ' Days'}"></td>
+
+		      <td>
+		          <span th:text="${leave.status}"
+		                th:class="'status ' + ${leave.status.toLowerCase()}">
+		          </span>
+		      </td>
+		  </tr>
+      </table>
 
   </div>
 

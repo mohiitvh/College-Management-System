@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>All Courses | Apna College</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+    min-height:100vh;
+}
+
+/* TOP HEADER */
+
+.top-header{
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    padding:20px 8%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    box-shadow:0 4px 20px rgba(0,0,0,.1);
+}
+
+.top-header i{
+    font-size:32px;
+}
+
+.top-header h1{
+    font-size:30px;
+    font-weight:700;
+}
+
+/* PAGE HEADER */
+
+.header{
+    text-align:center;
+    padding:50px 20px 20px;
+}
+
+.header h2{
+    font-size:36px;
+    color:#0f172a;
+    margin-bottom:10px;
+}
+
+.header p{
+    color:#64748b;
+    font-size:16px;
+}
+
+/* COURSE SECTION */
+
+.course-section{
+    padding:30px 8% 60px;
+}
+
+/* GRID */
+
+.course-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+/* CARD */
+
+.course-card{
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    transition:.3s;
+    border-top:5px solid #2563eb;
+}
+
+.course-card:hover{
+    transform:translateY(-6px);
+}
+
+/* TITLE */
+
+.course-card h3{
+    color:#0f172a;
+    font-size:22px;
+    margin-bottom:15px;
+}
+
+/* COURSE INFO */
+
+.info{
+    margin-bottom:20px;
+}
+
+.info p{
+    color:#475569;
+    margin-bottom:10px;
+    font-size:15px;
+}
+
+.info i{
+    color:#2563eb;
+    width:22px;
+}
+
+/* DETAILS */
+
+.details{
+    display:flex;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.detail-box{
+    flex:1;
+    background:#f8fafc;
+    border-radius:12px;
+    padding:15px;
+    text-align:center;
+}
+
+.detail-box i{
+    color:#2563eb;
+    margin-bottom:8px;
+    font-size:18px;
+}
+
+.detail-box div{
+    font-weight:600;
+    color:#0f172a;
+}
+
+/* BUTTON */
+
+.btn{
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    color:white;
+    padding:12px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+/* EMPTY */
+
+.empty{
+    text-align:center;
+    background:white;
+    padding:50px;
+    border-radius:20px;
+    color:#64748b;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.empty i{
+    font-size:50px;
+    color:#94a3b8;
+    margin-bottom:15px;
+}
+.back-section{
+    text-align:center;
+    margin-top:30px;
+}
+
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    background:#0f172a;
+    color:white;
+    padding:12px 22px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.back-btn:hover{
+    background:#2563eb;
+    transform:translateY(-2px);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .top-header h1{
+        font-size:24px;
+    }
+
+    .header h2{
+        font-size:28px;
+    }
+
+    .details{
+        flex-direction:column;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- APNA COLLEGE HEADER -->
+
+<div class="top-header">
+    <i class="fa-solid fa-graduation-cap"></i>
+    <h1>APNA COLLEGE</h1>
+</div>
+
+<!-- PAGE HEADER -->
+
+<div class="header">
+    <h2>Explore Our Courses</h2>
+    <p>Choose the right course and build your future with Apna College</p>
+</div>
+
+<div class="back-section">
+
+    <a href="http://localhost:8080/" class="back-btn">
+
+        <i class="fa-solid fa-arrow-left"></i>
+        Back To Home
+
+    </a>
+
+</div>
+
+<section class="course-section">
+	
+	
+
+    <div th:if="${#lists.isEmpty(courses)}" class="empty">
+
+        <i class="fa-solid fa-book-open"></i>
+
+        <h3>No Courses Available</h3>
+
+        <p>Please check again later.</p>
+
+    </div>
+
+    <div class="course-grid">
+
+        <div class="course-card"
+             th:each="course : ${courses}">
+
+            <h3 th:text="${course.courseName}">
+                Bachelor of Computer Applications
+            </h3>
+
+            <div class="info">
+
+                <p>
+                    <i class="fa-solid fa-code"></i>
+                    Course Code:
+                    <span th:text="${course.courseCode}"></span>
+                </p>
+
+            </div>
+
+            <div class="details">
+
+                <div class="detail-box">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    <div th:text="${course.duration}">
+                        3 Years
+                    </div>
+
+                </div>
+
+                <div class="detail-box">
+
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                    <div>
+                        ₹ <span th:text="${course.totalFee}"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <a th:href="@{/admission}"
+               class="btn">
+
+                Apply Now
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>

@@ -78,6 +78,7 @@ body{
   color:var(--primary);
 }
 
+
 /* ================= HEADER ================= */
 
 header{
@@ -1007,8 +1008,24 @@ footer{
   </div>
 
   <div class="topbar-right">
-    <a href="#"><i class="fa-solid fa-user"></i> Web Login</a>
-    <a href="#"><i class="fa-solid fa-graduation-cap"></i> ERP Login</a>
+          <div class="erp-menu">
+              <a th:href="@{/loginStudent}">
+                  <i class="fa-solid fa-user-graduate"></i>
+                  Student ERP Login
+              </a>
+
+              <a th:href="@{/loginStaff}">
+                  <i class="fa-solid fa-users"></i>
+                  Staff ERP Login
+              </a>
+
+              <a th:href="@{/loginAdmin}">
+                  <i class="fa-solid fa-user-shield"></i>
+                  Admin ERP Login
+              </a>
+          </div>
+      </div>
+
   </div>
 
 </div>
@@ -1036,7 +1053,9 @@ AC
 
 <ul class="menu">
 
-<li><a href="#">Home</a></li>
+	<li>
+	    <a href="http://localhost:8080/">Home</a>
+	</li>
 
 <li>
 <a href="#">About <i class="fa-solid fa-angle-down"></i></a>
@@ -1198,36 +1217,35 @@ Explore Campus
 
 <div class="stats">
 
-<div class="stats-grid">
+    <div class="stats-grid">
 
-<div class="stat-card">
-<i class="fa-solid fa-users"></i>
-<h2>5000+</h2>
-<p>Students</p>
+        <div class="stat-card">
+            <i class="fa-solid fa-users"></i>
+            <h2 th:text="${totalStudents + '+'}">0+</h2>
+            <p>Students</p>
+        </div>
+
+        <div class="stat-card">
+            <i class="fa-solid fa-book-open"></i>
+            <h2 th:text="${totalCourses + '+'}">0+</h2>
+            <p>Courses</p>
+        </div>
+
+        <div class="stat-card">
+            <i class="fa-solid fa-chalkboard-user"></i>
+            <h2 th:text="${totalStaff + '+'}">0+</h2>
+            <p>Faculty Members</p>
+        </div>
+
+        <div class="stat-card">
+            <i class="fa-solid fa-award"></i>
+            <h2>100%</h2>
+            <p>Placement Support</p>
+        </div>
+
+    </div>
+
 </div>
-
-<div class="stat-card">
-<i class="fa-solid fa-book-open"></i>
-<h2>50+</h2>
-<p>Courses</p>
-</div>
-
-<div class="stat-card">
-<i class="fa-solid fa-chalkboard-user"></i>
-<h2>120+</h2>
-<p>Faculty Members</p>
-</div>
-
-<div class="stat-card">
-<i class="fa-solid fa-award"></i>
-<h2>100%</h2>
-<p>Placement Support</p>
-</div>
-
-</div>
-
-</div>
-
 <!-- ================= NOTICE ================= -->
 
 <section>
@@ -1790,10 +1808,10 @@ Access all important student services instantly.
         Admission Form
     </a>
 
-    <a th:href="@{/payment}" class="quick-link">
-        <i class="fa-solid fa-credit-card"></i>
-        Online Payment
-    </a>
+	<a th:href="@{/student/payment}" class="quick-link">
+	    <i class="fa-solid fa-credit-card"></i>
+	    Online Payment
+	</a>
 
     <a th:href="@{/loginStudent}" class="quick-link">
         <i class="fa-solid fa-user"></i>
@@ -1921,9 +1939,7 @@ skill development and career opportunities to students.
 <!-- ADD YOUR 20-30 SECOND VIDEO HERE -->
 
 <video id="campusVideo" controls>
-
-<source src="college-campus.mp4" type="video/mp4">
-
+    <source src="/images/apnacollege.mp4" type="video/mp4">
 </video>
 
 </div>
@@ -1934,25 +1950,26 @@ skill development and career opportunities to students.
 
 <script>
 
-const popup = document.getElementById("videoPopup");
-const video = document.getElementById("campusVideo");
+	const popup = document.getElementById("videoPopup");
+	const video = document.getElementById("campusVideo");
 
-function openVideo(){
-  popup.classList.add("active");
-  video.play();
-}
+	function openVideo() {
+	    popup.classList.add("active");
+	    video.load();
+	    video.play();
+	}
 
-function closeVideo(){
-  popup.classList.remove("active");
-  video.pause();
-  video.currentTime = 0;
-}
+	function closeVideo() {
+	    popup.classList.remove("active");
+	    video.pause();
+	    video.currentTime = 0;
+	}
 
-window.addEventListener("click", function(e){
-  if(e.target === popup){
-    closeVideo();
-  }
-});
+	window.addEventListener("click", function(e) {
+	    if (e.target === popup) {
+	        closeVideo();
+	    }
+	});
 
 </script>
 

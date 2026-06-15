@@ -15,8 +15,12 @@ private String email;
 private String department;
 private String phone;
 private String password;
+@Lob
+@Column(columnDefinition = "LONGBLOB")
+private byte[] staffPhoto;
 
 //Getter Setter
+
 
 public Long getId() {
 	return id;
@@ -54,6 +58,14 @@ public String getPassword() {
 public void setPassword(String password) {
 	this.password = password;
 }
+public byte[] getStaffPhoto() {
+	return staffPhoto;
+}
+public void setStaffPhoto(byte[] staffPhoto) {
+	this.staffPhoto = staffPhoto;
+}
+
+
 
 
 }

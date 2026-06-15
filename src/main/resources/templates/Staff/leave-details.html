@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Staff Leave Details</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#eef2ff,#f8fafc);
+padding:30px;
+}
+
+/* CONTAINER */
+.container{
+max-width:900px;
+margin:auto;
+}
+
+/* CARD */
+.card{
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 15px 40px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+/* HEADER */
+.header{
+background:linear-gradient(135deg,#1e3c72,#2a5298);
+color:white;
+padding:25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.header h2{
+font-size:22px;
+font-weight:600;
+}
+
+/* STATUS BADGE */
+.status{
+padding:8px 16px;
+border-radius:25px;
+font-size:12px;
+font-weight:600;
+}
+
+.pending{
+background:#fbbf24;
+color:#111;
+}
+
+.approved{
+background:#22c55e;
+color:white;
+}
+
+.rejected{
+background:#ef4444;
+color:white;
+}
+
+/* CONTENT */
+.content{
+padding:25px 30px;
+}
+
+/* ROW */
+.row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:14px 0;
+border-bottom:1px solid #eee;
+transition:0.2s;
+}
+
+.row:hover{
+background:#f8fafc;
+padding-left:5px;
+padding-right:5px;
+border-radius:8px;
+}
+
+.label{
+color:#64748b;
+font-weight:500;
+}
+
+.value{
+color:#111827;
+font-weight:600;
+text-align:right;
+}
+
+/* REASON BOX */
+.reason-box{
+margin-top:20px;
+background:#f8fafc;
+padding:20px;
+border-radius:15px;
+border-left:5px solid #2563eb;
+}
+
+.reason-box h3{
+color:#1e3c72;
+margin-bottom:10px;
+}
+
+.reason-box p{
+color:#475569;
+line-height:1.7;
+}
+
+/* BUTTON */
+.btn-area{
+margin-top:25px;
+text-align:center;
+}
+
+.back-btn{
+display:inline-block;
+padding:12px 20px;
+border-radius:10px;
+background:linear-gradient(135deg,#1e3c72,#2a5298);
+color:white;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
+
+.back-btn:hover{
+transform:translateY(-2px);
+opacity:0.9;
+}
+
+@media(max-width:768px){
+
+.row{
+flex-direction:column;
+align-items:flex-start;
+gap:5px;
+}
+
+.value{
+text-align:left;
+}
+
+.header{
+flex-direction:column;
+gap:10px;
+align-items:flex-start;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h2>Leave Details</h2>
+
+        <span th:if="${leave.status=='Pending'}" class="status pending">Pending</span>
+        <span th:if="${leave.status=='Approved'}" class="status approved">Approved</span>
+        <span th:if="${leave.status=='Rejected'}" class="status rejected">Rejected</span>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <div class="row">
+            <span class="label">Leave ID</span>
+            <span class="value" th:text="${leave.id}"></span>
+        </div>
+
+        <div class="row">
+            <span class="label">Staff Name</span>
+            <span class="value" th:text="${leave.name}"></span>
+        </div>
+
+        <div class="row">
+            <span class="label">Leave Type</span>
+            <span class="value" th:text="${leave.leaveType}"></span>
+        </div>
+
+        <div class="row">
+            <span class="label">From Date</span>
+            <span class="value" th:text="${leave.fromDate}"></span>
+        </div>
+
+        <div class="row">
+            <span class="label">To Date</span>
+            <span class="value" th:text="${leave.toDate}"></span>
+        </div>
+
+        <div class="row">
+            <span class="label">Applied Date</span>
+            <span class="value" th:text="${leave.appliedDate}"></span>
+        </div>
+
+        <!-- REASON -->
+        <div class="reason-box">
+            <h3>Leave Reason</h3>
+            <p th:text="${leave.reason}"></p>
+        </div>
+
+        <!-- BUTTON -->
+        <div class="btn-area">
+            <a th:href="@{/staff/leave-history}" class="back-btn">
+                Back to History
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</body>
+</html>

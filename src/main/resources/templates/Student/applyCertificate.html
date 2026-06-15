@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Apply Certificate</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#eef2ff,#f8fafc);
+    padding:30px;
+}
+
+.container{
+    max-width:800px;
+    margin:auto;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.header h2{
+    font-size:28px;
+    color:#0f172a;
+}
+
+.header p{
+    color:#64748b;
+    margin-top:5px;
+}
+
+.card{
+    background:white;
+    border-radius:22px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:500;
+    color:#334155;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    font-size:14px;
+    outline:none;
+    transition:.2s;
+    background:#fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#6366f1;
+    box-shadow:0 0 0 3px rgba(99,102,241,.15);
+}
+
+textarea{
+    resize:none;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    font-weight:600;
+    font-size:15px;
+    cursor:pointer;
+    margin-top:10px;
+    background:linear-gradient(135deg,#6366f1,#3b82f6);
+    color:white;
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 20px rgba(59,130,246,.25);
+}
+
+.badge{
+    display:inline-block;
+    padding:6px 12px;
+    background:#e0e7ff;
+    color:#3730a3;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:500;
+    margin-bottom:15px;
+}
+
+@media(max-width:768px){
+    .row{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+    <h2>Apply Certificate</h2>
+    <p>Fill your certificate request form</p>
+</div>
+
+<div class="card">
+
+	<form th:action="@{/certificate/apply}"
+	      method="post"
+	      th:object="${certificate}">
+
+<span class="badge">Student Information</span>
+
+<div class="row">
+
+<div class="form-group">
+<label>Student Name</label>
+<input type="text" th:field="*{studentName}" readonly>
+</div>
+
+<div class="form-group">
+<label>Email</label>
+<input type="text" th:field="*{email}" readonly>
+</div>
+
+</div>
+
+<div class="form-group">
+<label>Course</label>
+<input type="text" th:field="*{courseName}" readonly>
+</div>
+
+<div class="form-group">
+<label>Certificate Type</label>
+<select th:field="*{certificateType}" required>
+
+    <option value="">Select Certificate Type</option>
+
+    <option value="Bonafide Certificate">
+        Bonafide Certificate
+    </option>
+
+    <option value="Character Certificate">
+        Character Certificate
+    </option>
+
+    <option value="Transfer Certificate (TC)">
+        Transfer Certificate (TC)
+    </option>
+
+    <option value="Migration Certificate">
+        Migration Certificate
+    </option>
+
+    <option value="Course Completion Certificate">
+        Course Completion Certificate
+    </option>
+
+    <option value="Provisional Certificate">
+        Provisional Certificate
+    </option>
+
+    <option value="Internship Certificate">
+        Internship Certificate
+    </option>
+
+</select>
+</div>
+
+<div class="form-group">
+<label>Purpose</label>
+<textarea th:field="*{purpose}" rows="5" placeholder="Enter purpose..."></textarea>
+</div>
+
+<button type="submit" class="btn">
+Apply Certificate
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>

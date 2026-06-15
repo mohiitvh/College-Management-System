@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pending Students | Admin</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#fef3c7,#f8fafc);
+padding:30px;
+}
+
+/* HEADER */
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.header h2{
+font-size:26px;
+color:#0f172a;
+font-weight:700;
+}
+
+.header .tag{
+background:#f59e0b;
+color:white;
+padding:6px 12px;
+border-radius:20px;
+font-size:13px;
+font-weight:600;
+}
+
+/* TABLE BOX */
+.table-box{
+background:rgba(255,255,255,0.9);
+backdrop-filter:blur(10px);
+padding:20px;
+border-radius:18px;
+box-shadow:0 12px 30px rgba(0,0,0,.08);
+overflow-x:auto;
+}
+
+/* TABLE */
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+thead{
+background:linear-gradient(135deg,#f59e0b,#f97316);
+color:white;
+}
+
+th{
+padding:14px;
+text-align:left;
+font-size:14px;
+}
+
+td{
+padding:14px;
+border-bottom:1px solid #e5e7eb;
+font-size:14px;
+color:#0f172a;
+}
+
+tbody tr:hover{
+background:#fff7ed;
+}
+
+/* BADGE */
+.badge{
+display:inline-block;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:700;
+background:#fef3c7;
+color:#92400e;
+}
+
+/* AMOUNT */
+.amount{
+font-weight:700;
+color:#ef4444;
+}
+
+/* EMPTY */
+.no-data{
+text-align:center;
+padding:30px;
+color:#64748b;
+font-weight:600;
+}
+
+/* BACK BUTTON */
+.back-btn{
+text-decoration:none;
+background:#f59e0b;
+color:white;
+padding:10px 18px;
+border-radius:10px;
+font-weight:600;
+transition:.3s;
+}
+
+.back-btn:hover{
+background:#d97706;
+transform:translateY(-2px);
+}
+
+@media(max-width:768px){
+.header{
+flex-direction:column;
+align-items:flex-start;
+gap:10px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<h2>
+<i class="fa-solid fa-hourglass-half"></i>
+ Pending Students
+</h2>
+
+<span class="tag">Payment Pending</span>
+
+<a th:href="@{/admin/payment/dashboard}" class="back-btn">
+<i class="fa-solid fa-arrow-left"></i> Back
+</a>
+
+</div>
+
+<div class="table-box">
+
+<table>
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Course</th>
+<th>Due Amount</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr th:if="${#lists.isEmpty(payments)}">
+<td colspan="4" class="no-data">
+No Pending Students Found
+</td>
+</tr>
+
+<tr th:each="p : ${payments}">
+
+<td th:text="${p.studentId}"></td>
+<td th:text="${p.studentName}"></td>
+<td th:text="${p.courseName}"></td>
+
+<td>
+<span class="amount">₹ <span th:text="${p.dueAmount}"></span></span>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>

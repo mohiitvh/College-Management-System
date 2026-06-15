@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admission Details | Admin</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#eef2ff,#f8fafc);
+padding:30px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+.header{
+background:white;
+border-radius:20px;
+padding:25px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+margin-bottom:25px;
+}
+
+.header img{
+width:80px;
+height:80px;
+object-fit:contain;
+}
+
+.header h1{
+color:#0d6efd;
+margin-top:10px;
+font-size:30px;
+}
+
+.header p{
+color:#64748b;
+}
+
+.card{
+background:white;
+border-radius:25px;
+padding:30px;
+box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.profile-section{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+margin-bottom:25px;
+}
+
+.photo-box{
+text-align:center;
+}
+
+.photo-box img{
+width:150px;
+height:150px;
+border-radius:16px;
+border:4px solid #2563eb;
+object-fit:cover;
+background:#f1f5f9;
+}
+
+.photo-box h3{
+margin-top:10px;
+color:#0f172a;
+font-size:14px;
+}
+
+.section{
+margin-top:25px;
+background:#f8fafc;
+border:1px solid #e5e7eb;
+border-radius:18px;
+overflow:hidden;
+}
+
+.section h2{
+background:linear-gradient(135deg,#2563eb,#4f46e5);
+color:white;
+padding:14px 18px;
+font-size:16px;
+}
+
+.row{
+display:flex;
+justify-content:space-between;
+padding:14px 18px;
+border-bottom:1px solid #e5e7eb;
+}
+
+.row:last-child{
+border-bottom:none;
+}
+
+.row span:first-child{
+color:#64748b;
+font-weight:500;
+}
+
+.row span:last-child{
+color:#0f172a;
+font-weight:600;
+}
+
+.status{
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+}
+
+.approved{
+background:#dcfce7;
+color:#166534;
+}
+
+.pending{
+background:#fef9c3;
+color:#854d0e;
+}
+
+.rejected{
+background:#fee2e2;
+color:#991b1b;
+}
+
+.btn-area{
+margin-top:30px;
+text-align:center;
+}
+
+.approve-btn,
+.reject-btn,
+.back-btn{
+
+text-decoration:none;
+color:white;
+padding:12px 22px;
+border-radius:12px;
+font-weight:600;
+margin:0 6px;
+display:inline-block;
+}
+
+.approve-btn{
+background:#22c55e;
+}
+
+.reject-btn{
+background:#ef4444;
+}
+
+.back-btn{
+background:#2563eb;
+}
+
+@media(max-width:768px){
+
+.row{
+flex-direction:column;
+gap:5px;
+}
+
+.photo-box img{
+width:120px;
+height:120px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+
+<img th:src="@{/images/apnacollegLogo.png}">
+
+<h1>APNA COLLEGE</h1>
+
+<p>Admission Details Dashboard</p>
+
+</div>
+
+
+<div class="card">
+
+<!-- PHOTO -->
+
+<div class="profile-section">
+
+<div class="photo-box">
+
+<img th:src="@{/admission/photo/{id}(id=${admission.id})}">
+
+<h3>Student Photo</h3>
+
+</div>
+
+
+<div class="photo-box">
+
+<img th:src="@{/admission/signature/{id}(id=${admission.id})}">
+
+<h3>Signature</h3>
+
+</div>
+
+</div>
+
+
+<!-- PERSONAL DETAILS -->
+
+<div class="section">
+
+<h2>Personal Details</h2>
+
+<div class="row">
+<span>Student ID</span>
+<span th:text="${admission.studentId}"></span>
+</div>
+
+<div class="row">
+<span>Full Name</span>
+<span th:text="${admission.fullName}"></span>
+</div>
+
+<div class="row">
+<span>Date Of Birth</span>
+<span th:text="${admission.dateOfBirth}"></span>
+</div>
+
+<div class="row">
+<span>Gender</span>
+<span th:text="${admission.gender}"></span>
+</div>
+
+<div class="row">
+<span>Category</span>
+<span th:text="${admission.category}"></span>
+</div>
+
+<div class="row">
+<span>Nationality</span>
+<span th:text="${admission.nationality}"></span>
+</div>
+
+<div class="row">
+<span>Aadhaar Number</span>
+<span th:text="${admission.aadhaarNumber}"></span>
+</div>
+
+</div>
+
+
+<!-- GUARDIAN DETAILS -->
+
+<div class="section">
+
+<h2>Guardian Details</h2>
+
+<div class="row">
+<span>Father Name</span>
+<span th:text="${admission.fatherName}"></span>
+</div>
+
+<div class="row">
+<span>Father Occupation</span>
+<span th:text="${admission.fatheroccupation}"></span>
+</div>
+
+<div class="row">
+<span>Mother Name</span>
+<span th:text="${admission.motherName}"></span>
+</div>
+
+<div class="row">
+<span>Mother Occupation</span>
+<span th:text="${admission.motheroccupation}"></span>
+</div>
+
+<div class="row">
+<span>Guardian Name</span>
+<span th:text="${admission.guardianName}"></span>
+</div>
+
+<div class="row">
+<span>Annual Income</span>
+<span th:text="${admission.annualIncome}"></span>
+</div>
+
+</div>
+
+
+<!-- OTHER DETAILS -->
+
+<div class="section">
+
+<h2>Other Details</h2>
+
+<div class="row">
+<span>Blood Group</span>
+<span th:text="${admission.bloodGroup}"></span>
+</div>
+
+<div class="row">
+<span>Disability Status</span>
+<span th:text="${admission.disabilityStatus}"></span>
+</div>
+
+<div class="row">
+<span>Disability Details</span>
+<span th:text="${admission.disabilityDetails}"></span>
+</div>
+
+<div class="row">
+<span>Emergency Contact</span>
+<span th:text="${admission.emergencyContact}"></span>
+</div>
+
+</div>
+
+
+<!-- CONTACT DETAILS -->
+
+<div class="section">
+
+<h2>Contact Details</h2>
+
+<div class="row">
+<span>Mobile Number</span>
+<span th:text="${admission.mobileNumber}"></span>
+</div>
+
+<div class="row">
+<span>Email ID</span>
+<span th:text="${admission.emailId}"></span>
+</div>
+
+<div class="row">
+<span>Guardian Mobile</span>
+<span th:text="${admission.guardianMobile}"></span>
+</div>
+
+<div class="row">
+<span>Current Address</span>
+<span th:text="${admission.currentAddress}"></span>
+</div>
+
+<div class="row">
+<span>Permanent Address</span>
+<span th:text="${admission.permanentAddress}"></span>
+</div>
+
+</div>
+
+
+<!-- ACADEMIC DETAILS -->
+
+<div class="section">
+
+<h2>Academic Details</h2>
+
+<div class="row">
+<span>Previous School / College</span>
+<span th:text="${admission.previousSchoolCollege}"></span>
+</div>
+
+<div class="row">
+<span>Board / University</span>
+<span th:text="${admission.boardUniversity}"></span>
+</div>
+
+<div class="row">
+<span>Last Passed Course</span>
+<span th:text="${admission.lastPassedCourse}"></span>
+</div>
+
+<div class="row">
+<span>Roll Registration Number</span>
+<span th:text="${admission.rollRegistrationNumber}"></span>
+</div>
+
+<div class="row">
+<span>Passing Year</span>
+<span th:text="${admission.passingYear}"></span>
+</div>
+
+<div class="row">
+<span>Marks / Percentage / CGPA</span>
+<span th:text="${admission.marksPercentageCgpa}"></span>
+</div>
+
+</div>
+
+
+<!-- ADMISSION DETAILS -->
+
+<div class="section">
+
+<h2>Admission Details</h2>
+
+<div class="row">
+<span>UG / PG</span>
+<span th:text="${admission.ug_pg}"></span>
+</div>
+
+<div class="row">
+<span>Course</span>
+<span th:text="${admission.course.courseName}"></span>
+</div>
+
+<div class="row">
+<span>Course Code</span>
+<span th:text="${admission.course.courseCode}"></span>
+</div>
+
+<div class="row">
+<span>Session Batch</span>
+<span th:text="${admission.sessionBatch}"></span>
+</div>
+
+<div class="row">
+
+<span>Status</span>
+
+<span th:text="${admission.status}"
+
+th:classappend="${admission.status=='Approved'} ? 'status approved' :
+
+(${admission.status=='Rejected'} ? 'status rejected' :
+
+'status pending')">
+
+</span>
+
+</div>
+
+</div>
+
+
+<!-- DOCUMENTS -->
+
+<div class="section">
+
+<h2>Documents</h2>
+
+<div class="row">
+
+<span>Aadhaar Card</span>
+
+<a th:href="@{/admission/document/aadhaar/{id}(id=${admission.id})}">
+View
+</a>
+
+</div>
+
+
+<div class="row">
+
+<span>10th Marksheet</span>
+
+<a th:href="@{/admission/document/class10/{id}(id=${admission.id})}">
+View
+</a>
+
+</div>
+
+
+<div class="row">
+
+<span>12th Marksheet</span>
+
+<a th:href="@{/admission/document/class12/{id}(id=${admission.id})}">
+View
+</a>
+
+</div>
+
+
+<div class="row">
+
+<span>Migration Certificate</span>
+
+<a th:href="@{/admission/document/migration/{id}(id=${admission.id})}">
+View
+</a>
+
+</div>
+
+
+<div class="row">
+
+<span>Category Certificate</span>
+
+<a th:href="@{/admission/document/category/{id}(id=${admission.id})}">
+View
+</a>
+
+</div>
+
+</div>
+
+
+<div class="btn-area">
+
+<a th:if="${admission.status!='Approved'}"
+
+th:href="@{/admin/admission/approve/{id}(id=${admission.id})}"
+
+class="approve-btn">
+
+Approve
+
+</a>
+
+
+<a th:if="${admission.status!='Rejected'}"
+
+th:href="@{/admin/admission/reject/{id}(id=${admission.id})}"
+
+class="reject-btn">
+
+Reject
+
+</a>
+
+
+<a th:href="@{/admin/allAdmissions}"
+
+class="back-btn">
+
+Back
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
+```

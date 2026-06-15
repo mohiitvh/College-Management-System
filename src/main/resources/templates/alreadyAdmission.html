@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admission Status | Apna College</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#2563eb);
+}
+
+/* MAIN CARD */
+
+.card{
+    width:100%;
+    max-width:750px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.35);
+    animation:fadeUp .8s ease;
+}
+
+/* HEADER */
+
+.header{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.header-icon{
+    width:90px;
+    height:90px;
+    margin:auto;
+    border-radius:50%;
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:38px;
+    margin-bottom:18px;
+    box-shadow:0 12px 30px rgba(59,130,246,.4);
+}
+
+.header h2{
+    color:white;
+    font-size:30px;
+    font-weight:700;
+}
+
+.header p{
+    color:#cbd5e1;
+    margin-top:8px;
+}
+
+/* TABLE */
+
+.info-box{
+    background:rgba(255,255,255,0.08);
+    border-radius:18px;
+    overflow:hidden;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    width:35%;
+    text-align:left;
+    padding:18px;
+    color:#ffffff;
+    background:rgba(255,255,255,0.08);
+    font-weight:600;
+}
+
+td{
+    padding:18px;
+    color:#e2e8f0;
+    font-weight:500;
+}
+
+/* STATUS */
+
+.status{
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:700;
+    display:inline-block;
+    letter-spacing:.5px;
+}
+
+.approved{
+    background:#22c55e;
+    color:white;
+}
+
+.pending{
+    background:#f59e0b;
+    color:white;
+}
+
+.rejected{
+    background:#ef4444;
+    color:white;
+}
+
+/* BUTTONS */
+
+.btn-group{
+    margin-top:30px;
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.btn{
+    text-decoration:none;
+    padding:14px 26px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.view-btn{
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    color:white;
+    box-shadow:0 10px 25px rgba(37,99,235,.4);
+}
+
+.view-btn:hover{
+    transform:translateY(-4px);
+}
+
+.dashboard-btn{
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.2);
+    color:white;
+}
+
+.dashboard-btn:hover{
+    background:rgba(255,255,255,.18);
+    transform:translateY(-4px);
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .card{
+        padding:25px;
+    }
+
+    .header h2{
+        font-size:24px;
+    }
+
+    table,
+    tbody,
+    tr,
+    th,
+    td{
+        display:block;
+        width:100%;
+    }
+
+    th{
+        border-radius:0;
+    }
+
+    td{
+        padding-top:10px;
+        margin-bottom:15px;
+    }
+
+    .btn{
+        width:100%;
+        text-align:center;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="header">
+
+        <div class="header-icon">
+            <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+
+        <h2 th:text="${msg}">Admission Status</h2>
+
+        <p>Your admission application details are shown below.</p>
+
+    </div>
+
+    <div class="info-box">
+
+        <table>
+
+            <tr>
+                <th>
+                    <i class="fa-solid fa-user"></i>
+                    Student Name
+                </th>
+                <td th:text="${admission.fullName}">
+                    Rahul Kumar
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    <i class="fa-solid fa-book-open"></i>
+                    Course
+                </th>
+                <td th:text="${admission.course.courseName}">
+                    BCA
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    <i class="fa-solid fa-circle-info"></i>
+                    Status
+                </th>
+
+                <td>
+                    <span th:text="${admission.status}"
+                    th:classappend="${admission.status == 'APPROVED'} ? 'status approved' :
+                    (${admission.status == 'PENDING'} ? 'status pending' : 'status rejected')">
+                    </span>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="btn-group">
+
+        <a th:href="@{/viewAdmissionForm}" class="btn view-btn">
+            <i class="fa-solid fa-file-lines"></i>
+            View Complete Form
+        </a>
+
+        <a th:href="@{/indexStudent}" class="btn dashboard-btn">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
