@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Notice Management</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:#f5f7fb;
+padding:40px;
+}
+
+.container{
+
+max-width:1200px;
+margin:auto;
+}
+
+.heading{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
+
+.heading h2{
+
+font-size:32px;
+color:#1e293b;
+}
+
+.add-btn{
+
+background:#2563eb;
+color:white;
+padding:12px 22px;
+border-radius:10px;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+.add-btn:hover{
+
+background:#1d4ed8;
+}
+
+.table-box{
+
+background:white;
+border-radius:20px;
+overflow:hidden;
+
+box-shadow:
+
+0 10px 30px rgba(0,0,0,0.08);
+}
+
+table{
+
+width:100%;
+border-collapse:collapse;
+}
+
+thead{
+
+background:linear-gradient(
+90deg,
+#2563eb,
+#4f46e5);
+color:white;
+}
+
+th{
+
+padding:18px;
+text-align:left;
+font-size:15px;
+}
+
+td{
+
+padding:18px;
+border-bottom:1px solid #eee;
+vertical-align:middle;
+}
+
+tbody tr{
+
+transition:.3s;
+}
+
+tbody tr:hover{
+
+background:#f8fafc;
+}
+
+.icon-box{
+
+width:45px;
+height:45px;
+
+border-radius:50%;
+
+background:#eff6ff;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:20px;
+
+color:#2563eb;
+}
+
+.download-btn{
+
+background:#10b981;
+
+color:white;
+
+padding:8px 14px;
+
+border-radius:8px;
+
+text-decoration:none;
+
+font-size:14px;
+}
+
+.download-btn:hover{
+
+background:#059669;
+}
+
+.empty{
+
+color:#94a3b8;
+font-size:14px;
+}
+
+.action-btn{
+
+display:flex;
+
+gap:8px;
+
+}
+
+.view-btn,
+.edit-btn,
+.delete-btn{
+
+width:38px;
+
+height:38px;
+
+border-radius:10px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+text-decoration:none;
+
+color:white;
+
+transition:.3s;
+
+}
+
+.view-btn{
+
+background:#2563eb;
+
+}
+
+.view-btn:hover{
+
+background:#1d4ed8;
+
+transform:translateY(-2px);
+
+}
+
+.edit-btn{
+
+background:#f59e0b;
+
+}
+
+.edit-btn:hover{
+
+background:#d97706;
+
+transform:translateY(-2px);
+
+}
+
+.delete-btn{
+
+background:#ef4444;
+
+}
+
+.delete-btn:hover{
+
+background:#dc2626;
+
+transform:translateY(-2px);
+
+}
+.back-btn{
+
+background:#64748b;
+
+color:white;
+
+padding:12px 22px;
+
+border-radius:10px;
+
+text-decoration:none;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.back-btn:hover{
+
+background:#475569;
+
+transform:translateY(-2px);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="heading">
+
+    <h2>
+        <i class="fa-solid fa-bullhorn"></i>
+        Notice Management
+    </h2>
+
+    <div style="display:flex; gap:15px;">
+
+        <a th:href="@{/indexAdmin}"
+           class="back-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+            Back
+        </a>
+
+        <a th:href="@{/admin/notices/add}"
+           class="add-btn">
+
+            <i class="fa-solid fa-plus"></i>
+            Add Notice
+
+        </a>
+
+    </div>
+
+</div>
+
+<div class="table-box">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Icon</th>
+
+<th>Title</th>
+
+<th>Description</th>
+
+<th>Date</th>
+
+<th>PDF</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+<tr
+
+th:each="notice : ${notices}">
+
+<td
+
+th:text="${notice.id}">
+
+</td>
+
+
+<td>
+
+<div class="icon-box">
+
+<i class="fa-solid"
+
+th:classappend="' ' + ${notice.icon}">
+
+</i>
+
+</div>
+
+</td>
+
+
+<td>
+
+<b
+
+th:text="${notice.title}">
+
+</b>
+
+</td>
+
+
+<td
+
+th:text="${notice.description}">
+
+</td>
+
+
+<td
+
+th:text="${notice.noticeDate}">
+
+</td>
+
+
+<td>
+
+<a
+
+th:if="${notice.pdfPath!=null}"
+
+th:href="@{${notice.pdfPath}}"
+
+target="_blank"
+
+class="download-btn">
+
+<i class="fa-solid fa-download"></i>
+
+Download
+
+</a>
+
+
+<span
+
+th:if="${notice.pdfPath==null}"
+
+class="empty">
+
+No PDF
+
+</span>
+
+</td>
+
+<td>
+
+<div class="action-btn">
+
+<a
+
+th:href="@{'/admin/notices/view/' + ${notice.id}}"
+
+class="view-btn"
+
+title="View">
+
+<i class="fa-solid fa-eye"></i>
+
+</a>
+
+
+<a
+
+th:href="@{'/admin/notices/edit/' + ${notice.id}}"
+
+class="edit-btn"
+
+title="Edit">
+
+<i class="fa-solid fa-pen"></i>
+
+</a>
+
+
+<a
+
+th:href="@{'/admin/notices/delete/' + ${notice.id}}"
+
+class="delete-btn"
+
+title="Delete"
+
+onclick="return confirm('Are you sure want to delete this notice ?')">
+
+<i class="fa-solid fa-trash"></i>
+
+</a>
+
+</div>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

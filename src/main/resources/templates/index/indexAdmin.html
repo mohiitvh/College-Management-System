@@ -614,6 +614,35 @@ table td{
             </a>
         </li>
 
+		<!-- NOTICE MODULE -->
+
+		<li class="section-title">
+		    NOTICE BOARD
+		</li>
+
+		<li>
+
+		    <a th:href="@{/admin/notices/list}">
+
+		        <i class="fa-solid fa-bullhorn"></i>
+
+		        Notice Management
+
+		    </a>
+
+		</li>
+
+		<li>
+
+		    <a th:href="@{/admin/notices/add}">
+
+		        <i class="fa-solid fa-plus"></i>
+
+		        Add Notice
+
+		    </a>
+
+		</li>
         <!-- CERTIFICATE MODULE -->
         <li class="section-title">CERTIFICATES</li>
 
@@ -810,6 +839,26 @@ table td{
           <p>Manage courses, fees, duration and curriculum.</p>
           <a th:href="@{/admin/courses}">Manage</a>
       </div>
+	  
+	  <div class="dashboard-card">
+
+	      <i class="fa-solid fa-bullhorn"></i>
+
+	      <h3>Notice Management</h3>
+
+	      <p>
+
+	          Add, update and publish notices with optional PDF attachments.
+
+	      </p>
+
+	      <a th:href="@{/admin/notices/list}">
+
+	          Open
+
+	      </a>
+
+	  </div>
 	  
 	  <div class="dashboard-card">
     <i class="fa-solid fa-calendar-check"></i>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entity.Admin;
 import com.example.demo.entity.AdmissionEntity;
+import com.example.demo.entity.NoticeEntity;
 import com.example.demo.repo.AdmissionRepo;
 import com.example.demo.repo.CertificateRepo;
 import com.example.demo.repo.CourseRepo;
@@ -20,6 +21,7 @@ import com.example.demo.repo.StaffRepo;
 import com.example.demo.repo.StudentRepo;
 import com.example.demo.service.AdminService;
 import com.example.demo.service.LeaveService;
+import com.example.demo.service.NoticeService;
 import com.example.demo.service.PaymentService;
 import com.example.demo.service.StaffService;
 import com.example.demo.service.StudentService;
@@ -249,5 +251,4 @@ public class AdminController {
     public String reports() {
         return "Admin/reports";
     }
-   
 }

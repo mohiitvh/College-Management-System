@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>View Notice</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+body{
+
+font-family:Poppins,sans-serif;
+
+background:#f5f7fb;
+
+padding:40px;
+
+}
+
+.card{
+
+max-width:700px;
+
+margin:auto;
+
+background:white;
+
+padding:30px;
+
+border-radius:20px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+h2{
+
+margin-bottom:25px;
+
+color:#1e293b;
+
+}
+
+.row{
+
+margin-bottom:20px;
+
+}
+
+label{
+
+font-weight:600;
+
+color:#475569;
+
+display:block;
+
+margin-bottom:6px;
+
+}
+
+.value{
+
+font-size:17px;
+
+color:#0f172a;
+
+}
+
+.btn{
+
+display:inline-block;
+
+padding:12px 20px;
+
+background:#2563eb;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:10px;
+
+margin-top:20px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>
+
+<i class="fa-solid fa-bullhorn"></i>
+
+View Notice
+
+</h2>
+
+<div class="row">
+
+<label>Title</label>
+
+<div class="value"
+
+th:text="${notice.title}">
+
+</div>
+
+</div>
+
+
+<div class="row">
+
+<label>Description</label>
+
+<div class="value"
+
+th:text="${notice.description}">
+
+</div>
+
+</div>
+
+
+<div class="row">
+
+<label>Icon</label>
+
+<i class="fa-solid"
+
+th:classappend="' ' + ${notice.icon}">
+
+</i>
+
+</div>
+
+
+<div class="row">
+
+<label>Date</label>
+
+<div class="value"
+
+th:text="${notice.noticeDate}">
+
+</div>
+
+</div>
+
+
+<div class="row"
+
+th:if="${notice.pdfPath!=null}">
+
+<label>PDF</label>
+
+<a
+
+th:href="@{${notice.pdfPath}}"
+
+target="_blank">
+
+Download PDF
+
+</a>
+
+</div>
+
+
+<a
+
+th:href="@{/admin/notices/list}"
+
+class="btn">
+
+Back
+
+</a>
+
+</div>
+
+</body>
+
+</html>

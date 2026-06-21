@@ -226,29 +226,37 @@ Create System Administrator Account
 
     <!-- Secret Admin Key -->
 
-    <div class="input-group">
-        <input type="text"
-               name="adminPass"
-               placeholder="Enter Admin Secret Key"
-               required>
-    </div>
+	<div class="input-group">
+	    <div class="password-box">
 
+			<input type="password"
+			       id="adminPass"
+			       name="adminPass"
+			       placeholder="Enter Admin Secret Key"
+			       required>
+
+			<span class="toggle"
+			      onclick="togglePassword('adminPass', this)">
+			    Show
+			</span>
+
+	    </div>
+	</div>
     <!-- Login Password -->
 
     <div class="input-group">
         <div class="password-box">
 
-            <input type="password"
-                   id="adminPassword"
-                   name="password"
-                   placeholder="Create Password"
-                   required>
+			<input type="password"
+			       id="adminPassword"
+			       name="password"
+			       placeholder="Create Password"
+			       required>
 
-            <span class="toggle"
-                  onclick="togglePassword(this)">
-                Show
-            </span>
-
+			<span class="toggle"
+			      onclick="togglePassword('adminPassword', this)">
+			    Show
+			</span>
         </div>
     </div>
 
@@ -281,10 +289,10 @@ Login Here
 
 <script>
 
-function togglePassword(el){
+	function togglePassword(id, el){
 
-const pass =
-document.getElementById("adminPass");
+	    const pass =
+	    document.getElementById(id);
 
 if(pass.type==="password"){
 pass.type="text";

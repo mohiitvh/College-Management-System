@@ -23,6 +23,7 @@ import com.example.demo.repo.StaffRepo;
 import com.example.demo.repo.StudentRepo;
 import com.example.demo.service.AdminService;
 import com.example.demo.service.AdmissionService;
+import com.example.demo.service.NoticeService;
 import com.example.demo.service.StaffService;
 import com.example.demo.service.StudentService;
 
@@ -45,6 +46,9 @@ import jakarta.servlet.http.HttpSession;
 public class HomeController {
 
 	// ================= HOME =================
+	
+	@Autowired
+	private NoticeService noticeService;
 	 @Autowired
 	    private StudentRepo studentRepo;
 
@@ -68,8 +72,12 @@ public class HomeController {
 	        model.addAttribute(
 	                "totalStaff",
 	                staffRepo.count());
+	        
+	        model.addAttribute(
+	                "notices",
+	                noticeService.getAllActive());
 
-	        return "master";
+	        return "index";
 	    }
 
 	// ================= ABOUT =================
@@ -385,6 +393,11 @@ public class HomeController {
 
 		return "examination";
 	}
-	
+	@GetMapping("/project-team")
+	public String projectTeam() {
+
+	    return "project-team";
+
+	}
 	
 }

@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Project Team | Apna College</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+135deg,
+#eff6ff,
+#f8fafc,
+#eef2ff);
+
+min-height:100vh;
+
+padding:70px 8%;
+
+}
+
+
+/* ================= COLLEGE SECTION ================= */
+
+.college-section{
+
+max-width:900px;
+
+margin:0 auto 80px;
+
+text-align:center;
+
+padding:55px;
+
+background:
+
+rgba(255,255,255,.8);
+
+backdrop-filter:blur(20px);
+
+border-radius:35px;
+
+border:1px solid rgba(255,255,255,.5);
+
+box-shadow:
+
+0 20px 50px rgba(0,0,0,.08);
+
+}
+
+.college-logo{
+
+width:180px;
+
+height:180px;
+
+object-fit:contain;
+
+background:white;
+
+padding:20px;
+
+border-radius:30px;
+
+box-shadow:
+
+0 10px 30px rgba(0,0,0,.10);
+
+margin-bottom:25px;
+
+}
+
+.college-section h1{
+
+font-size:52px;
+
+font-weight:700;
+
+color:#0f172a;
+
+margin-bottom:10px;
+
+}
+
+.college-section h3{
+
+font-size:24px;
+
+font-weight:600;
+
+color:#10b981;
+
+margin-bottom:25px;
+
+}
+
+.college-section p{
+
+max-width:700px;
+
+margin:auto;
+
+font-size:17px;
+
+line-height:1.9;
+
+color:#64748b;
+
+margin-bottom:35px;
+
+}
+
+
+/* ================= COLLEGE BUTTON ================= */
+
+.website-btn{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:15px 32px;
+
+border-radius:50px;
+
+text-decoration:none;
+
+font-weight:600;
+
+color:white;
+
+background:
+
+linear-gradient(
+90deg,
+#10b981,
+#059669);
+
+box-shadow:
+
+0 10px 25px
+
+rgba(16,185,129,.30);
+
+transition:.4s;
+
+}
+
+.website-btn:hover{
+
+transform:
+
+translateY(-3px)
+scale(1.05);
+
+box-shadow:
+
+0 15px 35px
+
+rgba(16,185,129,.45);
+
+}
+
+
+/* ================= GRID ================= */
+
+.team-grid{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(280px,1fr));
+
+gap:35px;
+
+max-width:1400px;
+
+margin:auto;
+
+}
+
+
+/* ================= TEAM CARD ================= */
+
+.team-card{
+
+position:relative;
+
+background:
+
+rgba(255,255,255,.75);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.5);
+
+border-radius:35px;
+
+padding:35px;
+
+text-align:center;
+
+overflow:hidden;
+
+box-shadow:
+
+0 15px 40px rgba(0,0,0,.08);
+
+transition:.5s;
+
+}
+
+.team-card::before{
+
+content:"";
+
+position:absolute;
+
+top:-120px;
+
+right:-120px;
+
+width:220px;
+
+height:220px;
+
+border-radius:50%;
+
+background:
+
+linear-gradient(
+135deg,
+#2563eb,
+#7c3aed);
+
+opacity:.12;
+
+}
+
+.team-card:hover{
+
+transform:
+
+translateY(-12px)
+scale(1.02);
+
+box-shadow:
+
+0 25px 60px
+
+rgba(37,99,235,.20);
+
+}
+
+
+/* ================= BADGE ================= */
+
+.badge{
+
+position:absolute;
+
+top:20px;
+
+left:20px;
+
+background:white;
+
+padding:8px 16px;
+
+border-radius:30px;
+
+font-size:13px;
+
+font-weight:600;
+
+color:#2563eb;
+
+box-shadow:
+
+0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.badge i{
+
+margin-right:6px;
+
+}
+
+
+/* ================= IMAGE ================= */
+
+.team-card img{
+
+width:150px;
+
+height:150px;
+
+object-fit:cover;
+
+border-radius:50%;
+
+border:6px solid white;
+
+box-shadow:
+
+0 10px 25px rgba(0,0,0,.15);
+
+margin-bottom:25px;
+
+transition:.4s;
+
+}
+
+.team-card:hover img{
+
+transform:scale(1.08);
+
+}
+
+
+/* ================= TEXT ================= */
+
+.team-card h3{
+
+font-size:28px;
+
+font-weight:700;
+
+color:#0f172a;
+
+margin-bottom:15px;
+
+}
+
+.role{
+
+display:inline-block;
+
+padding:10px 22px;
+
+border-radius:50px;
+
+font-size:14px;
+
+font-weight:600;
+
+letter-spacing:.5px;
+
+color:white;
+
+background:
+
+linear-gradient(
+90deg,
+#2563eb,
+#7c3aed);
+
+box-shadow:
+
+0 8px 25px
+
+rgba(37,99,235,.25);
+
+margin-bottom:22px;
+
+}
+
+.team-card p{
+
+font-size:15px;
+
+line-height:1.9;
+
+color:#64748b;
+
+margin-bottom:30px;
+
+}
+
+
+/* ================= PDF BUTTON ================= */
+
+.pdf-btn{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:14px 28px;
+
+border-radius:50px;
+
+text-decoration:none;
+
+font-weight:600;
+
+color:white;
+
+background:
+
+linear-gradient(
+90deg,
+#ef4444,
+#dc2626);
+
+box-shadow:
+
+0 10px 25px
+
+rgba(239,68,68,.25);
+
+transition:.4s;
+
+}
+
+.pdf-btn:hover{
+
+transform:
+
+translateY(-3px)
+scale(1.05);
+
+box-shadow:
+
+0 15px 35px
+
+rgba(239,68,68,.35);
+
+}
+
+.pdf-btn i{
+
+font-size:18px;
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+body{
+
+padding:40px 20px;
+
+}
+
+.college-section{
+
+padding:35px 25px;
+
+}
+
+.college-section h1{
+
+font-size:38px;
+
+}
+
+.college-logo{
+
+width:130px;
+
+height:130px;
+
+}
+
+.team-card{
+
+padding:30px 25px;
+
+}
+
+.team-card img{
+
+width:120px;
+
+height:120px;
+
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+	<!-- College Section -->
+
+<div class="college-section">
+
+    <img src="/images/apnacollegLogo.png"
+    class="college-logo">
+
+    <h1>Apna College</h1>
+
+    <h3>Educational Institution</h3>
+
+    <p>
+
+        Apna College is committed to providing
+        quality education, innovation and
+        practical learning experiences.
+
+        This project was developed under the
+        guidance of experienced faculty members
+        and dedicated students.
+
+    </p>
+
+	<a th:href="@{/}"
+	class="website-btn">
+
+	<i class="fa-solid fa-globe"></i>
+
+	College Website
+
+	</a>
+
+</div>
+
+	<!-- Team Cards -->
+
+	<div class="team-grid">
+
+	    <!-- Guide -->
+
+	   <!-- 
+		<div class="team-card">
+
+	        <div class="badge">
+
+	            <i class="fa-solid fa-star"></i>
+
+	            Guide
+
+	        </div>
+
+	        <img src="/images/abdul.png">
+
+	        <h3>Mr ABDUL BASIT ANSARI</h3>
+
+	        <span class="role">
+
+	            Project Guide
+
+	        </span>
+
+	        <p>
+
+	            Guided the complete project development,
+	            architecture design and implementation process.
+
+	        </p>
+
+			<a th:href="@{/pdf/abdul.pdf}"
+			target="_blank"
+			class="pdf-btn">
+
+	            <i class="fa-solid fa-file-pdf"></i>
+
+	            View CV
+
+	        </a>
+
+	    </div>
+		-->
+		
+		<div class="team-card">
+
+			        <div class="badge">
+
+			            <i class="fa-solid fa-star"></i>
+
+			            Guide
+
+			        </div>
+
+			        <img src="/images/apnacollegLogo.png">
+
+			        <h3>MR. SHIVTOSH PRASAD</h3>
+
+			        <span class="role">
+
+			            Project Guide
+
+			        </span>
+
+			        <p>
+
+			            Guided the complete project development,
+			            architecture design and implementation process.
+
+			        </p>
+
+					<a th:href="@{/pdf/shiv.pdf}"
+					target="_blank"
+					class="pdf-btn">
+
+			            <i class="fa-solid fa-file-pdf"></i>
+
+			            View CV
+
+			        </a>
+
+			    </div>
+
+
+
+	    <!-- Full Stack -->
+
+	    <div class="team-card">
+
+	        <div class="badge">
+
+	            <i class="fa-solid fa-code"></i>
+
+	            Developer
+
+	        </div>
+
+	        <img src="/images/mohit.png">
+
+	        <h3>MOHIT KUMAR VISHKARMA</h3>
+
+	        <span class="role">
+
+	            Full Stack Developer
+
+	        </span>
+
+	        <p>
+
+	            Developed complete Frontend,
+	            Backend, Database Design and
+	            Application Integration.
+
+	        </p>
+
+			<a th:href="@{/pdf/MOHIT.pdf}"
+			target="_blank"
+			class="pdf-btn">
+
+	            <i class="fa-solid fa-file-pdf"></i>
+
+	            View CV
+
+	        </a>
+
+	    </div>
+
+
+
+	    <!-- Documentation -->
+
+	    <div class="team-card">
+
+	        <div class="badge">
+
+	            <i class="fa-solid fa-book"></i>
+
+	            Documentation
+
+	        </div>
+
+	        <img src="/images/DARAKHSHAN.png">
+
+	        <h3>DARAKHSHAN ANJUM</h3>
+
+	        <span class="role">
+
+	            Documentation Specialist
+
+	        </span>
+
+	        <p>
+
+	            Prepared project reports,
+	            technical documentation and
+	            project records.
+
+	        </p>
+
+			<a th:href="@{/pdf/Darakhshan.pdf}"
+			target="_blank"
+			class="pdf-btn">
+
+	            <i class="fa-solid fa-file-pdf"></i>
+
+	            View CV
+
+	        </a>
+
+	    </div>
+
+
+
+	    <!-- Analyst -->
+
+	    <div class="team-card">
+
+	        <div class="badge">
+
+	            <i class="fa-solid fa-chart-line"></i>
+
+	            Analyst
+
+	        </div>
+
+	        <img src="/images/farhan.png">
+
+	        <h3>FARHAN RASHID</h3>
+
+	        <span class="role">
+
+	            System Analyst & Tester
+
+	        </span>
+
+	        <p>
+
+	            Performed requirement analysis,
+	            testing, validation and quality assurance.
+
+	        </p>
+
+			<a th:href="@{/pdf/Farhan.pdf}"
+			target="_blank"
+			class="pdf-btn">
+
+	            <i class="fa-solid fa-file-pdf"></i>
+
+	            View CV
+
+	        </a>
+
+	    </div>
+
+	</div>
+
+</body>
+
+</html>

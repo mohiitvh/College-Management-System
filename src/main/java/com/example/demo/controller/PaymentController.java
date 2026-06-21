@@ -126,32 +126,6 @@ public String payFee(
     return "redirect:/student/payment/feeHistory";
 }
 
-    // History
-
-//   @GetMapping("/feeHistory")
-//public String feeHistory(
-//        HttpSession session,
-//        Model model){
-//
-//    Student student =
-//            (Student) session.getAttribute(
-//                    "loggedStudent");
-//
-//    if(student == null){
-//
-//        return "redirect:/loginStudent";
-//    }
-//
-//    PaymentEntity payment =
-//            paymentService.getPaymentByStudentId(
-//                    student.getId());
-//
-//    model.addAttribute(
-//            "payment",
-//            payment);
-//
-//    return "Student/feeHistory";
-//}
     
     @GetMapping("/feeHistory")
     public String feeHistory(

@@ -2,86 +2,364 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Apna College</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internship Program | Apna College</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-body{
+
+*{
     margin:0;
-    font-family:Poppins;
-    background:linear-gradient(135deg,#0f172a,#1e293b);
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b,#0f172a);
     color:white;
 }
 
 /* HEADER */
+
 .header{
     display:flex;
     align-items:center;
     justify-content:center;
     gap:15px;
     padding:20px;
-    background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
 }
 
 .header img{
-    height:60px;
-    border-radius:10px;
+    width:65px;
+    height:65px;
+    border-radius:12px;
 }
 
-/* CONTENT */
-.container{
-    max-width:900px;
-    margin:40px auto;
-    padding:20px;
-}
-
-.card{
-    background:rgba(255,255,255,0.08);
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
-}
-
-h2{
+.header h1{
     color:#38bdf8;
 }
 
-p, li{
-    line-height:1.7;
-    color:#e2e8f0;
+/* HERO */
+
+.hero{
+    text-align:center;
+    padding:60px 20px;
 }
 
-/* BACK BUTTON */
+.hero h2{
+    font-size:42px;
+    color:#38bdf8;
+    margin-bottom:15px;
+}
+
+.hero p{
+    max-width:850px;
+    margin:auto;
+    line-height:1.8;
+    color:#cbd5e1;
+}
+
+/* CONTAINER */
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+/* CARD */
+
+.card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    padding:30px;
+    margin-bottom:25px;
+    border:1px solid rgba(255,255,255,0.1);
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
+}
+
+.card h3{
+    color:#38bdf8;
+    margin-bottom:15px;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.stat{
+    background:rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:18px;
+    text-align:center;
+}
+
+.stat h2{
+    color:#38bdf8;
+    font-size:34px;
+}
+
+.stat p{
+    color:#cbd5e1;
+}
+
+/* BENEFITS */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.box{
+    background:rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:18px;
+    transition:.4s;
+}
+
+.box:hover{
+    transform:translateY(-8px);
+}
+
+.box h4{
+    color:#38bdf8;
+    margin-bottom:10px;
+}
+
+/* TIMELINE */
+
+.timeline{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.step{
+    flex:1;
+    min-width:220px;
+    background:rgba(255,255,255,0.08);
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.step h4{
+    color:#38bdf8;
+    margin-bottom:10px;
+}
+
+/* BUTTON */
+
+.btn-area{
+    text-align:center;
+    margin-top:30px;
+}
+
 .back-btn{
     display:inline-block;
-    margin-top:20px;
-    padding:10px 18px;
+    padding:12px 25px;
     background:#38bdf8;
     color:black;
-    border-radius:8px;
     text-decoration:none;
-    font-weight:600;
+    border-radius:10px;
+    font-weight:700;
 }
+
 .back-btn:hover{
     background:#0ea5e9;
 }
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    background:rgba(255,255,255,0.05);
+    color:#cbd5e1;
+}
+
+@media(max-width:768px){
+
+.hero h2{
+    font-size:30px;
+}
+
+}
+
 </style>
-
 </head>
+
 <body>
-  <div class="header">
+
+<div class="header">
     <img th:src="@{/images/apnacollegLogo.png}" alt="logo">
-    <h2>Apna College</h2>
-</div>	<div class="container">
-	<div class="card">
+    <h1>Apna College</h1>
+</div>
 
-	<h2>Internship</h2>
-	<p>Industry exposure with top companies and live projects.</p>
+<!-- HERO -->
 
-	<a th:href="@{/}" class="back-btn">⬅ Back</a>
+<div class="hero">
+    <h2>Internship Program</h2>
 
-	</div>
-	</div>
-	</body></html>
+    <p>
+        Gain real-world experience through industry internships,
+        live projects, mentorship programs and corporate exposure
+        designed to prepare students for successful careers.
+    </p>
+</div>
+
+<div class="container">
+
+    <!-- OVERVIEW -->
+
+    <div class="card">
+
+        <h3>💼 Internship Overview</h3>
+
+        <p style="line-height:1.9;color:#e2e8f0;">
+            Apna College collaborates with leading organizations
+            to provide internship opportunities that help students
+            apply classroom knowledge in real business and technical
+            environments.
+        </p>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="card">
+
+        <h3>📊 Internship Statistics</h3>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h2>500+</h2>
+                <p>Internships Every Year</p>
+            </div>
+
+            <div class="stat">
+                <h2>100+</h2>
+                <p>Industry Partners</p>
+            </div>
+
+            <div class="stat">
+                <h2>90%</h2>
+                <p>Student Participation</p>
+            </div>
+
+            <div class="stat">
+                <h2>75%</h2>
+                <p>PPO Conversion Rate</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BENEFITS -->
+
+    <div class="card">
+
+        <h3>🚀 Internship Benefits</h3>
+
+        <div class="grid">
+
+            <div class="box">
+                <h4>💻 Live Projects</h4>
+                <p>Work on real industry projects and case studies.</p>
+            </div>
+
+            <div class="box">
+                <h4>👨‍🏫 Expert Mentorship</h4>
+                <p>Guidance from experienced professionals.</p>
+            </div>
+
+            <div class="box">
+                <h4>📜 Certification</h4>
+                <p>Receive recognized internship certificates.</p>
+            </div>
+
+            <div class="box">
+                <h4>💰 Stipend Opportunities</h4>
+                <p>Paid internship programs with top companies.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- COMPANIES -->
+
+    <div class="card">
+
+        <h3>🏢 Industry Collaboration</h3>
+
+        <ul style="line-height:2;color:#e2e8f0;">
+            <li>Technology Companies</li>
+            <li>Software Development Firms</li>
+            <li>Banking & Finance Organizations</li>
+            <li>Manufacturing Industries</li>
+            <li>Digital Marketing Agencies</li>
+            <li>Startup Ecosystem Partners</li>
+        </ul>
+
+    </div>
+
+    <!-- PROCESS -->
+
+    <div class="card">
+
+        <h3>📋 Internship Process</h3>
+
+        <div class="timeline">
+
+            <div class="step">
+                <h4>1. Registration</h4>
+                <p>Student enrollment for internship drive.</p>
+            </div>
+
+            <div class="step">
+                <h4>2. Screening</h4>
+                <p>Aptitude test and profile evaluation.</p>
+            </div>
+
+            <div class="step">
+                <h4>3. Interview</h4>
+                <p>Company interaction and selection process.</p>
+            </div>
+
+            <div class="step">
+                <h4>4. Internship</h4>
+                <p>Hands-on training and project execution.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BUTTON -->
+
+    <div class="btn-area">
+        <a th:href="@{/}" class="back-btn">⬅ Back To Home</a>
+    </div>
+
+</div>
+
+<div class="footer">
+    © 2026 Apna College | Internship & Industry Exposure
+</div>
+
+</body>
+</html>

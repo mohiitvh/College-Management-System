@@ -2,86 +2,372 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Apna College</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Support | Apna College</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-body{
+
+*{
     margin:0;
-    font-family:Poppins;
-    background:linear-gradient(135deg,#0f172a,#1e293b);
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b,#0f172a);
     color:white;
 }
 
 /* HEADER */
+
 .header{
     display:flex;
     align-items:center;
     justify-content:center;
     gap:15px;
     padding:20px;
-    background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
 }
 
 .header img{
-    height:60px;
-    border-radius:10px;
+    width:65px;
+    height:65px;
+    border-radius:12px;
 }
 
-/* CONTENT */
-.container{
-    max-width:900px;
-    margin:40px auto;
-    padding:20px;
-}
-
-.card{
-    background:rgba(255,255,255,0.08);
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
-}
-
-h2{
+.header h1{
     color:#38bdf8;
 }
 
-p, li{
-    line-height:1.7;
-    color:#e2e8f0;
+/* HERO */
+
+.hero{
+    text-align:center;
+    padding:60px 20px;
 }
 
-/* BACK BUTTON */
+.hero h2{
+    font-size:42px;
+    color:#38bdf8;
+    margin-bottom:15px;
+}
+
+.hero p{
+    max-width:850px;
+    margin:auto;
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+/* CONTAINER */
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+/* CARD */
+
+.card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    padding:30px;
+    margin-bottom:25px;
+    border:1px solid rgba(255,255,255,0.1);
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
+}
+
+.card h3{
+    color:#38bdf8;
+    margin-bottom:15px;
+}
+
+/* SERVICES */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.service-box{
+    background:rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:18px;
+    transition:0.4s;
+}
+
+.service-box:hover{
+    transform:translateY(-8px);
+}
+
+.service-box h4{
+    color:#38bdf8;
+    margin-bottom:10px;
+}
+
+.service-box p{
+    color:#cbd5e1;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.stat{
+    background:rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:18px;
+    text-align:center;
+}
+
+.stat h2{
+    color:#38bdf8;
+    font-size:34px;
+}
+
+.stat p{
+    color:#cbd5e1;
+}
+
+/* SUPPORT PROCESS */
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.step{
+    background:rgba(255,255,255,0.08);
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.step h4{
+    color:#38bdf8;
+    margin-bottom:10px;
+}
+
+/* BUTTON */
+
+.btn-area{
+    text-align:center;
+    margin-top:35px;
+}
+
 .back-btn{
     display:inline-block;
-    margin-top:20px;
-    padding:10px 18px;
+    padding:12px 25px;
     background:#38bdf8;
     color:black;
-    border-radius:8px;
     text-decoration:none;
-    font-weight:600;
+    border-radius:10px;
+    font-weight:700;
 }
+
 .back-btn:hover{
     background:#0ea5e9;
 }
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    background:rgba(255,255,255,0.05);
+    color:#cbd5e1;
+}
+
+@media(max-width:768px){
+
+.hero h2{
+    font-size:30px;
+}
+
+}
+
 </style>
-
 </head>
+
 <body>
-  <div class="header">
+
+<div class="header">
     <img th:src="@{/images/apnacollegLogo.png}" alt="logo">
-    <h2>Apna College</h2>
-</div>	<div class="container">
-	<div class="card">
+    <h1>Apna College</h1>
+</div>
 
-	<h2>Student Support</h2>
-	<p>Counselling, placement, academic help and mentoring.</p>
+<!-- HERO -->
 
-	<a th:href="@{/}" class="back-btn">⬅ Back</a>
+<div class="hero">
+    <h2>Student Support Services</h2>
 
-	</div>
-	</div>
-	</body></html>
+    <p>
+        We are committed to supporting students academically,
+        professionally and personally through mentoring,
+        counselling, career guidance and welfare programs.
+    </p>
+</div>
+
+<div class="container">
+
+    <!-- OVERVIEW -->
+
+    <div class="card">
+
+        <h3>🤝 Student Welfare & Guidance</h3>
+
+        <p style="line-height:1.9;color:#e2e8f0;">
+            Apna College provides comprehensive support services to
+            help students achieve academic excellence, personal
+            growth and successful career development throughout
+            their educational journey.
+        </p>
+
+    </div>
+
+    <!-- SERVICES -->
+
+    <div class="card">
+
+        <h3>🌟 Support Services</h3>
+
+        <div class="services">
+
+            <div class="service-box">
+                <h4>🎓 Academic Guidance</h4>
+                <p>Faculty mentoring and academic counselling support.</p>
+            </div>
+
+            <div class="service-box">
+                <h4>💼 Placement Assistance</h4>
+                <p>Career counselling, resume building and interview training.</p>
+            </div>
+
+            <div class="service-box">
+                <h4>🧠 Personal Counselling</h4>
+                <p>Professional counselling for stress and personal issues.</p>
+            </div>
+
+            <div class="service-box">
+                <h4>📚 Learning Support</h4>
+                <p>Extra classes, workshops and skill development sessions.</p>
+            </div>
+
+            <div class="service-box">
+                <h4>⚖ Grievance Cell</h4>
+                <p>Fair and transparent student grievance resolution system.</p>
+            </div>
+
+            <div class="service-box">
+                <h4>🏆 Scholarship Guidance</h4>
+                <p>Support for scholarship and financial aid applications.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="card">
+
+        <h3>📊 Student Support Statistics</h3>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h2>5000+</h2>
+                <p>Students Supported</p>
+            </div>
+
+            <div class="stat">
+                <h2>100+</h2>
+                <p>Mentors Available</p>
+            </div>
+
+            <div class="stat">
+                <h2>95%</h2>
+                <p>Student Satisfaction</p>
+            </div>
+
+            <div class="stat">
+                <h2>24×7</h2>
+                <p>Online Assistance</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- PROCESS -->
+
+    <div class="card">
+
+        <h3>📋 Support Process</h3>
+
+        <div class="steps">
+
+            <div class="step">
+                <h4>1. Request</h4>
+                <p>Submit your support request online.</p>
+            </div>
+
+            <div class="step">
+                <h4>2. Review</h4>
+                <p>Concern is reviewed by the support team.</p>
+            </div>
+
+            <div class="step">
+                <h4>3. Guidance</h4>
+                <p>Receive counselling and expert assistance.</p>
+            </div>
+
+            <div class="step">
+                <h4>4. Resolution</h4>
+                <p>Issue resolved with continuous follow-up.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CONTACT -->
+
+    <div class="card">
+
+        <h3>📞 Student Help Desk</h3>
+
+        <ul style="line-height:2;color:#e2e8f0;">
+            <li>Email: support@apnacollege.edu</li>
+            <li>Phone: +91 9876543210</li>
+            <li>Office Hours: Monday - Saturday (9:00 AM - 5:00 PM)</li>
+            <li>Location: Student Welfare Office, Main Campus</li>
+        </ul>
+
+    </div>
+
+    <div class="btn-area">
+        <a th:href="@{/}" class="back-btn">⬅ Back To Home</a>
+    </div>
+
+</div>
+
+<div class="footer">
+    © 2026 Apna College | Student Support & Welfare Services
+</div>
+
+</body>
+</html>

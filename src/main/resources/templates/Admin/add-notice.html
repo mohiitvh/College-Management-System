@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Add Notice</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:#f4f7fc;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:30px;
+}
+
+.container{
+
+width:100%;
+
+max-width:700px;
+}
+
+.card{
+
+background:#fff;
+
+padding:35px;
+
+border-radius:25px;
+
+box-shadow:
+
+0 15px 40px rgba(0,0,0,.08);
+}
+
+.header{
+
+text-align:center;
+
+margin-bottom:30px;
+}
+
+.header h2{
+
+font-size:32px;
+
+color:#1e293b;
+
+margin-bottom:8px;
+}
+
+.header p{
+
+color:#64748b;
+}
+
+.form-group{
+
+margin-bottom:22px;
+}
+
+label{
+
+display:block;
+
+font-size:15px;
+
+font-weight:600;
+
+margin-bottom:8px;
+
+color:#334155;
+}
+
+input[type="text"],
+input[type="date"],
+select,
+textarea{
+
+width:100%;
+
+padding:14px;
+
+border:1px solid #dbe2ea;
+
+border-radius:12px;
+
+font-size:15px;
+
+outline:none;
+
+transition:0.3s;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+
+border-color:#2563eb;
+
+box-shadow:
+
+0 0 0 4px
+
+rgba(37,99,235,.1);
+}
+
+textarea{
+
+resize:none;
+}
+
+.file-box{
+
+padding:14px;
+
+border:2px dashed #cbd5e1;
+
+border-radius:12px;
+
+background:#f8fafc;
+}
+
+.checkbox{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+}
+
+.checkbox input{
+
+width:18px;
+
+height:18px;
+}
+
+.btn{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:12px;
+
+background:
+
+linear-gradient(
+90deg,
+#2563eb,
+#4f46e5);
+
+color:white;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:0.3s;
+}
+
+.btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+
+0 10px 25px
+
+rgba(37,99,235,.3);
+}
+
+.back{
+
+display:inline-block;
+
+margin-bottom:20px;
+
+text-decoration:none;
+
+color:#2563eb;
+
+font-weight:600;
+}
+
+.back i{
+
+margin-right:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<a
+
+th:href="@{/admin/notices/list}"
+
+class="back">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Back to Notice List
+
+</a>
+
+
+<div class="card">
+
+<div class="header">
+
+<h2>
+
+<i class="fa-solid fa-bullhorn"></i>
+
+Add Notice
+
+</h2>
+
+<p>
+
+Create and publish notices for students.
+
+</p>
+
+</div>
+
+
+<form
+
+th:action="@{/admin/notices/save}"
+
+th:object="${notice}"
+
+method="post"
+
+enctype="multipart/form-data">
+
+
+<div class="form-group">
+
+<label>
+
+Title
+
+</label>
+
+<input
+
+type="text"
+
+th:field="*{title}"
+
+placeholder="Enter notice title"
+
+required>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+
+Description
+
+</label>
+
+<textarea
+
+th:field="*{description}"
+
+rows="5"
+
+placeholder="Enter notice description">
+
+</textarea>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+
+Choose Icon
+
+</label>
+
+<select
+
+th:field="*{icon}">
+
+<option value="fa-graduation-cap">
+
+🎓 Graduation
+
+</option>
+
+<option value="fa-award">
+
+🏆 Scholarship
+
+</option>
+
+<option value="fa-file-signature">
+
+📝 Exam
+
+</option>
+
+<option value="fa-briefcase">
+
+💼 Placement
+
+</option>
+
+<option value="fa-microchip">
+
+🤖 AI Workshop
+
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+
+Notice Date
+
+</label>
+
+<input
+
+type="date"
+
+th:field="*{noticeDate}">
+
+</div>
+
+
+
+<div class="form-group checkbox">
+
+<input
+
+type="checkbox"
+
+th:field="*{active}">
+
+<label>
+
+Active Notice
+
+</label>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+
+PDF (Optional)
+
+</label>
+
+<div class="file-box">
+
+<input
+
+type="file"
+
+name="pdfFile"
+
+accept=".pdf">
+
+</div>
+
+</div>
+
+
+
+<button
+
+type="submit"
+
+class="btn">
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+Save Notice
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
